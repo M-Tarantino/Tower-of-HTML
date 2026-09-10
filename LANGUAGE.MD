@@ -3,120 +3,120 @@
 ## 🌍 Top Global Languages
 
 ### Completed / In Progress
-| Sprache | Status |
-| :--- | :---: |
-| Englisch | [x] |
-| Deutsch | [x] |
-| Chinesisch (Mandarin) | [x] |
-| Hindi | [x] |
-| Spanisch | [x] |
-| Arabisch (Hocharabisch) | [x] |
-| Französisch | [x] |
-| Bengali | [x] |
-| Portugiesisch | [x] |
-| Russisch | [x] |
-| Urdu | [x] |
-| Indonesisch | [x] |
-| Suaheli (Kiswahili) | [x] |
-| Hausa | [x] |
-| Yoruba | [x] |
-| Zulu (isiZulu) | [x] |
-| Twi (Akan) | [x] |
-| Japanisch | [x] |
-| Punjabi | [x] |
-| Vietnamesisch | [x] |
-| Türkisch | [x] |
-| Koreanisch | [x] |
+| Language (English) | Language (Native) | Status |
+| :--- | :--- | :---: |
+| English | English | [x] |
+| German | Deutsch | [x] |
+| Chinese (Mandarin) | 普通话 (Pǔtōnghuà) | [x] |
+| Hindi | हिन्दी (Hindī) | [x] |
+| Spanish | Español | [x] |
+| Arabic (Modern Standard) | العربية الفصحى (Al-ʿArabiyyah) | [x] |
+| French | Français | [x] |
+| Bengali | বাংলা (Bāṅlā) | [x] |
+| Portuguese | Português | [x] |
+| Russian | Русский (Russkiy) | [x] |
+| Urdu | اردو (Urdū) | [x] |
+| Indonesian | Bahasa Indonesia | [x] |
+| Swahili | Kiswahili | [x] |
+| Hausa | Harshen Hausa | [x] |
+| Yoruba | Èdè Yorùbá | [x] |
+| Zulu | isiZulu | [x] |
+| Twi | Twi (Akan) | [x] |
+| Japanese | 日本語 (Nihongo) | [x] |
+| Punjabi | ਪੰਜਾਬੀ / پنجابی (Punjabi) | [x] |
+| Vietnamese | Tiếng Việt | [x] |
+| Turkish | Türkçe | [x] |
+| Korean | 한국어 (Hangugeo) | [x] |
 
 ---
 
 ## 🧭 Remaining Languages (To Do)
 
 ### Asia & Pacific
-| Sprache | Region | Status |
-| :--- | :--- | :---: |
-| Chinesisch (Kantonessisch / Yue) | Ostasien | [ ] |
-| Chinesisch (Wu / Shanghainisch) | Ostasien | [ ] |
-| Chinesisch (Min Nan / Hokkien) | Ostasien | [ ] |
-| Chinesisch (Hakka) | Ostasien | [ ] |
-| Chinesisch (Xiang) | Ostasien | [ ] |
-| Chinesisch (Gan) | Ostasien | [ ] |
-| Marathi | Indien | [ ] |
-| Telugu | Indien | [ ] |
-| Tamil | Indien / Sri Lanka | [ ] |
-| Gujarati | Indien | [ ] |
-| Bhojpuri | Indien | [ ] |
-| Kannada | Indien | [ ] |
-| Malayalam | Indien | [ ] |
-| Odia (Oriya) | Indien | [ ] |
-| Maithili | Indien / Nepal | [ ] |
-| Sindhi | Pakistan / Indien | [ ] |
-| Paschtunisch (Pashto) | Afghanistan / Pakistan | [ ] |
-| Farsi (Persisch) | Iran | [ ] |
-| Dari | Afghanistan | [ ] |
-| Tadschikisch | Tadschikistan | [ ] |
-| Javanesisch | Indonesien | [ ] |
-| Sundanesisch | Indonesien | [ ] |
-| Maduresisch | Indonesien | [ ] |
-| Tagalog (Filipino) | Philippinen | [ ] |
-| Cebuano | Philippinen | [ ] |
-| Ilocano | Philippinen | [ ] |
-| Thailändisch (Thai) | Südostasien | [ ] |
-| Isan (Nordost-Thai) | Thailand | [ ] |
-| Laotisch | Laos | [ ] |
-| Khmer (Kambodschanisch) | Südostasien | [ ] |
-| Birmanisch (Burmesisch) | Myanmar | [ ] |
-| Singhalesisch (Sinhala) | Sri Lanka | [ ] |
-| Nepalesisch | Nepal | [ ] |
-| Usbekisch | Zentralasien | [ ] |
-| Kasachisch | Zentralasien | [ ] |
-| Aserbaidschanisch | Kaukasus / Iran | [ ] |
-| Turkmenisch | Zentralasien | [ ] |
-| Kirgisisch | Zentralasien | [ ] |
+| Language (English) | Language (Native) | Region / Countries | Status |
+| :--- | :--- | :--- | :---: |
+| Chinese (Cantonese / Yue) | 粵語 / 粤语 (Yuèyǔ) | China, Hong Kong, Macao | [ ] |
+| Chinese (Wu / Shanghainese) | 吴语 (Wúyǔ) | China | [ ] |
+| Chinese (Min Nan / Hokkien) | 閩南語 (Bân-lâm-gú) | China, Taiwan | [ ] |
+| Chinese (Hakka) | 客家話 (Hak-kâ-vâ) | China, Taiwan | [ ] |
+| Chinese (Xiang) | 湘语 (Xiāngyǔ) | China | [ ] |
+| Chinese (Gan) | 赣语 (Gànyǔ) | China | [ ] |
+| Marathi | मराठी (Marāṭhī) | India (भारत) | [ ] |
+| Telugu | తెలుగు (Telugu) | India (भारत) | [ ] |
+| Tamil | தமிழ் (Tamiḻ) | India (भारत), Sri Lanka (இலங்கை) | [ ] |
+| Gujarati | ગુજરાતી (Gujarātī) | India (भारत) | [ ] |
+| Bhojpuri | भोजपुरी (Bhojpuri) | India (भारत), Nepal (नेपाल) | [ ] |
+| Kannada | ಕನ್ನಡ (Kannada) | India (भारत) | [ ] |
+| Malayalam | മലയാളം (Malayāḷam) | India (भारत) | [ ] |
+| Odia (Oriya) | ଓଡ଼ିଆ (Oḍiā) | India (भारत) | [ ] |
+| Maithili | मैथिली (Maithili) | India (भारत), Nepal (नेपाल) | [ ] |
+| Sindhi | سنڌي / सिंधी (Sindhi) | Pakistan (پاکستان), India (भारत) | [ ] |
+| Pashto | پښتو (Pax̌tō) | Afghanistan (افغانستان), Pakistan (پاکستان) | [ ] |
+| Farsi (Persian) | فارسی (Fārsī) | Iran (إيران) | [ ] |
+| Dari | دری (Darī) | Afghanistan (افغانستان) | [ ] |
+| Tajik | Тоҷикӣ (Tojikī) | Tajikistan (Тоҷикистон) | [ ] |
+| Javanese | Basa Jawa | Indonesia (Indonesia) | [ ] |
+| Sundanese | Basa Sunda | Indonesia (Indonesia) | [ ] |
+| Madurese | Basa Madura | Indonesia (Indonesia) | [ ] |
+| Tagalog (Filipino) | Wikang Tagalog / Filipino | Philippines (Pilipinas) | [ ] |
+| Cebuano | Sinugboanon | Philippines (Pilipinas) | [ ] |
+| Ilocano | Ilokano | Philippines (Pilipinas) | [ ] |
+| Thai | ไทย (Phasa Thai) | Thailand (ประเทศไทย) | [ ] |
+| Isan (Northeast Thai) | ภาษาอีสาน (Phasa Isan) | Thailand (ประเทศไทย) | [ ] |
+| Lao | ພາສາລາວ (Phasa Lao) | Laos (ປະເທດລາວ) | [ ] |
+| Khmer | ភាសាខ្មែរ (Phasa Khmer) | Cambodia (កម្ពុជា) | [ ] |
+| Burmese | မြန်မာစာ (Myanmarsar) | Myanmar (မြန်မာ) | [ ] |
+| Sinhala | සිංහල (Siṁhala) | Sri Lanka (ශ්‍රී ලංකාව) | [ ] |
+| Nepali | नेपाली (Nepālī) | Nepal (नेपाल) | [ ] |
+| Uzbek | Oʻzbek tili / Ўзбек тили | Uzbekistan (Oʻzbekiston) | [ ] |
+| Kazakh | Қазақ тілі (Qazaq tili) | Kazakhstan (Қазақстан) | [ ] |
+| Azerbaijani | Azərbaycan dili | Azerbaijan (Azərbaycan), Iran (إيران) | [ ] |
+| Turkmen | Türkmen dili | Turkmenistan (Türkmenistan) | [ ] |
+| Kyrgyz | Кыргыз тили (Kyrgyz tili) | Kyrgyzstan (Кыргызстан) | [ ] |
 
 ### Africa & Middle East
-| Sprache | Region | Status |
-| :--- | :--- | :---: |
-| Ägyptisch-Arabisch | Nordafrika | [ ] |
-| Algerisch-Arabisch | Nordafrika | [ ] |
-| Marokkanisch-Arabisch | Nordafrika | [ ] |
-| Sudanesisch-Arabisch | Nordafrika / Ostafrika | [ ] |
-| Levantinisch-Arabisch | Naher Osten (Syrien/Libanon) | [ ] |
-| Mesopotamisch-Arabisch | Naher Osten (Irak) | [ ] |
-| Igbo | Nigeria | [ ] |
-| Amharisch | Äthiopien | [ ] |
-| Oromo | Äthiopien / Kenia | [ ] |
-| Somali | Ostafrika / Horn v. Afrika | [ ] |
-| Xhosa (isiXhosa) | Südafrika | [ ] |
-| Afrikaans | Südafrika / Namibia | [ ] |
-| Lingála | Kongo (DRK / Republik) | [ ] |
-| Kinyarwanda | Ruanda | [ ] |
-| Kirundi | Burundi | [ ] |
-| Luganda | Uganda | [ ] |
-| Shona | Simbabwe | [ ] |
-| Malagasy | Madagaskar | [ ] |
-| Bambara | Mali | [ ] |
-| Wolof | Senegal | [ ] |
-| Fulfulde (Fula) | Westafrika | [ ] |
-| Tigrinya | Eritrea / Äthiopien | [ ] |
-| Hebräisch | Israel | [ ] |
+| Language (English) | Language (Native) | Region / Countries | Status |
+| :--- | :--- | :--- | :---: |
+| Egyptian Arabic | العامية المصرية (El-ʿĀmmiyya el-Maṣriyya) | Egypt (مصر) | [ ] |
+| Algerian Arabic | الدارجة الجزائرية (Darja) | Algeria (الجزائر) | [ ] |
+| Moroccan Arabic | الدارجة المغربية (Darija) | Morocco (المغرب) | [ ] |
+| Sudanese Arabic | اللهجة السودانية (Sūdāniyya) | Sudan (السودان) | [ ] |
+| Levantine Arabic | اللهجة الشامية (Shāmiyya) | Syria (سوريا), Lebanon (لبنان), Jordan (الأردن) | [ ] |
+| Mesopotamian Arabic | اللهجة العراقية (ʿIrāqiyya) | Iraq (العراق) | [ ] |
+| Igbo | Asụsụ Igbo | Nigeria (Nigeria) | [ ] |
+| Amharic | አማርኛ (Amarñña) | Ethiopia (ኢትዮጵያ) | [ ] |
+| Oromo | Afaan Oromoo | Ethiopia (ኢትዮጵያ), Kenya (Kenya) | [ ] |
+| Somali | Af-Soomaali | Somalia (Soomaaliya) | [ ] |
+| Xhosa | isiXhosa | South Africa (iNingizimu Afrika) | [ ] |
+| Afrikaans | Afrikaans | South Africa (Suid-Afrika), Namibia (Namibië) | [ ] |
+| Lingala | Lingála | DR Congo (RDC), Republic of the Congo (Congo) | [ ] |
+| Kinyarwanda | Ikinyarwanda | Rwanda (u Rwanda) | [ ] |
+| Kirundi | Ikirundi | Burundi (Uburundi) | [ ] |
+| Luganda | Oluganda | Uganda (Uganda) | [ ] |
+| Shona | ChiShona | Zimbabwe (Zimbabwe) | [ ] |
+| Malagasy | Fiteny Malagasy | Madagascar (Madagasikara) | [ ] |
+| Bambara | Bamanankan | Mali (Mali) | [ ] |
+| Wolof | Wolof | Senegal (Senegaal) | [ ] |
+| Fulfulde (Fula) | Pulaar / Fulfulde | West Africa | [ ] |
+| Tigrinya | ትግርኛ (Tigrıññā) | Eritrea (ኤርትራ), Ethiopia (ኢትዮጵያ) | [ ] |
+| Hebrew | עברית (ʿIvrit) | Israel (ישראל) | [ ] |
 
 ### Europe & Americas
-| Sprache | Region | Status |
-| :--- | :--- | :---: |
-| Italienisch | Südeuropa | [ ] |
-| Polnisch | Mitteleuropa | [ ] |
-| Ukrainisch | Osteuropa | [ ] |
-| Rumänisch | Südosteuropa | [ ] |
-| Niederländisch | Westeuropa | [ ] |
-| Griechisch | Südeuropa | [ ] |
-| Ungarisch | Mitteleuropa | [ ] |
-| Tschechisch | Mitteleuropa | [ ] |
-| Schwedisch | Nordeuropa | [ ] |
-| Bulgarisch | Südosteuropa | [ ] |
-| Serbisch / Kroatisch / Bosnisch | Südosteuropa | [ ] |
-| Weißrussisch | Osteuropa | [ ] |
-| Katalanisch | Spanien / Europa | [ ] |
-| Haitianisches Kreol | Karibik (Haiti) | [ ] |
-| Guaraní | Südamerika (Paraguay) | [ ] |
-| Quechua | Südamerika (Anden) | [ ] |
+| Language (English) | Language (Native) | Region / Countries | Status |
+| :--- | :--- | :--- | :---: |
+| Italian | Italiano | Italy (Italia) | [ ] |
+| Polish | Polski | Poland (Polska) | [ ] |
+| Ukrainian | Українська (Ukrains'ka) | Ukraine (Україна) | [ ] |
+| Romanian | Română | Romania (România) | [ ] |
+| Dutch | Nederlands | Netherlands (Nederland), Belgium (België) | [ ] |
+| Greek | Ελληνικά (Elliniká) | Greece (Ελλάδα) | [ ] |
+| Hungarian | Magyar | Hungary (Magyarország) | [ ] |
+| Czech | Čeština | Czech Republic (Česká republika) | [ ] |
+| Swedish | Svenska | Sweden (Sverige) | [ ] |
+| Bulgarian | Български (Bălgarski) | Bulgaria (България) | [ ] |
+| Serbo-Croatian | Srpskohrvatski / Српскохрватски | Serbia (Србија), Croatia (Hrvatska), Bosnia (BiH) | [ ] |
+| Belarusian | Беларуская (Bielaruskaja) | Belarus (Беларусь) | [ ] |
+| Catalan | Català | Spain (España) | [ ] |
+| Haitian Creole | Kreyòl ayisyen | Haiti (Ayiti) | [ ] |
+| Guaraní | Avañe'ẽ | Paraguay (Paraguái) | [ ] |
+| Quechua | Runa Simi | Peru (Piruw), Bolivia (Wuliwya) | [ ] |
