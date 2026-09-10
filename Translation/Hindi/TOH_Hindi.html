@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<title>Tower of HTML</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+background-color: #000000;
+color: #00ff00;
+font-family: monospace;
+padding: 10px;
+margin: 0;
+}
+.container {
+width: 100%;
+max-width: 480px;
+margin: 0 auto;
+}
+.header {
+border-bottom: 1px solid currentColor;
+padding-bottom: 8px;
+margin-bottom: 12px;
+}
+.header-table {
+width: 100%;
+border-collapse: collapse;
+}
+.header-left {
+text-align: left;
+vertical-align: middle;
+}
+.header-right {
+text-align: right;
+vertical-align: middle;
+}
+h1 {
+font-size: 16px;
+margin: 0;
+display: inline;
+}
+.top-btn {
+width: auto !important;
+padding: 2px 6px !important;
+margin-left: 6px !important;
+display: inline-block !important;
+font-size: 10px !important;
+vertical-align: middle;
+}
+.github-btn {
+width: auto !important;
+padding: 2px 6px !important;
+margin-left: 6px !important;
+display: inline-block !important;
+font-size: 10px !important;
+text-decoration: none;
+font-weight: bold;
+}
+.lang-tag {
+font-size: 11px;
+font-weight: bold;
+}
+.theme-panel {
+display: none;
+border: 1px solid currentColor;
+padding: 8px;
+margin-bottom: 12px;
+font-size: 11px;
+}
+.preset-group {
+margin-bottom: 6px;
+padding-bottom: 6px;
+border-bottom: 1px dashed currentColor;
+}
+.theme-panel label {
+margin-right: 10px;
+}
+.theme-panel input[type="text"] {
+width: 65px;
+background-color: transparent;
+color: inherit;
+border: 1px solid currentColor;
+font-family: monospace;
+font-size: 11px;
+padding: 2px 4px;
+}
+.tower {
+border: 1px solid currentColor;
+padding: 8px;
+margin-bottom: 10px;
+min-height: 85px;
+}
+.step {
+border-bottom: 1px dashed currentColor;
+padding: 3px;
+font-size: 12px;
+}
+.step:last-child {
+border-bottom: none;
+}
+.player {
+font-weight: bold;
+color: #000000;
+background-color: #00ff00;
+}
+.info-box {
+border: 1px solid currentColor;
+padding: 10px;
+font-size: 12px;
+margin-bottom: 10px;
+line-height: 1.4;
+}
+textarea, input[type="text"] {
+width: 100%;
+background-color: transparent;
+color: inherit;
+border: 1px solid currentColor;
+font-family: monospace;
+box-sizing: border-box;
+padding: 6px;
+margin-bottom: 6px;
+}
+button {
+background-color: #00ff00;
+color: #000000;
+border: 1px solid #00ff00;
+font-family: monospace;
+font-weight: bold;
+width: 100%;
+padding: 10px;
+cursor: pointer;
+}
+.preset-btn {
+width: auto !important;
+padding: 3px 6px !important;
+margin-right: 3px !important;
+margin-bottom: 3px !important;
+display: inline-block !important;
+font-size: 10px !important;
+}
+.msg {
+margin-top: 8px;
+font-size: 12px;
+font-weight: bold;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<!-- HEADER BAR -->
+<div class="header">
+<table class="header-table">
+<tr>
+<td class="header-left">
+<h1>TOWER OF HTML</h1>
+<button class="top-btn" onclick="toggleThemeMenu()">[रंग]</button>
+</td>
+<td class="header-right">
+<span class="lang-tag">HI</span>
+<a href="[https://github.com/M-Tarantino](https://github.com/M-Tarantino)" target="_blank" class="github-btn" id="gh-link">@M-Tarantino</a>
+</td>
+</tr>
+</table>
+</div>
+<!-- COLLAPSIBLE COLOR MENU -->
+<div class="theme-panel" id="theme-menu">
+<div class="preset-group">
+<span style="font-weight:bold; display:block; margin-bottom:4px;">प्रीसेट:</span>
+<button class="preset-btn" onclick="setPreset('#000000', '#00ff00')">Matrix</button>
+<button class="preset-btn" onclick="setPreset('#000000', '#ffb000')">Amber</button>
+<button class="preset-btn" onclick="setPreset('#0000aa', '#ffffff')">DOS Blue</button>
+<button class="preset-btn" onclick="setPreset('#ffffff', '#111111')">Light</button>
+<button class="preset-btn" onclick="setPreset('#1a0022', '#00ffff')">Cyber</button>
+</div>
+<div>
+<span style="font-weight:bold;">कस्टम:</span>
+<label>BG: <input type="text" id="bg-color-in" value="#000000" onchange="applyColors()"></label>
+<label>TEXT: <input type="text" id="text-color-in" value="#00ff00" onchange="applyColors()"></label>
+<button class="preset-btn" onclick="applyColors()">सेट करें</button>
+</div>
+</div>
+<div id="status" style="font-size:14px; font-weight:bold; margin-bottom:5px;"></div>
+<!-- TOWER VIEW (SHOWING PREVIOUS, CURRENT, AND NEXT FLOOR) -->
+<div class="tower" id="tower-view">
+<!-- Rendered via JS -->
+</div>
+<!-- EXPLANATION BOX -->
+<div class="info-box" id="info-text">
+<!-- Text rendered via JS -->
+</div>
+<div id="task-box">
+<p id="task-text" style="font-size:12px; font-weight:bold; margin: 0 0 5px 0;"></p>
+<textarea id="user-code" rows="3" placeholder="अपना कोड यहाँ टाइप करें..."></textarea>
+<button onclick="checkCode()">कोड जाँचें</button>
+</div>
+<div style="margin-top: 15px; border-top: 1px solid currentColor; padding-top: 8px;">
+<p style="font-size:10px; margin:0 0 3px 0;">सीधे जाने के लिए मंज़िल का कोड दर्ज करें:</p>
+<input type="text" id="level-pass" placeholder="उदा. START या L1-ROOT">
+<button onclick="jumpLevel()">मंज़िल पर जाएँ</button>
+</div>
+<div class="msg" id="msg-box"></div>
+</div>
+<script>
+// --- LEVEL DATA (FLOOR 0 INTRO + FLOORS 1 - 40+) ---
+var levels = [
+{
+id: "START",
+title: "मंज़िल 0: अवलोकन और निर्देश",
+info: "<b>Tower of HTML</b> में आपका स्वागत है!
+
+<b>यह क्या है?</b>
+आपको कदम-दर-कदम HTML की बुनियादी बातें सिखाने के लिए बनाया गया एक इंटरैक्टिव गेम।
+
+<b>यह कैसे काम करता है?</b>
+1. प्रत्येक मंज़िल पर दिए गए विवरण को पढ़ें।
+2. माँगा गया HTML कोड इनपुट फ़ील्ड में टाइप करें।
+3. आगे बढ़ने के लिए <b>कोड जाँचें</b> पर क्लिक करें।
+4. अपनी प्रगति को सहेजने या पूरी की गई मंज़िलों पर सीधे जाने के लिए आपको एक कोड मिलेगा।",
+hint: "मीनार में प्रवेश करने के लिए शब्द <b>START</b> टाइप करें।",
+desc: "सटीक अक्षर टाइप करें: START",
+check: function(input) {
+return input.toLowerCase().indexOf("start") !== -1;
+}
+},
+// --- PHASE 1: FOUNDATION (Floors 1-8) ---
+{
+id: "L1-ROOT",
+title: "मंज़िल 1: रूट एलिमेंट (Root Element)",
+info: "कोड में ब्राउज़र द्वारा पढ़े जाने वाले निर्देश शामिल होते हैं।
+
+HTML <b>टैग्स (Tags)</b> का उपयोग करके वेबपेज बनाता है। एक टैग दो ब्रैकेट प्रतीकों के बीच रखा गया एक कीवर्ड है:
+• <b><</b> (लैस-दैन symbol)
+• <b>></b> (ग्रेटर-दैन symbol)
+
+प्रत्येक वेबपेज का सबसे पहला टैग <b>html</b> होता है। ब्रैकेट के साथ लिखे जाने पर यह ऐसा दिखता है: <code><html></code>।",
+hint: "अपने कीबोर्ड पर '<' और '>' कुंजियों का उपयोग करें।",
+desc: "सटीक अक्षर टाइप करें: <html>",
+check: function(input) {
+return input.toLowerCase().indexOf("<html>") !== -1;
+}
+},
+{
+id: "L2-HEAD",
+title: "मंज़िल 2: हैड सेक्शन (Head Section)",
+info: "वेबपेज दो मुख्य भागों में विभाजित होते हैं: अदृश्य कॉन्फ़िगरेशन और दृश्यमान सामग्री।
+
+अदृश्य अनुभाग को <b>head</b> कहा जाता है। इसमें ब्राउज़र के लिए सेटिंग्स और मेटाडेटा शामिल होते हैं।
+
+मंज़िल 1 की तरह, आप ब्रैकेट में शब्द <b>head</b> लपेटकर यह टैग लिखते हैं: <code><head></code>।",
+hint: "'<' टाइप करें, फिर 'head', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: <head>",
+check: function(input) {
+return input.toLowerCase().indexOf("<head>") !== -1;
+}
+},
+{
+id: "L3-TITLE",
+title: "मंज़िल 3: पेज शीर्षक (Page Title)",
+info: "head अनुभाग के अंदर, आप अपने वेबपेज का नाम सेट करते हैं।
+
+यह नाम आपके वेब ब्राउज़र के शीर्ष पर स्थित टैब पर दिखाई देता है। इसके लिए टैग <b>title</b> है।
+
+शब्द <b>title</b> को ब्रैकेट में लपेटें: <code><title></code>।",
+hint: "'<', 'title', और '>' को मिलाएँ।",
+desc: "सटीक अक्षर टाइप करें: <title>",
+check: function(input) {
+return input.toLowerCase().indexOf("<title>") !== -1;
+}
+},
+{
+id: "L4-BODY",
+title: "मंज़िल 4: बॉडी सेक्शन (Body Section)",
+info: "अब हम वेबसाइट के दृश्यमान (visible) भाग की ओर बढ़ते हैं!
+
+स्क्रीन पर दिखाई देने वाली हर चीज़ (पाठ, चित्र, बटन) <b>body</b> के अंदर होती है।
+
+इस अनुभाग के लिए टैग <code><body></code> है।",
+hint: "'<' टाइप करें, उसके बाद 'body', उसके बाद '>'",
+desc: "सटीक अक्षर टाइप करें: <body>",
+check: function(input) {
+return input.toLowerCase().indexOf("<body>") !== -1;
+}
+},
+{
+id: "L5-PARA",
+title: "मंज़िल 5: पैराग्राफ (Paragraphs)",
+info: "body अनुभाग के अंदर, आप टेक्स्ट पैराग्राफ लिखते हैं।
+
+HTML एकल अक्षर <b>p</b> ('paragraph' का संक्षिप्त रूप) का उपयोग करता है।
+
+पैराग्राफ के लिए टैग <code><p></code> है।",
+hint: "'<' टाइप करें, फिर 'p', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: <p>",
+check: function(input) {
+return input.toLowerCase().indexOf("<p>") !== -1;
+}
+},
+{
+id: "L6-CLOSE-P",
+title: "मंज़िल 6: क्लोजिंग टैग (पैराग्राफ)",
+info: "अधिकांश HTML टैग काम पूरा होने पर <b>बंद (closed)</b> होने चाहिए।
+
+किसी टैग को बंद करने के लिए, ओपनिंग टैग वाले शब्द का ही उपयोग करें, लेकिन शुरुआत में एक फॉरवर्ड स्लैश <b>/</b> जोड़ें।
+
+पैराग्राफ टैग को बंद करने के लिए लिखें: <code></p></code>
+
+एक पूर्ण पैराग्राफ का उदाहरण:
+<code><p>Hello World</p></code>",
+hint: "'<' टाइप करें, फिर '/', फिर 'p', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: </p>",
+check: function(input) {
+return input.toLowerCase().indexOf("</p>") !== -1;
+}
+},
+{
+id: "L7-CLOSE-BODY",
+title: "मंज़िल 7: क्लोजिंग बॉडी टैग",
+info: "पैराग्राफ टैग की तरह, सामग्री जोड़ने के बाद body अनुभाग को भी बंद किया जाना चाहिए।
+
+क्लोजिंग बॉडी टैग है: <code></body></code>
+
+याद रखें: प्रत्येक ओपनिंग टैग के लिए एक क्लोजिंग टैग की आवश्यकता होती है!",
+hint: "'<' टाइप करें, फिर '/', फिर 'body', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: </body>",
+check: function(input) {
+return input.toLowerCase().indexOf("</body>") !== -1;
+}
+},
+{
+id: "L8-CLOSE-HTML",
+title: "मंज़िल 8: क्लोजिंग HTML टैग",
+info: "सबसे पहला टैग जो आपने खोला था वह <code><html></code> था। अब आपको इसे बंद करना होगा।
+
+क्लोजिंग html टैग है: <code></html></code>
+
+यह संपूर्ण वेबपेज संरचना को समाप्त करता है।",
+hint: "'<' टाइप करें, फिर '/', फिर 'html', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: </html>",
+check: function(input) {
+return input.toLowerCase().indexOf("</html>") !== -1;
+}
+},
+// --- PHASE 2: CONTENT & TEXT (Floors 9-18) ---
+{
+id: "L9-H1",
+title: "मंज़िल 9: मुख्य शीर्षक (H1)",
+info: "शीर्षकों का उपयोग सामग्री को व्यवस्थित करने और शीर्षकों को अलग दिखाने के लिए किया जाता है।
+
+सबसे बड़ा शीर्षक <b>h1</b> है (h = heading, 1 = आकार का स्तर)।
+
+HTML में 6 शीर्षक स्तर हैं: h1 (सबसे बड़ा) से h6 (सबसे छोटा)।
+
+इसके साथ एक h1 शीर्षक बनाएँ: <code><h1></code>",
+hint: "'<' टाइप करें, फिर 'h1', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: <h1>",
+check: function(input) {
+return input.toLowerCase().indexOf("<h1>") !== -1;
+}
+},
+{
+id: "L10-H2",
+title: "मंज़िल 10: उप-शीर्षक (H2)",
+info: "h1 के नीचे, अगला शीर्षक आकार <b>h2</b> है।
+
+अपने मुख्य शीर्षक के अंतर्गत अनुभाग शीर्षकों के लिए h2 का उपयोग करें।
+
+उदाहरण संरचना:
+<code><h1>My Website</h1></code>
+<code><h2>About Me</h2></code>",
+hint: "'<' टाइप करें, फिर 'h2', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: <h2>",
+check: function(input) {
+return input.toLowerCase().indexOf("<h2>") !== -1;
+}
+},
+{
+id: "L11-CLOSE-H1",
+title: "मंज़िल 11: क्लोज हेडिंग H1",
+info: "सभी HTML टैग की तरह, शीर्षकों को भी बंद किया जाना चाहिए।
+
+h1 टैग बंद करने के लिए लिखें: <code></h1></code>
+
+पूरा उदाहरण:
+<code><h1>Welcome!</h1></code>",
+hint: "'<' टाइप करें, फिर '/', फिर 'h1', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: </h1>",
+check: function(input) {
+return input.toLowerCase().indexOf("</h1>") !== -1;
+}
+},
+{
+id: "L12-BOLD",
+title: "मंज़िल 12: बोल्ड टेक्स्ट (Bold Text)",
+info: "पाठ को <b>बोल्ड</b> (मोटा, गहरा) बनाने के लिए, <b>b</b> टैग का उपयोग करें।
+
+b का अर्थ 'bold' है।
+
+उदाहरण:
+<code><p>This is <b>important</b> text.</p></code>",
+hint: "'<' टाइप करें, फिर 'b', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: <b>",
+check: function(input) {
+return input.toLowerCase().indexOf("<b>") !== -1;
+}
+},
+{
+id: "L13-CLOSE-BOLD",
+title: "मंज़िल 13: क्लोज बोल्ड टैग",
+info: "बोल्ड टैग को इसके साथ बंद करें: <code></b></code>
+
+जिस सामग्री को आप फ़ॉर्मेट करना चाहते हैं, उसके ठीक बाद टैग बंद करना याद रखें!",
+hint: "'<' टाइप करें, फिर '/', फिर 'b', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: </b>",
+check: function(input) {
+return input.toLowerCase().indexOf("</b>") !== -1;
+}
+},
+{
+id: "L14-ITALIC",
+title: "मंज़िल 14: इटैलिक टेक्स्ट (Italic Text)",
+info: "पाठ को <i>italic</i> (तिरछा) बनाने के लिए, <b>i</b> टैग का उपयोग करें।
+
+i का अर्थ 'italic' है।
+
+उदाहरण:
+<code><p>This is <i>fancy</i> text.</p></code>",
+hint: "'<' टाइप करें, फिर 'i', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: <i>",
+check: function(input) {
+return input.toLowerCase().indexOf("<i>") !== -1;
+}
+},
+{
+id: "L15-CLOSE-ITALIC",
+title: "मंज़िल 15: क्लोज इटैलिक टैग",
+info: "इटैलिक टैग को इसके साथ बंद करें: <code></i></code>",
+hint: "'<' टाइप करें, फिर '/', फिर 'i', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: </i>",
+check: function(input) {
+return input.toLowerCase().indexOf("</i>") !== -1;
+}
+},
+{
+id: "L16-STRONG",
+title: "मंज़िल 16: स्ट्रांग एम्फिसिस (Strong Emphasis)",
+info: "बोल्ड के समान, <b>strong</b> टैग पाठ पर ज़ोर देता है।
+
+यह अर्थ की दृष्टि से b से अधिक मजबूत है — यह ब्राउज़र को बताता है कि यह <b>महत्वपूर्ण</b> है।
+
+उदाहरण:
+<code><p><strong>Warning:</strong> Be careful!</p></code>",
+hint: "'<' टाइप करें, फिर 'strong', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: <strong>",
+check: function(input) {
+return input.toLowerCase().indexOf("<strong>") !== -1;
+}
+},
+{
+id: "L17-CLOSE-STRONG",
+title: "मंज़िल 17: क्लोज स्ट्रांग टैग",
+info: "स्ट्रांग टैग को इसके साथ बंद करें: <code></strong></code>",
+hint: "'<' टाइप करें, फिर '/', फिर 'strong', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: </strong>",
+check: function(input) {
+return input.toLowerCase().indexOf("</strong>") !== -1;
+}
+},
+{
+id: "L18-EM",
+title: "मंज़िल 18: एम्फिसिस (EM)",
+info: "<b>em</b> टैग पाठ पर विशेष बल/ज़ोर जोड़ता है (इटैलिक के समान)।
+
+इसका अर्थ 'बल दिया गया' है, ताकि स्क्रीन रीडर जान सकें कि यह महत्वपूर्ण है।
+
+उदाहरण:
+<code><p>I <em>really</em> love coding!</p></code>",
+hint: "'<' टाइप करें, फिर 'em', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: <em>",
+check: function(input) {
+return input.toLowerCase().indexOf("<em>") !== -1;
+}
+},
+// --- PHASE 3: LINKS & MEDIA (Floors 19-28) ---
+{
+id: "L19-ANCHOR",
+title: "मंज़िल 19: लिंक टैग (Anchor)",
+info: "अन्य वेबसाइटों के लिए क्लिक करने योग्य <b>लिंक</b> बनाने के लिए, <b>a</b> टैग का उपयोग करें।
+
+a का अर्थ 'anchor' है।
+
+उदाहरण:
+<code><a>Click me</a></code>",
+hint: "'<' टाइप करें, फिर 'a', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: <a>",
+check: function(input) {
+return input.toLowerCase().indexOf("<a>") !== -1;
+}
+},
+{
+id: "L20-HREF",
+title: "मंज़िल 20: लिंक गंतव्य (HREF)",
+info: "लिंक को एक गंतव्य की आवश्यकता होती है! URL निर्दिष्ट करने के लिए <b>href</b> एट्रिब्यूट का उपयोग करें।
+
+<b>एट्रिब्यूट्स (Attributes)</b> टैग में जोड़ी गई विशेषताएँ हैं।
+
+उदाहरण:
+<code><a href="https://google.com">Google</a></code>
+
+google.com की ओर इंगित करने वाले href के साथ पूरा टैग टाइप करें",
+hint: "उपयोग करें: <a href="https://google.com">",
+desc: 'टाइप करें: <a href="[https://google.com](https://google.com)">',
+check: function(input) {
+var lower = input.toLowerCase();
+return lower.indexOf("<a") !== -1 && lower.indexOf("href") !== -1 && lower.indexOf("google.com") !== -1;
+}
+},
+{
+id: "L21-CLOSE-ANCHOR",
+title: "मंज़िल 21: क्लोज लिंक टैग",
+info: "एंकर टैग को इसके साथ बंद करें: <code></a></code>
+
+पूरा उदाहरण:
+<code><a href="https://google.com">Visit Google</a></code>",
+hint: "'<' टाइप करें, फिर '/', फिर 'a', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: </a>",
+check: function(input) {
+return input.toLowerCase().indexOf("</a>") !== -1;
+}
+},
+{
+id: "L22-IMG",
+title: "मंज़िल 22: इमेज टैग (Image)",
+info: "चित्रों को प्रदर्शित करने के लिए, <b>img</b> टैग का उपयोग करें।
+
+img टैग <b>स्वयं बंद होने वाला (self-closing)</b> होता है — इसे क्लोजिंग टैग की आवश्यकता नहीं होती है!
+
+उदाहरण:
+<code><img src="photo.jpg"></code>
+
+नोट: किसी </img> की आवश्यकता नहीं है!",
+hint: "'<' टाइप करें, फिर 'img', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: <img>",
+check: function(input) {
+return input.toLowerCase().indexOf("<img>") !== -1;
+}
+},
+{
+id: "L23-SRC",
+title: "मंज़िल 23: इमेज सोर्स (SRC)",
+info: "छवियों को प्रदर्शित करने के लिए एक फ़ाइल की आवश्यकता होती है! छवि फ़ाइल निर्दिष्ट करने के लिए <b>src</b> एट्रिब्यूट का उपयोग करें।
+
+उदाहरण:
+<code><img src="cat.jpg"></code>
+
+'cat.jpg' की ओर इशारा करते हुए src एट्रिब्यूट के साथ img टैग टाइप करें",
+hint: "उपयोग करें: <img src="cat.jpg">",
+desc: 'टाइप करें: <img src="cat.jpg">',
+check: function(input) {
+var lower = input.toLowerCase();
+return lower.indexOf("<img") !== -1 && lower.indexOf("src") !== -1 && lower.indexOf("cat.jpg") !== -1;
+}
+},
+{
+id: "L24-ALT",
+title: "मंज़िल 24: इमेज ऑल्ट टेक्स्ट (Alt Text)",
+info: "<b>alt</b> एट्रिब्यूट टेक्स्ट में छवि का वर्णन करता है।
+
+यह मदद करता है:
+• स्क्रीन रीडर का उपयोग करने वाले लोगों की
+• जब छवि लोड होने में विफल रहती है
+
+उदाहरण:
+<code><img src="cat.jpg" alt="A cute orange cat"></code>
+
+src और alt दोनों के साथ पूर्ण img टैग टाइप करें।",
+hint: "उपयोग करें: <img src="cat.jpg" alt="A cute orange cat">",
+desc: 'टाइप करें: <img src="cat.jpg" alt="A cute orange cat">',
+check: function(input) {
+var lower = input.toLowerCase();
+return lower.indexOf("<img") !== -1 && lower.indexOf("src") !== -1 && lower.indexOf("alt") !== -1;
+}
+},
+{
+id: "L25-BR",
+title: "मंज़िल 25: लाइन ब्रेक (Line Break)",
+info: "नया पैराग्राफ शुरू किए बिना लाइन ब्रेक बनाने के लिए, <b>br</b> टैग का उपयोग करें।
+
+br टैग भी <b>स्वयं बंद होने वाला (self-closing)</b> है!
+
+उदाहरण:
+<code><p>Line 1<br>Line 2</p></code>",
+hint: "'<' टाइप करें, फिर 'br', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: 
+",
+check: function(input) {
+return input.toLowerCase().indexOf("
+") !== -1;
+}
+},
+{
+id: "L26-HR",
+title: "मंज़िल 26: क्षैतिज रेखा (Horizontal Rule)",
+info: "पेज पर एक क्षैतिज रेखा (विभाजक) खींचने के लिए, <b>hr</b> टैग का उपयोग करें।
+
+hr का अर्थ 'horizontal rule' है और यह <b>स्वयं बंद होने वाला</b> है।
+
+उदाहरण:
+<code><hr></code>",
+hint: "'<' टाइप करें, फिर 'hr', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: <hr>",
+check: function(input) {
+return input.toLowerCase().indexOf("<hr>") !== -1;
+}
+},
+{
+id: "L27-BUTTON",
+title: "मंज़िल 27: बटन एलिमेंट (Button Element)",
+info: "क्लिक करने योग्य बटन बनाने के लिए, <b>button</b> टैग का उपयोग करें।
+
+बटन का उपयोग फ़ॉर्म में या क्रियाओं को ट्रिगर करने के लिए किया जाता है।
+
+उदाहरण:
+<code><button>Click Me!</button></code>",
+hint: "'<' टाइप करें, फिर 'button', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: <button>",
+check: function(input) {
+return input.toLowerCase().indexOf("<button>") !== -1;
+}
+},
+{
+id: "L28-CLOSE-BUTTON",
+title: "मंज़िल 28: क्लोज बटन टैग",
+info: "बटन टैग को इसके साथ बंद करें: <code></button></code>
+
+पूरा उदाहरण:
+<code><button>Submit</button></code>",
+hint: "'<' टाइप करें, फिर '/', फिर 'button', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: </button>",
+check: function(input) {
+return input.toLowerCase().indexOf("</button>") !== -1;
+}
+},
+// --- PHASE 4: ORGANIZATION (Floors 29-38) ---
+{
+id: "L29-DIV",
+title: "मंज़िल 29: डिवीज़न (DIV)",
+info: "<b>div</b> टैग एक कंटेनर है जो सामग्री को एक साथ समूहित (group) करता है।
+
+div का अर्थ 'division' है।
+
+आप अपने पेज के विभिन्न अनुभागों को व्यवस्थित करने के लिए divs का उपयोग करेंगे।
+
+उदाहरण:
+<code><div><h1>Section 1</h1></div></code>",
+hint: "'<' टाइप करें, फिर 'div', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: <div>",
+check: function(input) {
+return input.toLowerCase().indexOf("<div>") !== -1;
+}
+},
+{
+id: "L30-CLOSE-DIV",
+title: "मंज़िल 30: क्लोज DIV टैग",
+info: "div टैग को इसके साथ बंद करें: <code></div></code>
+
+याद रखें: div के अंदर की सभी चीजें एक साथ समूहित होंगी।",
+hint: "'<' टाइप करें, फिर '/', फिर 'div', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: </div>",
+check: function(input) {
+return input.toLowerCase().indexOf("</div>") !== -1;
+}
+},
+{
+id: "L31-SPAN",
+title: "मंज़िल 31: स्पैन एलिमेंट (Span Element)",
+info: "<b>span</b> टैग इनलाइन सामग्री के लिए एक छोटा कंटेनर है।
+
+पैराग्राफ के भीतर पाठ के छोटे हिस्सों को स्टाइल करने के लिए span का उपयोग करें।
+
+उदाहरण:
+<code><p>This is <span>highlighted</span> text.</p></code>",
+hint: "'<' टाइप करें, फिर 'span', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: <span>",
+check: function(input) {
+return input.toLowerCase().indexOf("<span>") !== -1;
+}
+},
+{
+id: "L32-CLOSE-SPAN",
+title: "मंज़िल 32: क्लोज स्पैन टैग",
+info: "span टैग को इसके साथ बंद करें: <code></span></code>",
+hint: "'<' टाइप करें, फिर '/', फिर 'span', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: </span>",
+check: function(input) {
+return input.toLowerCase().indexOf("</span>") !== -1;
+}
+},
+{
+id: "L33-UL",
+title: "मंज़िल 33: अनऑर्डर्ड लिस्ट (Unordered List)",
+info: "बुलेटेड सूची बनाने के लिए, <b>ul</b> टैग का उपयोग करें।
+
+ul का अर्थ 'unordered list' है।
+
+उदाहरण:
+<code><ul></code>
+<code><li>Item 1</li></code>
+<code><li>Item 2</li></code>
+<code></ul></code>",
+hint: "'<' टाइप करें, फिर 'ul', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: <ul>",
+check: function(input) {
+return input.toLowerCase().indexOf("<ul>") !== -1;
+}
+},
+{
+id: "L34-LI",
+title: "मंज़िल 34: लिस्ट आइटम (List Item)",
+info: "किसी सूची (ul या ol) के भीतर, प्रत्येक आइटम <b>li</b> टैग का उपयोग करता है।
+
+li का अर्थ 'list item' है।
+
+उदाहरण:
+<code><li>Apples</li></code>",
+hint: "'<' टाइप करें, फिर 'li', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: <li>",
+check: function(input) {
+return input.toLowerCase().indexOf("<li>") !== -1;
+}
+},
+{
+id: "L35-CLOSE-LI",
+title: "मंज़िल 35: क्लोज लिस्ट आइटम",
+info: "लिस्ट आइटम टैग को इसके साथ बंद करें: <code></li></code>",
+hint: "'<' टाइप करें, फिर '/', फिर 'li', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: </li>",
+check: function(input) {
+return input.toLowerCase().indexOf("</li>") !== -1;
+}
+},
+{
+id: "L36-OL",
+title: "मंज़िल 36: ऑर्डर्ड लिस्ट (Ordered List)",
+info: "नंबर वाली सूची के लिए, <b>ol</b> टैग का उपयोग करें।
+
+ol का अर्थ 'ordered list' है।
+
+उदाहरण:
+<code><ol></code>
+<code><li>First</li></code>
+<code><li>Second</li></code>
+<code></ol></code>",
+hint: "'<' टाइप करें, फिर 'ol', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: <ol>",
+check: function(input) {
+return input.toLowerCase().indexOf("<ol>") !== -1;
+}
+},
+{
+id: "L37-CLOSE-UL",
+title: "मंज़िल 37: क्लोज अनऑर्डर्ड लिस्ट",
+info: "अनऑर्डर्ड लिस्ट टैग को इसके साथ बंद करें: <code></ul></code>",
+hint: "'<' टाइप करें, फिर '/', फिर 'ul', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: </ul>",
+check: function(input) {
+return input.toLowerCase().indexOf("</ul>") !== -1;
+}
+},
+{
+id: "L38-CLOSE-OL",
+title: "मंज़िल 38: क्लोज ऑर्डर्ड लिस्ट",
+info: "ऑर्डर्ड लिस्ट टैग को इसके साथ बंद करें: <code></ol></code>",
+hint: "'<' टाइप करें, फिर '/', फिर 'ol', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: </ol>",
+check: function(input) {
+return input.toLowerCase().indexOf("</ol>") !== -1;
+}
+},
+// --- PHASE 5: INTERMEDIATE & ADVANCED (Floors 39-48) ---
+{
+id: "L39-FORM",
+title: "मंज़िल 39: फ़ॉर्म कंटेनर (Form Container)",
+info: "फ़ॉर्म उपयोगकर्ताओं से जानकारी एकत्र करते हैं।
+
+फ़ॉर्म बनाने के लिए <b>form</b> टैग का उपयोग करें।
+
+उदाहरण:
+<code><form></code>
+<code><input type="text"></code>
+<code></form></code>",
+hint: "'<' टाइप करें, फिर 'form', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: <form>",
+check: function(input) {
+return input.toLowerCase().indexOf("<form>") !== -1;
+}
+},
+{
+id: "L40-CLOSE-FORM",
+title: "मंज़िल 40: क्लोज फ़ॉर्म",
+info: "फ़ॉर्म टैग को इसके साथ बंद करें: <code></form></code>",
+hint: "'<' टाइप करें, फिर '/', फिर 'form', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: </form>",
+check: function(input) {
+return input.toLowerCase().indexOf("</form>") !== -1;
+}
+},
+{
+id: "L41-INPUT",
+title: "मंज़िल 41: इनपुट फ़ील्ड (Input Field)",
+info: "<b>input</b> टैग टेक्स्ट फ़ील्ड और अन्य फ़ॉर्म नियंत्रण बनाता है।
+
+यह <b>स्वयं बंद होने वाला (self-closing)</b> है!
+
+उदाहरण:
+<code><input type="text" placeholder="Enter name"></code>",
+hint: "'<' टाइप करें, फिर 'input', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: <input>",
+check: function(input) {
+return input.toLowerCase().indexOf("<input>") !== -1;
+}
+},
+{
+id: "L42-TABLE",
+title: "मंज़िल 42: टेबल एलिमेंट (Table Element)",
+info: "डेटा को पंक्तियों (rows) और स्तंभों (columns) में प्रदर्शित करने के लिए, <b>table</b> टैग का उपयोग करें।
+
+टेबल इनसे बनी होती हैं:
+• <code><tr></code> = टेबल रो
+• <code><td></code> = टेबल डेटा (सेल)
+
+उदाहरण:
+<code><table></code>
+<code><tr><td>Cell 1</td></tr></code>
+<code></table></code>",
+hint: "'<' टाइप करें, फिर 'table', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: <table>",
+check: function(input) {
+return input.toLowerCase().indexOf("<table>") !== -1;
+}
+},
+{
+id: "L43-TR",
+title: "मंज़िल 43: टेबल रो (Table Row)",
+info: "टेबल के अंदर, <b>tr</b> एक पंक्ति बनाता है।
+
+tr का अर्थ 'table row' है।
+
+उदाहरण:
+<code><tr><td>Name</td><td>Age</td></tr></code>",
+hint: "'<' टाइप करें, फिर 'tr', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: <tr>",
+check: function(input) {
+return input.toLowerCase().indexOf("<tr>") !== -1;
+}
+},
+{
+id: "L44-TD",
+title: "मंज़िल 44: टेबल डेटा सेल (Table Data Cell)",
+info: "एक पंक्ति के अंदर, <b>td</b> एक सेल बनाता है।
+
+td का अर्थ 'table data' है।
+
+उदाहरण:
+<code><td>John</td></code>",
+hint: "'<' टाइप करें, फिर 'td', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: <td>",
+check: function(input) {
+return input.toLowerCase().indexOf("<td>") !== -1;
+}
+},
+{
+id: "L45-CLOSE-TABLE",
+title: "मंज़िल 45: क्लोज टेबल",
+info: "टेबल टैग को इसके साथ बंद करें: <code></table></code>",
+hint: "'<' टाइप करें, फिर '/', फिर 'table', फिर '>'।",
+desc: "सटीक अक्षर टाइप करें: </table>",
+check: function(input) {
+return input.toLowerCase().indexOf("</table>") !== -1;
+}
+},
+{
+id: "L46-COMMENT",
+title: "मंज़िल 46: HTML टिप्पणियाँ (Comments)",
+info: "टिप्पणियाँ (Comments) आपके कोड में ऐसे नोट हैं जिन्हें ब्राउज़र <b>प्रदर्शित नहीं करते हैं</b>।
+
+अपने कोड को समझाने के लिए टिप्पणियों का उपयोग करें:
+<code><!-- This is a comment --></code>
+
+ये <code><!--</code> से शुरू होते हैं और <code>--></code> पर समाप्त होते हैं",
+hint: "टाइप करें: <!-- This is a comment -->",
+desc: "टाइप करें: <!-- This is a comment -->",
+check: function(input) {
+return input.indexOf("<!--") !== -1 && input.indexOf("-->") !== -1;
+}
+},
+{
+id: "L47-CLASS",
+title: "मंज़िल 47: क्लास एट्रिब्यूट (Class Attribute)",
+info: "<b>class</b> एट्रिब्यूट का उपयोग CSS के साथ स्टाइलिंग के लिए किया जाता है।
+
+बाद में स्टाइल लागू करने के लिए आप तत्वों को नाम (क्लास) दे सकते हैं:
+<code><p class="highlight">Important!</p></code>",
+hint: 'उपयोग करें: <p class="highlight">',
+desc: 'टाइप करें: <p class="highlight">',
+check: function(input) {
+var lower = input.toLowerCase();
+return lower.indexOf("<p") !== -1 && lower.indexOf("class") !== -1;
+}
+},
+{
+id: "L48-ID",
+title: "मंज़िल 48: ID एट्रिब्यूट (ID Attribute)",
+info: "<b>id</b> एट्रिब्यूट किसी तत्व को एक अनूठा (unique) नाम देता है।
+
+ID का उपयोग प्रति पेज केवल एक बार किया जाना चाहिए:
+<code><h1 id="main-title">Welcome</h1></code>",
+hint: 'उपयोग करें: <h1 id="main-title">',
+desc: 'टाइप करें: <h1 id="main-title">',
+check: function(input) {
+var lower = input.toLowerCase();
+return lower.indexOf("<h1") !== -1 && lower.indexOf("id") !== -1;
+}
+},
+// --- PHASE 6: FINAL CHALLENGE (Floors 49-51) ---
+{
+id: "L49-DOCTYPE",
+title: "मंज़िल 49: DOCTYPE घोषणा",
+info: "<b>DOCTYPE</b> ब्राउज़र को बताता है कि आप HTML के किस संस्करण का उपयोग कर रहे हैं।
+
+आधुनिक HTML5 के लिए, हमेशा अपनी फ़ाइल की शुरुआत इससे करें:
+<code><!DOCTYPE html></code>
+
+यह <html> टैग से <b>पहले</b> आता है।",
+hint: "टाइप करें: <!DOCTYPE html>",
+desc: "टाइप करें: <!DOCTYPE html>",
+check: function(input) {
+return input.indexOf("<!DOCTYPE html>") !== -1 || input.indexOf("<!DOCTYPE HTML>") !== -1;
+}
+},
+{
+id: "L50-META-CHARSET",
+title: "मंज़िल 50: मेटा चारसेट (Meta Charset)",
+info: "head के अंदर, कैरेक्टर एनकोडिंग के लिए एक meta टैग जोड़ें:
+<code><meta charset="UTF-8"></code>
+
+यह सुनिश्चित करता है कि विशेष अक्षर सही ढंग से प्रदर्शित हों।
+
+पूरा meta charset टैग टाइप करें:",
+hint: 'उपयोग करें: <meta charset="UTF-8">',
+desc: 'टाइप करें: <meta charset="UTF-8">',
+check: function(input) {
+var lower = input.toLowerCase();
+return lower.indexOf("<meta") !== -1 && lower.indexOf("charset") !== -1;
+}
+},
+{
+id: "L51-COMPLETE",
+title: "मंज़िल 51: अंतिम चुनौती - पूर्ण वेबपेज",
+info: "अब अपना पहला पूर्ण HTML वेबपेज बनाएं!
+
+इसमें यह होना चाहिए:
+• DOCTYPE
+• <html> टैग्स
+• शीर्षक और meta charset के साथ <head>
+• कम से कम एक शीर्षक और एक पैराग्राफ के साथ <body>
+
+एक पूर्ण मान्य HTML वेबपेज टाइप या पेस्ट करें।",
+hint: "इससे शुरुआत करें: <!DOCTYPE html>",
+desc: "एक पूर्ण वेबपेज बनाएं (DOCTYPE, html, head, body, title, heading, paragraph)",
+check: function(input) {
+var lower = input.toLowerCase();
+return (lower.indexOf("<!doctype") !== -1 || lower.indexOf("<!DOCTYPE") !== -1) &&
+lower.indexOf("<html") !== -1 &&
+lower.indexOf("<head") !== -1 &&
+lower.indexOf("<body") !== -1 &&
+lower.indexOf("</body>") !== -1 &&
+lower.indexOf("</html>") !== -1;
+}
+}
+];
+var currentLevel = 0;
+// --- MENU TOGGLE FUNCTION ---
+function toggleThemeMenu() {
+var menu = document.getElementById("theme-menu");
+if (menu.style.display === "block") {
+menu.style.display = "none";
+} else {
+menu.style.display = "block";
+}
+}
+// --- PRESET SELECTION FUNCTION ---
+function setPreset(bgHex, textHex) {
+document.getElementById("bg-color-in").value = bgHex;
+document.getElementById("text-color-in").value = textHex;
+applyColors();
+}
+// --- COLOR CUSTOMIZER FUNCTION ---
+function applyColors() {
+var bgVal = document.getElementById("bg-color-in").value;
+var textVal = document.getElementById("text-color-in").value;
+document.body.style.backgroundColor = bgVal;
+document.body.style.color = textVal;
+var btnEls = document.getElementsByTagName("button");
+for (var j = 0; j < btnEls.length; j++) {
+btnEls[j].style.backgroundColor = textVal;
+btnEls[j].style.color = bgVal;
+btnEls[j].style.borderColor = textVal;
+}
+var ghLink = document.getElementById("gh-link");
+if (ghLink) {
+ghLink.style.backgroundColor = textVal;
+ghLink.style.color = bgVal;
+}
+var playerEls = document.getElementsByClassName ? document.getElementsByClassName("player") : [];
+for (var i = 0; i < playerEls.length; i++) {
+playerEls[i].style.backgroundColor = textVal;
+playerEls[i].style.color = bgVal;
+}
+}
+// --- ENGINE LOGIC ---
+function renderGame() {
+var statusDiv = document.getElementById("status");
+statusDiv.innerHTML = levels[currentLevel].title;
+var infoDiv = document.getElementById("info-text");
+infoDiv.innerHTML = levels[currentLevel].info +
+"
+
+<b>संकेत:</b> " + levels[currentLevel].hint;
+var taskP = document.getElementById("task-text");
+taskP.innerHTML = "कार्य: " + levels[currentLevel].desc;
+// RENDER ONLY PREVIOUS, CURRENT, AND NEXT FLOOR
+var towerDiv = document.getElementById("tower-view");
+var html = "";
+var minIdx = Math.max(0, currentLevel - 1);
+var maxIdx = Math.min(levels.length - 1, currentLevel + 1);
+for (var i = maxIdx; i >= minIdx; i--) {
+var marker = (i === currentLevel) ? " [@]" : " [ ]";
+var activeClass = (i === currentLevel) ? " player" : "";
+var labelText = (i === 0) ? "मंज़िल 0 (निर्देश)" : "मंज़िल " + i + " (" + levels[i].id + ")";
+html += '<div class="step' + activeClass + '">' + labelText + marker + '</div>';
+}
+towerDiv.innerHTML = html;
+applyColors();
+}
+function checkCode() {
+var code = document.getElementById("user-code").value;
+var msgBox = document.getElementById("msg-box");
+if (levels[currentLevel].check(code)) {
+if (currentLevel < levels.length - 1) {
+msgBox.style.color = document.body.style.color;
+msgBox.innerHTML = "सफल! अगली मंज़िल के लिए कोड: " + levels[currentLevel+1].id;
+currentLevel++;
+document.getElementById("user-code").value = "";
+renderGame();
+} else {
+msgBox.style.color = document.body.style.color;
+msgBox.innerHTML = "🏆 मीनार फतह हुई! आपने HTML में महारत हासिल कर ली है! 🏆";
+renderGame();
+}
+} else {
+msgBox.style.color = "#ff3333";
+msgBox.innerHTML = "गलत। अपना इनपुट जाँचें और पुनः प्रयास करें!";
+}
+}
+function jumpLevel() {
+var pass = document.getElementById("level-pass").value.toUpperCase();
+var found = -1;
+for (var i = 0; i < levels.length; i++) {
+if (levels[i].id === pass) {
+found = i;
+break;
+}
+}
+var msgBox = document.getElementById("msg-box");
+if (found !== -1) {
+currentLevel = found;
+msgBox.style.color = document.body.style.color;
+msgBox.innerHTML = "मंज़िल " + currentLevel + " पर पहुँचे।";
+document.getElementById("level-pass").value = "";
+renderGame();
+} else {
+msgBox.style.color = "#ff3333";
+msgBox.innerHTML = "अमान्य मंज़िल कोड!";
+}
+}
+// Initial Run
+renderGame();
+</script>
+</body>
+</html>
