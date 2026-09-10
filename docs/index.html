@@ -74,17 +74,14 @@ textarea, input[type="text"] {
     margin-bottom: 6px;
 }
 button {
-    background-color: currentColor;
+    background-color: #00ff00;
     color: #000000;
-    border: none;
+    border: 1px solid #00ff00;
     font-family: monospace;
     font-weight: bold;
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     cursor: pointer;
-}
-.btn-text {
-    color: #000000;
 }
 .msg {
     margin-top: 8px;
@@ -103,7 +100,7 @@ button {
         <span style="font-weight:bold;">COLORS:</span>
         <label>BG: <input type="text" id="bg-color-in" value="#000000" onchange="applyColors()"></label>
         <label>TEXT: <input type="text" id="text-color-in" value="#00ff00" onchange="applyColors()"></label>
-        <button style="width:auto; padding:2px 6px; display:inline;" onclick="applyColors()">SET</button>
+        <button id="set-btn" style="width:auto; padding:2px 6px; display:inline;" onclick="applyColors()">SET</button>
     </div>
 
     <div id="status" style="font-size:14px; font-weight:bold; margin-bottom:5px;"></div>
@@ -120,13 +117,13 @@ button {
     <div id="task-box">
         <p id="task-text" style="font-size:12px; font-weight:bold; margin: 0 0 5px 0;"></p>
         <textarea id="user-code" rows="3" placeholder="Type your HTML code here..."></textarea>
-        <button onclick="checkCode()"><span class="btn-text">CHECK CODE</span></button>
+        <button onclick="checkCode()">CHECK CODE</button>
     </div>
 
     <div style="margin-top: 15px; border-top: 1px solid currentColor; padding-top: 8px;">
         <p style="font-size:10px; margin:0 0 3px 0;">ENTER LEVEL CODE TO JUMP:</p>
         <input type="text" id="level-pass" placeholder="e.g. L1-START">
-        <button onclick="jumpLevel()"><span class="btn-text">JUMP TO FLOOR</span></button>
+        <button onclick="jumpLevel()">JUMP TO FLOOR</button>
     </div>
 
     <div class="msg" id="msg-box"></div>
@@ -197,8 +194,16 @@ function applyColors() {
     document.body.style.backgroundColor = bgVal;
     document.body.style.color = textVal;
     
+    // Update all buttons dynamically
+    var btnEls = document.getElementsByTagName("button");
+    for (var j = 0; j < btnEls.length; j++) {
+        btnEls[j].style.backgroundColor = textVal;
+        btnEls[j].style.color = bgVal;
+        btnEls[j].style.borderColor = textVal;
+    }
+
     // Update player tag color for visibility contrast
-    var playerEls = document.getElementsByClassName("player");
+    var playerEls = document.getElementsByClassName ? document.getElementsByClassName("player") : [];
     for (var i = 0; i < playerEls.length; i++) {
         playerEls[i].style.backgroundColor = textVal;
         playerEls[i].style.color = bgVal;
