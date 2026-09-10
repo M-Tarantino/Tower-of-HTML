@@ -46,6 +46,15 @@ h1 {
     font-size: 10px !important;
     vertical-align: middle;
 }
+.github-btn {
+    width: auto !important;
+    padding: 2px 6px !important;
+    margin-left: 6px !important;
+    display: inline-block !important;
+    font-size: 10px !important;
+    text-decoration: none;
+    font-weight: bold;
+}
 .lang-tag {
     font-size: 11px;
     font-weight: bold;
@@ -148,6 +157,7 @@ button {
                 </td>
                 <td class="header-right">
                     <span class="lang-tag">EN</span>
+                    <a href="https://github.com/M-Tarantino" target="_blank" class="github-btn" id="gh-link">@M-Tarantino</a>
                 </td>
             </tr>
         </table>
@@ -295,6 +305,12 @@ function applyColors() {
         btnEls[j].style.backgroundColor = textVal;
         btnEls[j].style.color = bgVal;
         btnEls[j].style.borderColor = textVal;
+    }
+
+    var ghLink = document.getElementById("gh-link");
+    if (ghLink) {
+        ghLink.style.backgroundColor = textVal;
+        ghLink.style.color = bgVal;
     }
 
     var playerEls = document.getElementsByClassName ? document.getElementsByClassName("player") : [];
