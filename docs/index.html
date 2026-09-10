@@ -16,12 +16,51 @@ body {
     max-width: 480px;
     margin: 0 auto;
 }
+.header {
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+}
+.header-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.header-left {
+    text-align: left;
+    vertical-align: middle;
+}
+.header-right {
+    text-align: right;
+    vertical-align: middle;
+}
 h1 {
-    font-size: 20px;
-    text-align: center;
-    margin: 5px 0 15px 0;
+    font-size: 16px;
+    margin: 0;
+    display: inline;
+}
+.top-btn {
+    width: auto !important;
+    padding: 2px 6px !important;
+    margin-left: 6px !important;
+    display: inline-block !important;
+    font-size: 10px !important;
+    vertical-align: middle;
+}
+.github-btn {
+    width: auto !important;
+    padding: 2px 6px !important;
+    display: inline-block !important;
+    font-size: 10px !important;
+    text-decoration: none;
+    font-weight: bold;
+}
+.lang-tag {
+    font-size: 11px;
+    font-weight: bold;
+    margin-right: 6px;
 }
 .theme-panel {
+    display: none;
     border: 1px solid currentColor;
     padding: 8px;
     margin-bottom: 12px;
@@ -48,13 +87,15 @@ h1 {
     border: 1px solid currentColor;
     padding: 8px;
     margin-bottom: 10px;
-    height: 120px;
-    overflow-y: auto;
+    min-height: 85px;
 }
 .step {
     border-bottom: 1px dashed currentColor;
     padding: 3px;
     font-size: 12px;
+}
+.step:last-child {
+    border-bottom: none;
 }
 .player {
     font-weight: bold;
@@ -106,10 +147,24 @@ button {
 <body>
 
 <div class="container">
-    <h1>TOWER OF HTML</h1>
+    <!-- HEADER BAR -->
+    <div class="header">
+        <table class="header-table">
+            <tr>
+                <td class="header-left">
+                    <h1>TOWER OF HTML</h1>
+                    <button class="top-btn" onclick="toggleThemeMenu()">[COLORS]</button>
+                </td>
+                <td class="header-right">
+                    <span class="lang-tag">DE / EN</span>
+                    <a href="https://github.com" target="_blank" class="github-btn" id="gh-link">GITHUB</a>
+                </td>
+            </tr>
+        </table>
+    </div>
     
-    <!-- THEME / COLOR CUSTOMIZER PANEL WITH PRESETS -->
-    <div class="theme-panel">
+    <!-- COLLAPSIBLE COLOR MENU -->
+    <div class="theme-panel" id="theme-menu">
         <div class="preset-group">
             <span style="font-weight:bold; display:block; margin-bottom:4px;">PRESETS:</span>
             <button class="preset-btn" onclick="setPreset('#000000', '#00ff00')">Matrix</button>
@@ -128,79 +183,90 @@ button {
 
     <div id="status" style="font-size:14px; font-weight:bold; margin-bottom:5px;"></div>
     
+    <!-- TOWER VIEW (SHOWING PREVIOUS, CURRENT, AND NEXT FLOOR) -->
     <div class="tower" id="tower-view">
         <!-- Rendered via JS -->
     </div>
 
-    <!-- BEGINNER EXPLANATION BOX -->
+    <!-- EXPLANATION BOX -->
     <div class="info-box" id="info-text">
         <!-- Text rendered via JS -->
     </div>
 
     <div id="task-box">
         <p id="task-text" style="font-size:12px; font-weight:bold; margin: 0 0 5px 0;"></p>
-        <textarea id="user-code" rows="3" placeholder="Type your HTML code here..."></textarea>
+        <textarea id="user-code" rows="3" placeholder="Code hier eingeben..."></textarea>
         <button onclick="checkCode()">CHECK CODE</button>
     </div>
 
     <div style="margin-top: 15px; border-top: 1px solid currentColor; padding-top: 8px;">
-        <p style="font-size:10px; margin:0 0 3px 0;">ENTER LEVEL CODE TO JUMP:</p>
-        <input type="text" id="level-pass" placeholder="e.g. L1-START">
-        <button onclick="jumpLevel()">JUMP TO FLOOR</button>
+        <p style="font-size:10px; margin:0 0 3px 0;">ETAGEN-CODE EINGEBEN ZUM SPRINGEN:</p>
+        <input type="text" id="level-pass" placeholder="z. B. START oder L1-ROOT">
+        <button onclick="jumpLevel()">SPRINGE ZUR ETAGIE</button>
     </div>
 
     <div class="msg" id="msg-box"></div>
 </div>
 
 <script>
-// --- LEVEL DATA (FLOORS 1 - 5) ---
+// --- LEVEL DATA (FLOOR 0 INTRO + FLOORS 1 - 5) ---
 var levels = [
     {
-        id: "L1-START",
-        title: "Floor 1: The Root Element",
-        info: "Code is just written text that tells a computer what to do.<br><br>HTML builds websites using <b>Tags</b>. A tag is a word placed inside two special bracket symbols:<br>• <b>&lt;</b> (less-than symbol)<br>• <b>&gt;</b> (greater-than symbol)<br><br>The very first tag of every webpage is <b>html</b>. Combined with the brackets, it looks like <code>&lt;html&gt;</code>.",
-        hint: "Look at your keyboard near the Shift key or Spacebar for the '<' and '>' keys.",
-        desc: "Type exact characters: <html>",
+        id: "START",
+        title: "Floor 0: Anleitung & Überblick",
+        info: "Willkommen beim <b>Tower of HTML</b>!<br><br><b>Was ist das?</b><br>Ein interaktiver Turm zum Erlernen der Grundbausteine von HTML.<br><br><b>Wie funktioniert es?</b><br>1. Lies die Erklärungen auf jeder Etage.<br>2. Gib den geforderten HTML-Code in das Textfeld ein.<br>3. Klicke auf <b>CHECK CODE</b>, um die Etage zu bestehen.<br>4. Du erhältst nach jedem Erfolg den Code für die nächste Etage.",
+        hint: "Gib das Wort <b>START</b> ein, um den Turm zu betreten.",
+        desc: "Tippe exakt: START",
+        check: function(input) {
+            return input.toLowerCase().indexOf("start") !== -1;
+        }
+    },
+    {
+        id: "L1-ROOT",
+        title: "Floor 1: Das Root-Element",
+        info: "Code besteht aus Befehlen, die der Browser liest.<br><br>HTML baut Webseiten mithilfe von <b>Tags</b> auf. Ein Tag ist ein Wort zwischen zwei Klammersymbolen:<br>• <b>&lt;</b> (Kleiner-als-Zeichen)<br>• <b>&gt;</b> (Größer-als-Zeichen)<br><br>Der allererste Tag jeder Webseite lautet <b>html</b>. Mit den Klammern geschrieben sieht er so aus: <code>&lt;html&gt;</code>.",
+        hint: "Verwende die Zeichen '<' und '>' auf deiner Tastatur.",
+        desc: "Tippe exakt: <html>",
         check: function(input) {
             return input.toLowerCase().indexOf("<html>") !== -1;
         }
     },
     {
         id: "L2-HEAD",
-        title: "Floor 2: The Head Section",
-        info: "Webpages have two main areas: a hidden setup area and a visible area.<br><br>The hidden setup area is called the <b>head</b>. It holds information about the webpage (like settings or search information) that visitors do not directly see on the screen.<br><br>Just like Floor 1, you write this tag by wrapping the word <b>head</b> inside brackets: <code>&lt;head&gt;</code>.",
-        hint: "Type the opening angle bracket '<', then 'head', then the closing bracket '>'.",
-        desc: "Type exact characters: <head>",
+        title: "Floor 2: Der Head-Bereich",
+        info: "Webseiten unterteilen sich in zwei Hauptbereiche: den unsichtbaren Konfigurationsbereich und den sichtbaren Inhalt.<br><br>Der unsichtbare Bereich heißt <b>head</b>. Er enthält Einstellungen und technische Daten für den Browser.<br><br>Genauso wie in Floor 1 schreibst du diesen Tag, indem du das Wort <b>head</b> in Klammern setzt: <code>&lt;head&gt;</code>.",
+        hint: "Schreibe '<', dann 'head', dann '>'.",
+        desc: "Tippe exakt: <head>",
         check: function(input) {
             return input.toLowerCase().indexOf("<head>") !== -1;
         }
     },
     {
         id: "L3-TITLE",
-        title: "Floor 3: The Page Title",
-        info: "Inside the head area, you can set the name of your webpage.<br><br>This name appears on the tab at the top of your web browser. The tag for this is <b>title</b>.<br><br>To write a title tag, enclose the word <b>title</b> inside brackets: <code>&lt;title&gt;</code>.",
-        hint: "Combine '<', 'title', and '>'.",
-        desc: "Type exact characters: <title>",
+        title: "Floor 3: Der Seitentitel",
+        info: "Im head-Bereich legst du den Namen deiner Webseite fest.<br><br>Dieser Name erscheint ganz oben im Tab deines Browsers. Der Tag dafür lautet <b>title</b>.<br><br>Setze das Wort <b>title</b> in Klammern: <code>&lt;title&gt;</code>.",
+        hint: "Kombiniere '<', 'title' und '>'.",
+        desc: "Tippe exakt: <title>",
         check: function(input) {
             return input.toLowerCase().indexOf("<title>") !== -1;
         }
     },
     {
         id: "L4-BODY",
-        title: "Floor 4: The Body Section",
-        info: "Now we move to the visible part of the website!<br><br>Everything you see on a screen—text, buttons, images, videos—must go inside the <b>body</b> area.<br><br>The tag for the visible body area is <code>&lt;body&gt;</code>.",
-        hint: "Type '<', followed by 'body', followed by '>'.",
-        desc: "Type exact characters: <body>",
+        title: "Floor 4: Der Body-Bereich",
+        info: "Jetzt wechseln wir zum sichtbaren Teil der Webseite!<br><br>Alles, was ein Besucher auf dem Bildschirm sieht (Text, Bilder, Knöpfe), gehört in den <b>body</b>.<br><br>Der Tag für diesen Bereich lautet <code>&lt;body&gt;</code>.",
+        hint: "Schreibe '<', gefolgt von 'body', gefolgt von '>'.",
+        desc: "Tippe exakt: <body>",
         check: function(input) {
             return input.toLowerCase().indexOf("<body>") !== -1;
         }
     },
     {
         id: "L5-PARA",
-        title: "Floor 5: Paragraphs",
-        info: "Inside the body, you can write regular text paragraphs.<br><br>HTML uses the single letter <b>p</b> (short for 'paragraph') to group text together into sentences and blocks.<br><br>The tag for a paragraph is <code>&lt;p&gt;</code>.",
-        hint: "Type '<', then 'p', then '>'.",
-        desc: "Type exact characters: <p>",
+        title: "Floor 5: Absätze",
+        info: "Innerhalb des Body-Bereichs schreibst du Textabsätze.<br><br>HTML verwendet dafür den einzelnen Buchstaben <b>p</b> (kurz für 'paragraph').<br><br>Der Tag für einen Absatz lautet <code>&lt;p&gt;</code>.",
+        hint: "Schreibe '<', dann 'p', dann '>'.",
+        desc: "Tippe exakt: <p>",
         check: function(input) {
             return input.toLowerCase().indexOf("<p>") !== -1;
         }
@@ -208,6 +274,16 @@ var levels = [
 ];
 
 var currentLevel = 0;
+
+// --- MENU TOGGLE FUNCTION ---
+function toggleThemeMenu() {
+    var menu = document.getElementById("theme-menu");
+    if (menu.style.display === "block") {
+        menu.style.display = "none";
+    } else {
+        menu.style.display = "block";
+    }
+}
 
 // --- PRESET SELECTION FUNCTION ---
 function setPreset(bgHex, textHex) {
@@ -224,7 +300,6 @@ function applyColors() {
     document.body.style.backgroundColor = bgVal;
     document.body.style.color = textVal;
     
-    // Update all buttons dynamically
     var btnEls = document.getElementsByTagName("button");
     for (var j = 0; j < btnEls.length; j++) {
         btnEls[j].style.backgroundColor = textVal;
@@ -232,7 +307,12 @@ function applyColors() {
         btnEls[j].style.borderColor = textVal;
     }
 
-    // Update player tag color for visibility contrast
+    var ghLink = document.getElementById("gh-link");
+    if (ghLink) {
+        ghLink.style.backgroundColor = textVal;
+        ghLink.style.color = bgVal;
+    }
+
     var playerEls = document.getElementsByClassName ? document.getElementsByClassName("player") : [];
     for (var i = 0; i < playerEls.length; i++) {
         playerEls[i].style.backgroundColor = textVal;
@@ -247,17 +327,23 @@ function renderGame() {
 
     var infoDiv = document.getElementById("info-text");
     infoDiv.innerHTML = levels[currentLevel].info + 
-                        "<br><br><b>KEYBOARD HINT:</b> " + levels[currentLevel].hint;
+                        "<br><br><b>HINWEIS:</b> " + levels[currentLevel].hint;
 
     var taskP = document.getElementById("task-text");
-    taskP.innerHTML = "TASK: " + levels[currentLevel].desc;
+    taskP.innerHTML = "AUFGABE: " + levels[currentLevel].desc;
 
+    // RENDER ONLY PREVIOUS, CURRENT, AND NEXT FLOOR
     var towerDiv = document.getElementById("tower-view");
     var html = "";
-    for (var i = levels.length - 1; i >= 0; i--) {
+    
+    var minIdx = Math.max(0, currentLevel - 1);
+    var maxIdx = Math.min(levels.length - 1, currentLevel + 1);
+
+    for (var i = maxIdx; i >= minIdx; i--) {
         var marker = (i === currentLevel) ? " [@]" : " [ ]";
         var activeClass = (i === currentLevel) ? " player" : "";
-        html += '<div class="step' + activeClass + '">Floor ' + (i+1) + ' (' + levels[i].id + ')' + marker + '</div>';
+        var labelText = (i === 0) ? "Floor 0 (Anleitung)" : "Floor " + i + " (" + levels[i].id + ")";
+        html += '<div class="step' + activeClass + '">' + labelText + marker + '</div>';
     }
     towerDiv.innerHTML = html;
     
@@ -271,18 +357,18 @@ function checkCode() {
     if (levels[currentLevel].check(code)) {
         if (currentLevel < levels.length - 1) {
             msgBox.style.color = document.body.style.color;
-            msgBox.innerHTML = "SUCCESS! Code for next floor: " + levels[currentLevel+1].id;
+            msgBox.innerHTML = "ERFOLG! Code für die nächste Etage: " + levels[currentLevel+1].id;
             currentLevel++;
             document.getElementById("user-code").value = "";
             renderGame();
         } else {
             msgBox.style.color = document.body.style.color;
-            msgBox.innerHTML = "TOWER CLIMBED! You completed all 5 floors!";
+            msgBox.innerHTML = "TURM SKALIRT! Du hast alle Etagen gemeistert!";
             renderGame();
         }
     } else {
         msgBox.style.color = "#ff3333";
-        msgBox.innerHTML = "INCORRECT. Check brackets '<' and '>' and try again!";
+        msgBox.innerHTML = "FALSCH. Überprüfe deine Eingabe und versuche es erneut!";
     }
 }
 
@@ -299,12 +385,12 @@ function jumpLevel() {
     if (found !== -1) {
         currentLevel = found;
         msgBox.style.color = document.body.style.color;
-        msgBox.innerHTML = "Jumped to Floor " + (currentLevel+1) + ".";
+        msgBox.innerHTML = "Gesprungen zu Etage " + currentLevel + ".";
         document.getElementById("level-pass").value = "";
         renderGame();
     } else {
         msgBox.style.color = "#ff3333";
-        msgBox.innerHTML = "Invalid Level Code!";
+        msgBox.innerHTML = "Ungültiger Etagen-Code!";
     }
 }
 
