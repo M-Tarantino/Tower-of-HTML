@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Tower of HTML</title>
+<style>
+body {
+    background-color: #000000;
+    color: #00ff00;
+    font-family: monospace;
+    padding: 10px;
+    margin: 0;
+}
+.container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+h1 {
+    font-size: 18px;
+    text-align: center;
+}
+.tower {
+    border: 1px solid #00ff00;
+    padding: 10px;
+    margin-bottom: 10px;
+    height: 150px;
+    position: relative;
+}
+.step {
+    border-bottom: 1px dashed #005500;
+    padding: 2px;
+    font-size: 12px;
+}
+.player {
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #00aa00;
+}
+textarea, input[type="text"] {
+    width: 100%;
+    background-color: #111111;
+    color: #00ff00;
+    border: 1px solid #00ff00;
+    font-family: monospace;
+    box-sizing: border-box;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+button {
+    background-color: #00ff00;
+    color: #000000;
+    border: none;
+    font-family: monospace;
+    font-weight: bold;
+    width: 100%;
+    padding: 8px;
+    cursor: pointer;
+}
+.msg {
+    margin-top: 5px;
+    font-size: 12px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>TOWER OF HTML</h1>
+    
+    <div id="status" style="font-size:12px; margin-bottom:5px;"></div>
+    
+    <div class="tower" id="tower-view">
+        <!-- Rendered via JS -->
+    </div>
+
+    <div id="task-box">
+        <p id="task-text" style="font-size:12px; margin: 0 0 5px 0;"></p>
+        <textarea id="user-code" rows="3"></textarea>
+        <button onclick="checkCode()">CHECK CODE</button>
+    </div>
+
+    <div style="margin-top: 15px; border-top: 1px solid #005500; padding-top: 5px;">
+        <p style="font-size:10px; margin:0 0 3px 0;">ENTER LEVEL CODE:</p>
+        <input type="text" id="level-pass" placeholder="e.g. L1-START">
+        <button onclick="jumpLevel()">JUMP TO FLOOR</button>
+    </div>
+
+    <div class="msg" id="msg-box"></div>
+</div>
+
+<script>
+// --- LOGIC ENGINE ---
+var levels = [
+    {
+        id: "L1-START",
+        title: "Floor 1: The Foundation",
+        desc: "Every HTML document requires the root tag. Type: <html>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<html>") !== -1;
+        }
+    },
+    {
+        id: "L2-HEAD",
+        title: "Floor 2: The Head Section",
+        desc: "Add the head section tag: <head>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<head>") !== -1;
+        }
+    }
+];
+
+var currentLevel = 0;
+
+function renderGame() {
+    var statusDiv = document.getElementById("status");
+    statusDiv.innerHTML = levels[currentLevel].title;
+
+    var taskP = document.getElementById("task-text");
+    taskP.innerHTML = levels[currentLevel].desc;
+
+    var towerDiv = document.getElementById("tower-view");
+    var html = "";
+    for (var i = levels.length - 1; i >= 0; i--) {
+        var marker = (i === currentLevel) ? " [@]" : " [ ]";
+        var activeClass = (i === currentLevel) ? " player" : "";
+        html += '<div class="step' + activeClass + '">Floor ' + (i+1) + ' (' + levels[i].id + ')' + marker + '</div>';
+    }
+    towerDiv.innerHTML = html;
+}
+
+function checkCode() {
+    var code = document.getElementById("user-code").value;
+    var msgBox = document.getElementById("msg-box");
+    
+    if (levels[currentLevel].check(code)) {
+        msgBox.style.color = "#00ff00";
+        if (currentLevel < levels.length - 1) {
+            msgBox.innerHTML = "Correct! Code for next floor: " + levels[currentLevel+1].id;
+            currentLevel++;
+            document.getElementById("user-code").value = "";
+            renderGame();
+        } else {
+            msgBox.innerHTML = "TOWER CLIMBED! Congratulations!";
+            renderGame();
+        }
+    } else {
+        msgBox.style.color = "#ff0000";
+        msgBox.innerHTML = "Incorrect. Try again!";
+    }
+}
+
+function jumpLevel() {
+    var pass = document.getElementById("level-pass").value.toUpperCase();
+    var found = -1;
+    for (var i = 0; i < levels.length; i++) {
+        if (levels[i].id === pass) {
+            found = i;
+            break;
+        }
+    }
+    var msgBox = document.getElementById("msg-box");
+    if (found !== -1) {
+        currentLevel = found;
+        msgBox.style.color = "#00ff00";
+        msgBox.innerHTML = "Jumped to Floor " + (currentLevel+1) + ".";
+        document.getElementById("level-pass").value = "";
+        renderGame();
+    } else {
+        msgBox.style.color = "#ff0000";
+        msgBox.innerHTML = "Invalid Level Code!";
+    }
+}
+
+renderGame();
+</script>
+
+</body>
+</html>
+
