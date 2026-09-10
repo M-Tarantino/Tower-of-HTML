@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<title>Tower of HTML</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+    background-color: #000000;
+    color: #00ff00;
+    font-family: monospace;
+    padding: 10px;
+    margin: 0;
+}
+.container {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+}
+.header {
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+}
+.header-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.header-left {
+    text-align: left;
+    vertical-align: middle;
+}
+.header-right {
+    text-align: right;
+    vertical-align: middle;
+}
+h1 {
+    font-size: 16px;
+    margin: 0;
+    display: inline;
+}
+.top-btn {
+    width: auto !important;
+    padding: 2px 6px !important;
+    margin-left: 6px !important;
+    display: inline-block !important;
+    font-size: 10px !important;
+    vertical-align: middle;
+}
+.github-btn {
+    width: auto !important;
+    padding: 2px 6px !important;
+    margin-left: 6px !important;
+    display: inline-block !important;
+    font-size: 10px !important;
+    text-decoration: none;
+    font-weight: bold;
+}
+.lang-tag {
+    font-size: 11px;
+    font-weight: bold;
+}
+.theme-panel {
+    display: none;
+    border: 1px solid currentColor;
+    padding: 8px;
+    margin-bottom: 12px;
+    font-size: 11px;
+}
+.preset-group {
+    margin-bottom: 6px;
+    padding-bottom: 6px;
+    border-bottom: 1px dashed currentColor;
+}
+.theme-panel label {
+    margin-right: 10px;
+}
+.theme-panel input[type="text"] {
+    width: 65px;
+    background-color: transparent;
+    color: inherit;
+    border: 1px solid currentColor;
+    font-family: monospace;
+    font-size: 11px;
+    padding: 2px 4px;
+}
+.tower {
+    border: 1px solid currentColor;
+    padding: 8px;
+    margin-bottom: 10px;
+    min-height: 85px;
+}
+.step {
+    border-bottom: 1px dashed currentColor;
+    padding: 3px;
+    font-size: 12px;
+}
+.step:last-child {
+    border-bottom: none;
+}
+.player {
+    font-weight: bold;
+    color: #000000;
+    background-color: #00ff00;
+}
+.info-box {
+    border: 1px solid currentColor;
+    padding: 10px;
+    font-size: 12px;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+textarea, input[type="text"] {
+    width: 100%;
+    background-color: transparent;
+    color: inherit;
+    border: 1px solid currentColor;
+    font-family: monospace;
+    box-sizing: border-box;
+    padding: 6px;
+    margin-bottom: 6px;
+}
+button {
+    background-color: #00ff00;
+    color: #000000;
+    border: 1px solid #00ff00;
+    font-family: monospace;
+    font-weight: bold;
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+}
+.preset-btn {
+    width: auto !important;
+    padding: 3px 6px !important;
+    margin-right: 3px !important;
+    margin-bottom: 3px !important;
+    display: inline-block !important;
+    font-size: 10px !important;
+}
+.msg {
+    margin-top: 8px;
+    font-size: 12px;
+    font-weight: bold;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <!-- HEADER BAR -->
+    <div class="header">
+        <table class="header-table">
+            <tr>
+                <td class="header-left">
+                    <h1>TOWER OF HTML</h1>
+                    <button class="top-btn" onclick="toggleThemeMenu()">[颜色]</button>
+                </td>
+                <td class="header-right">
+                    <span class="lang-tag">ZH</span>
+                    <a href="https://github.com/M-Tarantino" target="_blank" class="github-btn" id="gh-link">@M-Tarantino</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <!-- COLLAPSIBLE COLOR MENU -->
+    <div class="theme-panel" id="theme-menu">
+        <div class="preset-group">
+            <span style="font-weight:bold; display:block; margin-bottom:4px;">预设主题：</span>
+            <button class="preset-btn" onclick="setPreset('#000000', '#00ff00')">黑客帝国 (Matrix)</button>
+            <button class="preset-btn" onclick="setPreset('#000000', '#ffb000')">琥珀 (Amber)</button>
+            <button class="preset-btn" onclick="setPreset('#0000aa', '#ffffff')">DOS蓝 (DOS Blue)</button>
+            <button class="preset-btn" onclick="setPreset('#ffffff', '#111111')">明亮 (Light)</button>
+            <button class="preset-btn" onclick="setPreset('#1a0022', '#00ffff')">赛博 (Cyber)</button>
+        </div>
+        <div>
+            <span style="font-weight:bold;">自定义：</span>
+            <label>背景: <input type="text" id="bg-color-in" value="#000000" onchange="applyColors()"></label>
+            <label>文字: <input type="text" id="text-color-in" value="#00ff00" onchange="applyColors()"></label>
+            <button class="preset-btn" onclick="applyColors()">应用</button>
+        </div>
+    </div>
+
+    <div id="status" style="font-size:14px; font-weight:bold; margin-bottom:5px;"></div>
+    
+    <!-- TOWER VIEW (SHOWING PREVIOUS, CURRENT, AND NEXT FLOOR) -->
+    <div class="tower" id="tower-view">
+        <!-- Rendered via JS -->
+    </div>
+
+    <!-- EXPLANATION BOX -->
+    <div class="info-box" id="info-text">
+        <!-- Text rendered via JS -->
+    </div>
+
+    <div id="task-box">
+        <p id="task-text" style="font-size:12px; font-weight:bold; margin: 0 0 5px 0;"></p>
+        <textarea id="user-code" rows="3" placeholder="在此输入你的代码..."></textarea>
+        <button onclick="checkCode()">检查代码</button>
+    </div>
+
+    <div style="margin-top: 15px; border-top: 1px solid currentColor; padding-top: 8px;">
+        <p style="font-size:10px; margin:0 0 3px 0;">输入楼层代码进行跳转：</p>
+        <input type="text" id="level-pass" placeholder="例如：START 或 L1-ROOT">
+        <button onclick="jumpLevel()">跳转到楼层</button>
+    </div>
+
+    <div class="msg" id="msg-box"></div>
+</div>
+
+<script>
+// --- LEVEL DATA (FLOOR 0 INTRO + FLOORS 1 - 40+) ---
+var levels = [
+    {
+        id: "START",
+        title: "0层：概述与说明",
+        info: "欢迎来到 <b>Tower of HTML</b>！<br><br><b>这是什么？</b><br>一款旨在循序渐进带你学习HTML基础知识的互动游戏。[span_0](start_span)[span_0](end_span)<br><br><b>如何游玩？</b><br>1. 阅读每个楼层的讲解内容。[span_1](start_span)[span_1](end_span)<br>2. 在输入框中输入要求的HTML代码。[span_2](start_span)[span_2](end_span)<br>3. 点击<b>检查代码</b>继续前进。[span_3](start_span)[span_3](end_span)<br>4. 你将获得一个楼层代码，用于保存进度或跳转到已完成的楼层。[span_4](start_span)[span_4](end_span)",
+        hint: "输入单词 <b>START</b> 以进入塔内。",
+        desc: "请输入准确字符：START",
+        check: function(input) {
+            return input.toLowerCase().indexOf("start") !== -1;
+        }
+    },
+    // --- PHASE 1: FOUNDATION (Floors 1-8) ---
+    {
+        id: "L1-ROOT",
+        title: "1层：根元素 (Root Element)",
+        info: "代码由浏览器读取的指令组成。[span_5](start_span)[span_5](end_span)<br><br>HTML使用<b>标签 (Tags)</b>来构建网页。[span_6](start_span)[span_6](end_span)标签是放在两个括号符号内部的关键字：[span_7](start_span)[span_7](end_span)<br>• <b>&lt;</b>（小于号）[span_8](start_span)[span_8](end_span)<br>• <b>&gt;</b>（大于号）[span_9](start_span)[span_9](end_span)<br><br>每个网页的最第一个标签都是 <b>html</b>。[span_10](start_span)[span_10](end_span)加上括号后，它看起来像这样：<code>&lt;html&gt;</code>。[span_11](start_span)[span_11](end_span)",
+        hint: "请使用键盘上的 '<' 和 '>' 键。",
+        desc: "请输入准确字符：<html>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<html>") !== -1;
+        }
+    },
+    {
+        id: "L2-HEAD",
+        title: "2层：头部区域 (Head Section)",
+        info: "网页分为两个主要部分：不可见的配置区域和可见的内容区域。[span_12](start_span)[span_12](end_span)<br><br>不可见的部分被称为 <b>head</b>。[span_13](start_span)[span_13](end_span)它包含供浏览器使用的设置和元数据。[span_14](start_span)[span_14](end_span)<br><br>就像第1层一样，你只需将单词 <b>head</b> 包裹在括号中即可编写此标签：<code>&lt;head&gt;</code>。[span_15](start_span)[span_15](end_span)",
+        hint: "依次输入 '<'、'head' 和 '>'。",
+        desc: "请输入准确字符：<head>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<head>") !== -1;
+        }
+    },
+    {
+        id: "L3-TITLE",
+        title: "3层：页面标题 (Page Title)",
+        info: "在 head 区域内部，你可以设置网页的名称。[span_16](start_span)[span_16](end_span)<br><br>这个名称会显示在浏览器顶部的标签页上。[span_17](start_span)[span_17](end_span)用于此功能的标签是 <b>title</b>。[span_18](start_span)[span_18](end_span)<br><br>将单词 <b>title</b> 包裹在括号中：<code>&lt;title&gt;</code>。[span_19](start_span)[span_19](end_span)",
+        hint: "组合输入 '<'、'title' 和 '>'。",
+        desc: "请输入准确字符：<title>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<title>") !== -1;
+        }
+    },
+    {
+        id: "L4-BODY",
+        title: "4层：主体区域 (Body Section)",
+        info: "现在我们进入网站的可见部分！[span_20](start_span)[span_20](end_span)<br><br>屏幕上显示的所有内容（文本、图像、按钮）都属于 <b>body</b> 内部。[span_21](start_span)[span_21](end_span)<br><br>该区域的标签是 <code>&lt;body&gt;</code>。[span_22](start_span)[span_22](end_span)",
+        hint: "依次输入 '<'，接着输入 'body'，再输入 '>'",
+        desc: "请输入准确字符：<body>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<body>") !== -1;
+        }
+    },
+    {
+        id: "L5-PARA",
+        title: "5层：段落 (Paragraphs)",
+        info: "在 body 区域内部，你可以编写文本段落。[span_23](start_span)[span_23](end_span)<br><br>HTML使用单个字母 <b>p</b>（'paragraph' 的缩写）。[span_24](start_span)[span_24](end_span)<br><br>段落的标签是 <code>&lt;p&gt;</code>。[span_25](start_span)[span_25](end_span)",
+        hint: "依次输入 '<'、'p' 和 '>'。",
+        desc: "请输入准确字符：<p>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<p>") !== -1;
+        }
+    },
+    {
+        id: "L6-CLOSE-P",
+        title: "6层：闭合标签 (段落)",
+        info: "绝大多数HTML标签在输入完毕后必须<b>闭合</b>。[span_26](start_span)[span_26](end_span)<br><br>要闭合标签，请使用与闭合前相同的单词，但要在开头加上正斜杠 <b>/</b>。[span_27](start_span)[span_27](end_span)<br><br>要闭合段落标签，请输入：<code>&lt;/p&gt;</code><br><br>完整段落示例：<br><code>&lt;p&gt;Hello World&lt;/p&gt;</code>[span_28](start_span)[span_28](end_span)",
+        hint: "依次输入 '<'、'/'、'p' 和 '>'。",
+        desc: "请输入准确字符：</p>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</p>") !== -1;
+        }
+    },
+    {
+        id: "L7-CLOSE-BODY",
+        title: "7层：闭合 Body 标签",
+        info: "就像段落标签一样，当添加完内容后，body 区域也必须闭合。[span_29](start_span)[span_29](end_span)<br><br>闭合 body 的标签是：<code>&lt;/body&gt;</code><br><br>请记住：每个起始标签都需要一个对应的闭合标签！[span_30](start_span)[span_30](end_span)",
+        hint: "依次输入 '<'、'/'、'body' 和 '>'。",
+        desc: "请输入准确字符：</body>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</body>") !== -1;
+        }
+    },
+    {
+        id: "L8-CLOSE-HTML",
+        title: "8层：闭合 HTML 标签",
+        info: "你打开的第一个标签是 <code>&lt;html&gt;</code>。[span_31](start_span)[span_31](end_span)现在你必须闭合它。[span_32](start_span)[span_32](end_span)<br><br>闭合 html 的标签是：<code>&lt;/html&gt;</code><br><br>这将闭合整个网页结构。[span_33](start_span)[span_33](end_span)",
+        hint: "依次输入 '<'、'/'、'html' 和 '>'。",
+        desc: "请输入准确字符：</html>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</html>") !== -1;
+        }
+    },
+    // --- PHASE 2: CONTENT & TEXT (Floors 9-18) ---
+    {
+        id: "L9-H1",
+        title: "9层：主标题 (H1)",
+        info: "标题用于组织内容并使题目脱颖而出。[span_34](start_span)[span_34](end_span)<br><br>最大的标题是 <b>h1</b> (h = heading/标题, 1 = 字号层级)。[span_35](start_span)[span_35](end_span)<br><br>HTML共有6个标题层级：h1（最大）到 h6（最小）。[span_36](start_span)[span_36](end_span)<br><br>使用以下代码创建 h1 标题：<code>&lt;h1&gt;</code>[span_37](start_span)[span_37](end_span)",
+        hint: "依次输入 '<'、'h1' 和 '>'。",
+        desc: "请输入准确字符：<h1>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<h1>") !== -1;
+        }
+    },
+    {
+        id: "L10-H2",
+        title: "10层：副标题 (H2)",
+        info: "在 h1 之下，下一个标题字号是 <b>h2</b>。[span_38](start_span)[span_38](end_span)<br><br>在主标题下方的章节标题请使用 h2。[span_39](start_span)[span_39](end_span)<br><br>示例结构：<br><code>&lt;h1&gt;My Website&lt;/h1&gt;</code><br><code>&lt;h2&gt;About Me&lt;/h2&gt;</code>[span_40](start_span)[span_40](end_span)",
+        hint: "依次输入 '<'、'h2' 和 '>'。",
+        desc: "请输入准确字符：<h2>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<h2>") !== -1;
+        }
+    },
+    {
+        id: "L11-CLOSE-H1",
+        title: "11层：闭合标题 H1",
+        info: "与所有 HTML 标签一样，标题也必须闭合。[span_41](start_span)[span_41](end_span)<br><br>要闭合 h1 标签，请输入：<code>&lt;/h1&gt;</code><br><br>完整示例：<br><code>&lt;h1&gt;Welcome!&lt;/h1&gt;</code>[span_42](start_span)[span_42](end_span)",
+        hint: "依次输入 '<'、'/'、'h1' 和 '>'。",
+        desc: "请输入准确字符：</h1>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</h1>") !== -1;
+        }
+    },
+    {
+        id: "L12-BOLD",
+        title: "12层：加粗文本",
+        info: "要使文本<b>加粗</b>（更厚、更暗），请使用 <b>b</b> 标签。[span_43](start_span)[span_43](end_span)<br><br>b 代表 'bold'（加粗）。[span_44](start_span)[span_44](end_span)<br><br>示例：<br><code>&lt;p&gt;This is &lt;b&gt;important&lt;/b&gt; text.&lt;/p&gt;</code>[span_45](start_span)[span_45](end_span)",
+        hint: "依次输入 '<'、'b' 和 '>'。",
+        desc: "请输入准确字符：<b>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<b>") !== -1;
+        }
+    },
+    {
+        id: "L13-CLOSE-BOLD",
+        title: "13层：闭合加粗标签",
+        info: "使用以下代码闭合加粗标签：<code>&lt;/b&gt;</code><br><br>请记住在需要格式化的内容之后立即闭合标签！[span_46](start_span)[span_46](end_span)",
+        hint: "依次输入 '<'、'/'、'b' 和 '>'。",
+        desc: "请输入准确字符：</b>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</b>") !== -1;
+        }
+    },
+    {
+        id: "L14-ITALIC",
+        title: "14层：斜体文本",
+        info: "要使文本变为<i>斜体</i>（倾斜），请使用 <b>i</b> 标签。[span_47](start_span)[span_47](end_span)<br><br>i 代表 'italic'（斜体）。[span_48](start_span)[span_48](end_span)<br><br>示例：<br><code>&lt;p&gt;This is &lt;i&gt;fancy&lt;/i&gt; text.&lt;/p&gt;</code>[span_49](start_span)[span_49](end_span)",
+        hint: "依次输入 '<'、'i' 和 '>'。",
+        desc: "请输入准确字符：<i>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<i>") !== -1;
+        }
+    },
+    {
+        id: "L15-CLOSE-ITALIC",
+        title: "15层：闭合斜体标签",
+        info: "使用以下代码闭合斜体标签：<code>&lt;/i&gt;</code>[span_50](start_span)[span_50](end_span)",
+        hint: "依次输入 '<'、'/'、'i' 和 '>'。",
+        desc: "请输入准确字符：</i>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</i>") !== -1;
+        }
+    },
+    {
+        id: "L16-STRONG",
+        title: "16层：重要强调 (Strong)",
+        info: "与加粗类似，<b>strong</b> 标签用于强调文本。[span_51](start_span)[span_51](end_span)<br><br>它在语义上比 b 更强——它告知浏览器这段内容<b>很重要</b>。[span_52](start_span)[span_52](end_span)<br><br>示例：<br><code>&lt;p&gt;&lt;strong&gt;Warning:&lt;/strong&gt; Be careful!&lt;/p&gt;</code>[span_53](start_span)[span_53](end_span)",
+        hint: "依次输入 '<'、'strong' 和 '>'。",
+        desc: "请输入准确字符：<strong>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<strong>") !== -1;
+        }
+    },
+    {
+        id: "L17-CLOSE-STRONG",
+        title: "17层：闭合 Strong 标签",
+        info: "使用以下代码闭合 strong 标签：<code>&lt;/strong&gt;</code>[span_54](start_span)[span_54](end_span)",
+        hint: "依次输入 '<'、'/'、'strong' 和 '>'。",
+        desc: "请输入准确字符：</strong>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</strong>") !== -1;
+        }
+    },
+    {
+        id: "L18-EM",
+        title: "18层：强调 (EM)",
+        info: "<b>em</b> 标签为文本添加强调（外观类似斜体）。[span_55](start_span)[span_55](end_span)<br><br>它在语义上表示 'emphasized'（已强调），因此屏幕阅读器知道它很重要。[span_56](start_span)[span_56](end_span)<br><br>示例：<br><code>&lt;p&gt;I &lt;em&gt;really&lt;/em&gt; love coding!&lt;/p&gt;</code>[span_57](start_span)[span_57](end_span)",
+        hint: "依次输入 '<'、'em' 和 '>'。",
+        desc: "请输入准确字符：<em>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<em>") !== -1;
+        }
+    },
+    // --- PHASE 3: LINKS & MEDIA (Floors 19-28) ---
+    {
+        id: "L19-ANCHOR",
+        title: "19层：链接标签 (Anchor)",
+        info: "要创建指向其他网站的可点击<b>链接</b>，请使用 <b>a</b> 标签。[span_58](start_span)[span_58](end_span)<br><br>a 代表 'anchor'（锚点）。[span_59](start_span)[span_59](end_span)<br><br>示例：<br><code>&lt;a&gt;Click me&lt;/a&gt;</code>[span_60](start_span)[span_60](end_span)",
+        hint: "依次输入 '<'、'a' 和 '>'。",
+        desc: "请输入准确字符：<a>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<a>") !== -1;
+        }
+    },
+    {
+        id: "L20-HREF",
+        title: "20层：链接目标 (HREF)",
+        info: "链接需要一个目标地址！请使用 <b>href</b> 属性来指定 URL。[span_61](start_span)[span_61](end_span)<br><br><b>属性</b>是添加到标签中的附加特征。[span_62](start_span)[span_62](end_span)<br><br>示例：<br><code>&lt;a href=\"https://google.com\"&gt;Google&lt;/a&gt;</code><br><br>请输入完整的标签，并将 href 指向 google.com[span_63](start_span)[span_63](end_span)",
+        hint: "使用：<a href=\"https://google.com\">",
+        desc: '输入：<a href="https://google.com">',
+        check: function(input) {
+            var lower = input.toLowerCase();
+            return lower.indexOf("<a") !== -1 && lower.indexOf("href") !== -1 && lower.indexOf("google.com") !== -1;
+        }
+    },
+    {
+        id: "L21-CLOSE-ANCHOR",
+        title: "21层：闭合链接标签",
+        info: "使用以下代码闭合 anchor 标签：<code>&lt;/a&gt;</code><br><br>完整示例：<br><code>&lt;a href=\"https://google.com\"&gt;Visit Google&lt;/a&gt;</code>[span_64](start_span)[span_64](end_span)",
+        hint: "依次输入 '<'、'/'、'a' 和 '>'。",
+        desc: "请输入准确字符：</a>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</a>") !== -1;
+        }
+    },
+    {
+        id: "L22-IMG",
+        title: "22层：图像标签",
+        info: "要显示图像，请使用 <b>img</b> 标签。[span_65](start_span)[span_65](end_span)<br><br>img 标签是<b>自闭合的</b>——它不需要闭合标签！[span_66](start_span)[span_66](end_span)<br><br>示例：<br><code>&lt;img src=\"photo.jpg\"&gt;</code><br><br>注意：不需要 &lt;/img&gt;！[span_67](start_span)[span_67](end_span)",
+        hint: "依次输入 '<'、'img' 和 '>'。",
+        desc: "请输入准确字符：<img>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<img>") !== -1;
+        }
+    },
+    {
+        id: "L23-SRC",
+        title: "23层：图像源 (SRC)",
+        info: "图像需要文件才能显示！请使用 <b>src</b> 属性来指定图像文件。[span_68](start_span)[span_68](end_span)<br><br>示例：<br><code>&lt;img src=\"cat.jpg\"&gt;</code><br><br>请输入带有 src 属性且指向 'cat.jpg' 的 img 标签[span_69](start_span)[span_69](end_span)",
+        hint: "使用：<img src=\"cat.jpg\">",
+        desc: '输入：<img src="cat.jpg">',
+        check: function(input) {
+            var lower = input.toLowerCase();
+            return lower.indexOf("<img") !== -1 && lower.indexOf("src") !== -1 && lower.indexOf("cat.jpg") !== -1;
+        }
+    },
+    {
+        id: "L24-ALT",
+        title: "24层：图像替代文本 (Alt Text)",
+        info: "<b>alt</b> 属性使用文本来描述图像。[span_70](start_span)[span_70](end_span)<br><br>这在以下情况大有帮助：[span_71](start_span)[span_71](end_span)<br>• 使用屏幕阅读器的人群[span_72](start_span)[span_72](end_span)<br>• 图像加载失败时[span_73](start_span)[span_73](end_span)<br><br>示例：<br><code>&lt;img src=\"cat.jpg\" alt=\"A cute orange cat\"&gt;</code><br><br>请输入同时带有 src 和 alt 属性的完整 img 标签。[span_74](start_span)[span_74](end_span)",
+        hint: "使用：<img src=\"cat.jpg\" alt=\"A cute orange cat\">",
+        desc: '输入：<img src="cat.jpg" alt="A cute orange cat">',
+        check: function(input) {
+            var lower = input.toLowerCase();
+            return lower.indexOf("<img") !== -1 && lower.indexOf("src") !== -1 && lower.indexOf("alt") !== -1;
+        }
+    },
+    {
+        id: "L25-BR",
+        title: "25层：换行",
+        info: "要在不开始新段落的情况下换行，请使用 <b>br</b> 标签。[span_75](start_span)[span_75](end_span)<br><br>br 标签也是<b>自闭合的</b>！[span_76](start_span)[span_76](end_span)<br><br>示例：<br><code>&lt;p&gt;Line 1&lt;br&gt;Line 2&lt;/p&gt;</code>[span_77](start_span)[span_77](end_span)",
+        hint: "依次输入 '<'、'br' 和 '>'。",
+        desc: "请输入准确字符：<br>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<br>") !== -1;
+        }
+    },
+    {
+        id: "L26-HR",
+        title: "26层：水平分隔线",
+        info: "要在页面上绘制一条水平线（分隔线），请使用 <b>hr</b> 标签。[span_78](start_span)[span_78](end_span)<br><br>hr 代表 'horizontal rule'（水平线），并且是<b>自闭合的</b>。[span_79](start_span)[span_79](end_span)<br><br>示例：<br><code>&lt;hr&gt;</code>[span_80](start_span)[span_80](end_span)",
+        hint: "依次输入 '<'、'hr' 和 '>'。",
+        desc: "请输入准确字符：<hr>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<hr>") !== -1;
+        }
+    },
+    {
+        id: "L27-BUTTON",
+        title: "27层：按钮元素",
+        info: "要创建可点击的按钮，请使用 <b>button</b> 标签。[span_81](start_span)[span_81](end_span)<br><br>按钮常用于表单中或触发特定操作。[span_82](start_span)[span_82](end_span)<br><br>示例：<br><code>&lt;button&gt;Click Me!&lt;/button&gt;</code>[span_83](start_span)[span_83](end_span)",
+        hint: "依次输入 '<'、'button' 和 '>'。",
+        desc: "请输入准确字符：<button>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<button>") !== -1;
+        }
+    },
+    {
+        id: "L28-CLOSE-BUTTON",
+        title: "28层：闭合按钮标签",
+        info: "使用以下代码闭合按钮标签：<code>&lt;/button&gt;</code><br><br>完整示例：<br><code>&lt;button&gt;Submit&lt;/button&gt;</code>[span_84](start_span)[span_84](end_span)",
+        hint: "依次输入 '<'、'/'、'button' 和 '>'。",
+        desc: "请输入准确字符：</button>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</button>") !== -1;
+        }
+    },
+    // --- PHASE 4: ORGANIZATION (Floors 29-38) ---
+    {
+        id: "L29-DIV",
+        title: "29层：区块/分块 (DIV)",
+        info: "<b>div</b> 标签是一个用于将内容组合在一起的容器。[span_85](start_span)[span_85](end_span)<br><br>div 代表 'division'（分区/分块）。[span_86](start_span)[span_86](end_span)<br><br>你将使用 div 来组织页面中的不同部分。[span_87](start_span)[span_87](end_span)<br><br>示例：<br><code>&lt;div&gt;&lt;h1&gt;Section 1&lt;/h1&gt;&lt;/div&gt;</code>[span_88](start_span)[span_88](end_span)",
+        hint: "依次输入 '<'、'div' 和 '>'。",
+        desc: "请输入准确字符：<div>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<div>") !== -1;
+        }
+    },
+    {
+        id: "L30-CLOSE-DIV",
+        title: "30层：闭合 DIV 标签",
+        info: "使用以下代码闭合 div 标签：<code>&lt;/div&gt;</code><br><br>请记住：div 内部的所有内容都将被组合在一起。[span_89](start_span)[span_89](end_span)",
+        hint: "依次输入 '<'、'/'、'div' 和 '>'。",
+        desc: "请输入准确字符：</div>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</div>") !== -1;
+        }
+    },
+    {
+        id: "L31-SPAN",
+        title: "31层：Span 元素",
+        info: "<b>span</b> 标签是一个用于行内（inline）内容的更小容器。[span_90](start_span)[span_90](end_span)<br><br>使用 span 可以为段落中的一小部分文本设置样式。[span_91](start_span)[span_91](end_span)<br><br>示例：<br><code>&lt;p&gt;This is &lt;span&gt;highlighted&lt;/span&gt; text.&lt;/p&gt;</code>[span_92](start_span)[span_92](end_span)",
+        hint: "依次输入 '<'、'span' 和 '>'。",
+        desc: "请输入准确字符：<span>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<span>") !== -1;
+        }
+    },
+    {
+        id: "L32-CLOSE-SPAN",
+        title: "32层：闭合 Span 标签",
+        info: "使用以下代码闭合 span 标签：<code>&lt;/span&gt;</code>[span_93](start_span)[span_93](end_span)",
+        hint: "依次输入 '<'、'/'、'span' 和 '>'。",
+        desc: "请输入准确字符：</span>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</span>") !== -1;
+        }
+    },
+    {
+        id: "L33-UL",
+        title: "33层：无序列表 (Unordered List)",
+        info: "要创建带项目符号的列表，请使用 <b>ul</b> 标签。[span_94](start_span)[span_94](end_span)<br><br>ul 代表 'unordered list'（无序列表）。[span_95](start_span)[span_95](end_span)<br><br>示例：<br><code>&lt;ul&gt;</code><br><code>&lt;li&gt;Item 1&lt;/li&gt;</code><br><code>&lt;li&gt;Item 2&lt;/li&gt;</code><br><code>&lt;/ul&gt;</code>[span_96](start_span)[span_96](end_span)",
+        hint: "依次输入 '<'、'ul' 和 '>'。",
+        desc: "请输入准确字符：<ul>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<ul>") !== -1;
+        }
+    },
+    {
+        id: "L34-LI",
+        title: "34层：列表项目 (List Item)",
+        info: "在列表（ul 或 ol）内部，每个项目都使用 <b>li</b> 标签。[span_97](start_span)[span_97](end_span)<br><br>li 代表 'list item'（列表项目）。[span_98](start_span)[span_98](end_span)<br><br>示例：<br><code>&lt;li&gt;Apples&lt;/li&gt;</code>[span_99](start_span)[span_99](end_span)",
+        hint: "依次输入 '<'、'li' 和 '>'。",
+        desc: "请输入准确字符：<li>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<li>") !== -1;
+        }
+    },
+    {
+        id: "L35-CLOSE-LI",
+        title: "35层：闭合列表项目",
+        info: "使用以下代码闭合列表项目标签：<code>&lt;/li&gt;</code>[span_100](start_span)[span_100](end_span)",
+        hint: "依次输入 '<'、'/'、'li' 和 '>'。",
+        desc: "请输入准确字符：</li>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</li>") !== -1;
+        }
+    },
+    {
+        id: "L36-OL",
+        title: "36层：有序列表 (Ordered List)",
+        info: "要创建带数字编号的列表，请使用 <b>ol</b> 标签。[span_101](start_span)[span_101](end_span)<br><br>ol 代表 'ordered list'（有序列表）。[span_102](start_span)[span_102](end_span)<br><br>示例：<br><code>&lt;ol&gt;</code><br><code>&lt;li&gt;First&lt;/li&gt;</code><br><code>&lt;li&gt;Second&lt;/li&gt;</code><br><code>&lt;/ol&gt;</code>[span_103](start_span)[span_103](end_span)",
+        hint: "依次输入 '<'、'ol' 和 '>'。",
+        desc: "请输入准确字符：<ol>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<ol>") !== -1;
+        }
+    },
+    {
+        id: "L37-CLOSE-UL",
+        title: "37层：闭合无序列表",
+        info: "使用以下代码闭合无序列表标签：<code>&lt;/ul&gt;</code>[span_104](start_span)[span_104](end_span)",
+        hint: "依次输入 '<'、'/'、'ul' 和 '>'。",
+        desc: "请输入准确字符：</ul>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</ul>") !== -1;
+        }
+    },
+    {
+        id: "L38-CLOSE-OL",
+        title: "38层：闭合有序列表",
+        info: "使用以下代码闭合有序列表标签：<code>&lt;/ol&gt;</code>[span_105](start_span)[span_105](end_span)",
+        hint: "依次输入 '<'、'/'、'ol' 和 '>'。",
+        desc: "请输入准确字符：</ol>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</ol>") !== -1;
+        }
+    },
+    // --- PHASE 5: INTERMEDIATE & ADVANCED (Floors 39-48) ---
+    {
+        id: "L39-FORM",
+        title: "39层：表单容器",
+        info: "表单用于收集用户输入的信息。[span_106](start_span)[span_106](end_span)<br><br>使用 <b>form</b> 标签来创建表单。[span_107](start_span)[span_107](end_span)<br><br>示例：<br><code>&lt;form&gt;</code><br><code>&lt;input type=\"text\"&gt;</code><br><code>&lt;/form&gt;</code>[span_108](start_span)[span_108](end_span)",
+        hint: "依次输入 '<'、'form' 和 '>'。",
+        desc: "请输入准确字符：<form>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<form>") !== -1;
+        }
+    },
+    {
+        id: "L40-CLOSE-FORM",
+        title: "40层：闭合表单",
+        info: "使用以下代码闭合表单标签：<code>&lt;/form&gt;</code>[span_109](start_span)[span_109](end_span)",
+        hint: "依次输入 '<'、'/'、'form' 和 '>'。",
+        desc: "请输入准确字符：</form>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</form>") !== -1;
+        }
+    },
+    {
+        id: "L41-INPUT",
+        title: "41层：输入框 (Input)",
+        info: "<b>input</b> 标签用于创建文本输入框和其他表单控件。[span_110](start_span)[span_110](end_span)<br><br>它是<b>自闭合的</b>！[span_111](start_span)[span_111](end_span)<br><br>示例：<br><code>&lt;input type=\"text\" placeholder=\"Enter name\"&gt;</code>[span_112](start_span)[span_112](end_span)",
+        hint: "依次输入 '<'、'input' 和 '>'。",
+        desc: "请输入准确字符：<input>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<input>") !== -1;
+        }
+    },
+    {
+        id: "L42-TABLE",
+        title: "42层：表格元素",
+        info: "要以行和列展示数据，请使用 <b>table</b> 标签。[span_113](start_span)[span_113](end_span)<br><br>表格由以下部分组成：[span_114](start_span)[span_114](end_span)<br>• <code>&lt;tr&gt;</code> = 表格行 (table row)[span_115](start_span)[span_115](end_span)<br>• <code>&lt;td&gt;</code> = 表格数据/单元格 (table data)[span_116](start_span)[span_116](end_span)<br><br>示例：<br><code>&lt;table&gt;</code><br><code>&lt;tr&gt;&lt;td&gt;Cell 1&lt;/td&gt;&lt;/tr&gt;</code><br><code>&lt;/table&gt;</code>[span_117](start_span)[span_117](end_span)",
+        hint: "依次输入 '<'、'table' 和 '>'。",
+        desc: "请输入准确字符：<table>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<table>") !== -1;
+        }
+    },
+    {
+        id: "L43-TR",
+        title: "43层：表格行",
+        info: "在表格内部，<b>tr</b> 用于创建一行。[span_118](start_span)[span_118](end_span)<br><br>tr 代表 'table row'。[span_119](start_span)[span_119](end_span)<br><br>示例：<br><code>&lt;tr&gt;&lt;td&gt;Name&lt;/td&gt;&lt;td&gt;Age&lt;/td&gt;&lt;/tr&gt;</code>[span_120](start_span)[span_120](end_span)",
+        hint: "依次输入 '<'、'tr' 和 '>'。",
+        desc: "请输入准确字符：<tr>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<tr>") !== -1;
+        }
+    },
+    {
+        id: "L44-TD",
+        title: "44层：表格单元格",
+        info: "在一行内部，<b>td</b> 用于创建一个单元格。[span_121](start_span)[span_121](end_span)<br><br>td 代表 'table data'。[span_122](start_span)[span_122](end_span)<br><br>示例：<br><code>&lt;td&gt;John&lt;/td&gt;</code>[span_123](start_span)[span_123](end_span)",
+        hint: "依次输入 '<'、'td' 和 '>'。",
+        desc: "请输入准确字符：<td>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<td>") !== -1;
+        }
+    },
+    {
+        id: "L45-CLOSE-TABLE",
+        title: "45层：闭合表格",
+        info: "使用以下代码闭合表格标签：<code>&lt;/table&gt;</code>[span_124](start_span)[span_124](end_span)",
+        hint: "依次输入 '<'、'/'、'table' 和 '>'。",
+        desc: "请输入准确字符：</table>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</table>") !== -1;
+        }
+    },
+    {
+        id: "L46-COMMENT",
+        title: "46层：HTML 注释",
+        info: "注释是代码中的备注，浏览器<b>不会显示</b>它们。[span_125](start_span)[span_125](end_span)<br><br>使用注释来解释你的代码：<br><code>&lt;!-- This is a comment --&gt;</code><br><br>注释以 <code>&lt;!--</code> 开头，并以 <code>--&gt;</code> 结尾。[span_126](start_span)[span_126](end_span)",
+        hint: "输入：<!-- This is a comment -->",
+        desc: "输入：<!-- This is a comment -->",
+        check: function(input) {
+            return input.indexOf("<!--") !== -1 && input.indexOf("-->") !== -1;
+        }
+    },
+    {
+        id: "L47-CLASS",
+        title: "47层：Class 属性",
+        info: "<b>class</b> 属性用于使用 CSS 设置样式。[span_127](start_span)[span_127](end_span)<br><br>你可以为元素命名（类名），以便后续应用样式：<br><code>&lt;p class=\"highlight\"&gt;Important!&lt;/p&gt;</code>[span_128](start_span)[span_128](end_span)",
+        hint: '使用：<p class="highlight">',
+        desc: '输入：<p class="highlight">',
+        check: function(input) {
+            var lower = input.toLowerCase();
+            return lower.indexOf("<p") !== -1 && lower.indexOf("class") !== -1;
+        }
+    },
+    {
+        id: "L48-ID",
+        title: "48层：ID 属性",
+        info: "<b>id</b> 属性为元素赋予一个唯一的名称。[span_129](start_span)[span_129](end_span)<br><br>每个页面中 ID 应该只使用一次：<br><code>&lt;h1 id=\"main-title\"&gt;Welcome&lt;/h1&gt;</code>[span_130](start_span)[span_130](end_span)",
+        hint: '使用：<h1 id="main-title">',
+        desc: '输入：<h1 id="main-title">',
+        check: function(input) {
+            var lower = input.toLowerCase();
+            return lower.indexOf("<h1") !== -1 && lower.indexOf("id") !== -1;
+        }
+    },
+    // --- PHASE 6: FINAL CHALLENGE (Floors 49-51) ---
+    {
+        id: "L49-DOCTYPE",
+        title: "49层：DOCTYPE 声明",
+        info: "<b>DOCTYPE</b> 会告知浏览器你使用的是哪个 HTML 版本。[span_131](start_span)[span_131](end_span)<br><br>对于现代 HTML5，请始终在文件开头写入：<br><code>&lt;!DOCTYPE html&gt;</code><br><br>这需要写在 &lt;html&gt; 标签<b>之前</b>。[span_132](start_span)[span_132](end_span)",
+        hint: "输入：<!DOCTYPE html>",
+        desc: "输入：<!DOCTYPE html>",
+        check: function(input) {
+            return input.indexOf("<!DOCTYPE html>") !== -1 || input.indexOf("<!DOCTYPE HTML>") !== -1;
+        }
+    },
+    {
+        id: "L50-META-CHARSET",
+        title: "50层：Meta 字符集",
+        info: "在 head 内部，添加一个用于字符编码的 meta 标签：<br><code>&lt;meta charset=\"UTF-8\"&gt;</code><br><br>这可以确保特殊字符正常显示。[span_133](start_span)[span_133](end_span)<br><br>请输入完整的 meta charset 标签：[span_134](start_span)[span_134](end_span)",
+        hint: '使用：<meta charset="UTF-8">',
+        desc: '输入：<meta charset="UTF-8">',
+        check: function(input) {
+            var lower = input.toLowerCase();
+            return lower.indexOf("<meta") !== -1 && lower.indexOf("charset") !== -1;
+        }
+    },
+    {
+        id: "L51-COMPLETE",
+        title: "51层：终极BOSS - 完整网页",
+        info: "现在构建你的第一个完整 HTML 网页！[span_135](start_span)[span_135](end_span)<br><br>它应当包含：[span_136](start_span)[span_136](end_span)<br>• DOCTYPE[span_137](start_span)[span_137](end_span)<br>• &lt;html&gt; 标签[span_138](start_span)[span_138](end_span)<br>• 带有 title 和 meta charset 的 &lt;head&gt;[span_139](start_span)[span_139](end_span)<br>• 带有至少一个标题和一个段落的 &lt;body&gt;[span_140](start_span)[span_140](end_span)<br><br>输入或粘贴一个完整的有效 HTML 网页。[span_141](start_span)[span_141](end_span)",
+        hint: "开头请输入：&lt;!DOCTYPE html&gt;",
+        desc: "构建一个完整网页 (包含 DOCTYPE, html, head, body, title, 标题, 段落)",
+        check: function(input) {
+            var lower = input.toLowerCase();
+            return (lower.indexOf("<!doctype") !== -1 || lower.indexOf("<!DOCTYPE") !== -1) &&
+                   lower.indexOf("<html") !== -1 &&
+                   lower.indexOf("<head") !== -1 &&
+                   lower.indexOf("<body") !== -1 &&
+                   lower.indexOf("</body>") !== -1 &&
+                   lower.indexOf("</html>") !== -1;
+        }
+    }
+];
+
+var currentLevel = 0;
+
+// --- MENU TOGGLE FUNCTION ---
+function toggleThemeMenu() {
+    var menu = document.getElementById("theme-menu");
+    if (menu.style.display === "block") {
+        menu.style.display = "none";
+    } else {
+        menu.style.display = "block";
+    }
+}
+
+// --- PRESET SELECTION FUNCTION ---
+function setPreset(bgHex, textHex) {
+    document.getElementById("bg-color-in").value = bgHex;
+    document.getElementById("text-color-in").value = textHex;
+    applyColors();
+}
+
+// --- COLOR CUSTOMIZER FUNCTION ---
+function applyColors() {
+    var bgVal = document.getElementById("bg-color-in").value;
+    var textVal = document.getElementById("text-color-in").value;
+    
+    document.body.style.backgroundColor = bgVal;
+    document.body.style.color = textVal;
+    
+    var btnEls = document.getElementsByTagName("button");
+    for (var j = 0; j < btnEls.length; j++) {
+        btnEls[j].style.backgroundColor = textVal;
+        btnEls[j].style.color = bgVal;
+        btnEls[j].style.borderColor = textVal;
+    }
+
+    var ghLink = document.getElementById("gh-link");
+    if (ghLink) {
+        ghLink.style.backgroundColor = textVal;
+        ghLink.style.color = bgVal;
+    }
+
+    var playerEls = document.getElementsByClassName ? document.getElementsByClassName("player") : [];
+    for (var i = 0; i < playerEls.length; i++) {
+        playerEls[i].style.backgroundColor = textVal;
+        playerEls[i].style.color = bgVal;
+    }
+}
+
+// --- ENGINE LOGIC ---
+function renderGame() {
+    var statusDiv = document.getElementById("status");
+    statusDiv.innerHTML = levels[currentLevel].title;
+
+    var infoDiv = document.getElementById("info-text");
+    infoDiv.innerHTML = levels[currentLevel].info + 
+                        "<br><br><b>提示：</b> " + levels[currentLevel].hint;
+
+    var taskP = document.getElementById("task-text");
+    taskP.innerHTML = "任务： " + levels[currentLevel].desc;
+
+    // RENDER ONLY PREVIOUS, CURRENT, AND NEXT FLOOR
+    var towerDiv = document.getElementById("tower-view");
+    var html = "";
+    
+    var minIdx = Math.max(0, currentLevel - 1);
+    var maxIdx = Math.min(levels.length - 1, currentLevel + 1);
+
+    for (var i = maxIdx; i >= minIdx; i--) {
+        var marker = (i === currentLevel) ? " [@]" : " [ ]";
+        var activeClass = (i === currentLevel) ? " player" : "";
+        var labelText = (i === 0) ? "0层 (说明)" : i + "层 (" + levels[i].id + ")";
+        html += '<div class="step' + activeClass + '">' + labelText + marker + '</div>';
+    }
+    towerDiv.innerHTML = html;
+    
+    applyColors();
+}
+
+function checkCode() {
+    var code = document.getElementById("user-code").value;
+    var msgBox = document.getElementById("msg-box");
+    
+    if (levels[currentLevel].check(code)) {
+        if (currentLevel < levels.length - 1) {
+            msgBox.style.color = document.body.style.color;
+            msgBox.innerHTML = "成功！下一层的代码为：" + levels[currentLevel+1].id;
+            currentLevel++;
+            document.getElementById("user-code").value = "";
+            renderGame();
+        } else {
+            msgBox.style.color = document.body.style.color;
+            msgBox.innerHTML = "🏆 登顶成功！你已经精通了 HTML！ 🏆";
+            renderGame();
+        }
+    } else {
+        msgBox.style.color = "#ff3333";
+        msgBox.innerHTML = "代码不正确。请检查你的输入并重试！";
+    }
+}
+
+function jumpLevel() {
+    var pass = document.getElementById("level-pass").value.toUpperCase();
+    var found = -1;
+    for (var i = 0; i < levels.length; i++) {
+        if (levels[i].id === pass) {
+            found = i;
+            break;
+        }
+    }
+    var msgBox = document.getElementById("msg-box");
+    if (found !== -1) {
+        currentLevel = found;
+        msgBox.style.color = document.body.style.color;
+        msgBox.innerHTML = "已跳转到第 " + currentLevel + " 层。";
+        document.getElementById("level-pass").value = "";
+        renderGame();
+    } else {
+        msgBox.style.color = "#ff3333";
+        msgBox.innerHTML = "无效的楼层代码！";
+    }
+}
+
+// Initial Run
+renderGame();
+</script>
+
+</body>
+</html>
