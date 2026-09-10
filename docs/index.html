@@ -23,9 +23,14 @@ h1 {
 }
 .theme-panel {
     border: 1px solid currentColor;
-    padding: 6px;
+    padding: 8px;
     margin-bottom: 12px;
     font-size: 11px;
+}
+.preset-group {
+    margin-bottom: 6px;
+    padding-bottom: 6px;
+    border-bottom: 1px dashed currentColor;
 }
 .theme-panel label {
     margin-right: 10px;
@@ -83,6 +88,14 @@ button {
     padding: 10px;
     cursor: pointer;
 }
+.preset-btn {
+    width: auto !important;
+    padding: 3px 6px !important;
+    margin-right: 3px !important;
+    margin-bottom: 3px !important;
+    display: inline-block !important;
+    font-size: 10px !important;
+}
 .msg {
     margin-top: 8px;
     font-size: 12px;
@@ -95,12 +108,22 @@ button {
 <div class="container">
     <h1>TOWER OF HTML</h1>
     
-    <!-- THEME / COLOR CUSTOMIZER PANEL -->
+    <!-- THEME / COLOR CUSTOMIZER PANEL WITH PRESETS -->
     <div class="theme-panel">
-        <span style="font-weight:bold;">COLORS:</span>
-        <label>BG: <input type="text" id="bg-color-in" value="#000000" onchange="applyColors()"></label>
-        <label>TEXT: <input type="text" id="text-color-in" value="#00ff00" onchange="applyColors()"></label>
-        <button id="set-btn" style="width:auto; padding:2px 6px; display:inline;" onclick="applyColors()">SET</button>
+        <div class="preset-group">
+            <span style="font-weight:bold; display:block; margin-bottom:4px;">PRESETS:</span>
+            <button class="preset-btn" onclick="setPreset('#000000', '#00ff00')">Matrix</button>
+            <button class="preset-btn" onclick="setPreset('#000000', '#ffb000')">Amber</button>
+            <button class="preset-btn" onclick="setPreset('#0000aa', '#ffffff')">DOS Blue</button>
+            <button class="preset-btn" onclick="setPreset('#ffffff', '#111111')">Light</button>
+            <button class="preset-btn" onclick="setPreset('#1a0022', '#00ffff')">Cyber</button>
+        </div>
+        <div>
+            <span style="font-weight:bold;">CUSTOM:</span>
+            <label>BG: <input type="text" id="bg-color-in" value="#000000" onchange="applyColors()"></label>
+            <label>TEXT: <input type="text" id="text-color-in" value="#00ff00" onchange="applyColors()"></label>
+            <button class="preset-btn" onclick="applyColors()">SET</button>
+        </div>
     </div>
 
     <div id="status" style="font-size:14px; font-weight:bold; margin-bottom:5px;"></div>
@@ -185,6 +208,13 @@ var levels = [
 ];
 
 var currentLevel = 0;
+
+// --- PRESET SELECTION FUNCTION ---
+function setPreset(bgHex, textHex) {
+    document.getElementById("bg-color-in").value = bgHex;
+    document.getElementById("text-color-in").value = textHex;
+    applyColors();
+}
 
 // --- COLOR CUSTOMIZER FUNCTION ---
 function applyColors() {
