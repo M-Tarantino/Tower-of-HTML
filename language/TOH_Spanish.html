@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<title>Tower of HTML</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+    background-color: #000000;
+    color: #00ff00;
+    font-family: monospace;
+    padding: 10px;
+    margin: 0;
+}
+.container {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+}
+.header {
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+}
+.header-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.header-left {
+    text-align: left;
+    vertical-align: middle;
+}
+.header-right {
+    text-align: right;
+    vertical-align: middle;
+}
+h1 {
+    font-size: 16px;
+    margin: 0;
+    display: inline;
+}
+.top-btn {
+    width: auto !important;
+    padding: 2px 6px !important;
+    margin-left: 6px !important;
+    display: inline-block !important;
+    font-size: 10px !important;
+    vertical-align: middle;
+}
+.github-btn {
+    width: auto !important;
+    padding: 2px 6px !important;
+    margin-left: 6px !important;
+    display: inline-block !important;
+    font-size: 10px !important;
+    text-decoration: none;
+    font-weight: bold;
+}
+.lang-tag {
+    font-size: 11px;
+    font-weight: bold;
+}
+.theme-panel {
+    display: none;
+    border: 1px solid currentColor;
+    padding: 8px;
+    margin-bottom: 12px;
+    font-size: 11px;
+}
+.preset-group {
+    margin-bottom: 6px;
+    padding-bottom: 6px;
+    border-bottom: 1px dashed currentColor;
+}
+.theme-panel label {
+    margin-right: 10px;
+}
+.theme-panel input[type="text"] {
+    width: 65px;
+    background-color: transparent;
+    color: inherit;
+    border: 1px solid currentColor;
+    font-family: monospace;
+    font-size: 11px;
+    padding: 2px 4px;
+}
+.tower {
+    border: 1px solid currentColor;
+    padding: 8px;
+    margin-bottom: 10px;
+    min-height: 85px;
+}
+.step {
+    border-bottom: 1px dashed currentColor;
+    padding: 3px;
+    font-size: 12px;
+}
+.step:last-child {
+    border-bottom: none;
+}
+.player {
+    font-weight: bold;
+    color: #000000;
+    background-color: #00ff00;
+}
+.info-box {
+    border: 1px solid currentColor;
+    padding: 10px;
+    font-size: 12px;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+textarea, input[type="text"] {
+    width: 100%;
+    background-color: transparent;
+    color: inherit;
+    border: 1px solid currentColor;
+    font-family: monospace;
+    box-sizing: border-box;
+    padding: 6px;
+    margin-bottom: 6px;
+}
+button {
+    background-color: #00ff00;
+    color: #000000;
+    border: 1px solid #00ff00;
+    font-family: monospace;
+    font-weight: bold;
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+}
+.preset-btn {
+    width: auto !important;
+    padding: 3px 6px !important;
+    margin-right: 3px !important;
+    margin-bottom: 3px !important;
+    display: inline-block !important;
+    font-size: 10px !important;
+}
+.msg {
+    margin-top: 8px;
+    font-size: 12px;
+    font-weight: bold;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <!-- HEADER BAR -->
+    <div class="header">
+        <table class="header-table">
+            <tr>
+                <td class="header-left">
+                    <h1>TOWER OF HTML</h1>
+                    <button class="top-btn" onclick="toggleThemeMenu()">[COLORES]</button>
+                </td>
+                <td class="header-right">
+                    <span class="lang-tag">ES</span>
+                    <a href="https://github.com/M-Tarantino" target="_blank" class="github-btn" id="gh-link">@M-Tarantino</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <!-- COLLAPSIBLE COLOR MENU -->
+    <div class="theme-panel" id="theme-menu">
+        <div class="preset-group">
+            <span style="font-weight:bold; display:block; margin-bottom:4px;">PREESTABLECIDOS:</span>
+            <button class="preset-btn" onclick="setPreset('#000000', '#00ff00')">Matrix</button>
+            <button class="preset-btn" onclick="setPreset('#000000', '#ffb000')">Ámbar</button>
+            <button class="preset-btn" onclick="setPreset('#0000aa', '#ffffff')">DOS Azul</button>
+            <button class="preset-btn" onclick="setPreset('#ffffff', '#111111')">Claro</button>
+            <button class="preset-btn" onclick="setPreset('#1a0022', '#00ffff')">Cibernetético</button>
+        </div>
+        <div>
+            <span style="font-weight:bold;">PERSONALIZADO:</span>
+            <label>BG: <input type="text" id="bg-color-in" value="#000000" onchange="applyColors()"></label>
+            <label>TEXTO: <input type="text" id="text-color-in" value="#00ff00" onchange="applyColors()"></label>
+            <button class="preset-btn" onclick="applyColors()">ESTABLECER</button>
+        </div>
+    </div>
+
+    <div id="status" style="font-size:14px; font-weight:bold; margin-bottom:5px;"></div>
+    
+    <!-- TOWER VIEW (SHOWING PREVIOUS, CURRENT, AND NEXT FLOOR) -->
+    <div class="tower" id="tower-view">
+        <!-- Rendered via JS -->
+    </div>
+
+    <!-- EXPLANATION BOX -->
+    <div class="info-box" id="info-text">
+        <!-- Text rendered via JS -->
+    </div>
+
+    <div id="task-box">
+        <p id="task-text" style="font-size:12px; font-weight:bold; margin: 0 0 5px 0;"></p>
+        <textarea id="user-code" rows="3" placeholder="Escribe tu código aquí..."></textarea>
+        <button onclick="checkCode()">VERIFICAR CÓDIGO</button>
+    </div>
+
+    <div style="margin-top: 15px; border-top: 1px solid currentColor; padding-top: 8px;">
+        <p style="font-size:10px; margin:0 0 3px 0;">INGRESA CÓDIGO DE PISO PARA SALTAR:</p>
+        <input type="text" id="level-pass" placeholder="p. ej. START o L1-ROOT">
+        <button onclick="jumpLevel()">SALTAR A PISO</button>
+    </div>
+
+    <div class="msg" id="msg-box"></div>
+</div>
+
+<script>
+// --- LEVEL DATA (FLOOR 0 INTRO + FLOORS 1 - 40+) ---
+var levels = [
+    {
+        id: "START",
+        title: "Piso 0: Descripción General e Instrucciones",
+        info: "¡Bienvenido a <b>Tower of HTML</b>!<br><br><b>¿Qué es esto?</b><br>Un juego interactivo diseñado para enseñarte los fundamentos de HTML paso a paso.<br><br><b>¿Cómo funciona?</b><br>1. Lee la explicación en cada piso.<br>2. Escribe el código HTML solicitado en el campo de entrada.<br>3. Haz clic en <b>VERIFICAR CÓDIGO</b> para avanzar.<br>4. Recibirás un código para guardar tu progreso o saltar a pisos completados.",
+        hint: "Escribe la palabra <b>START</b> para entrar a la torre.",
+        desc: "Escribe los caracteres exactos: START",
+        check: function(input) {
+            return input.toLowerCase().indexOf("start") !== -1;
+        }
+    },
+    // --- PHASE 1: FOUNDATION (Floors 1-8) ---
+    {
+        id: "L1-ROOT",
+        title: "Piso 1: El Elemento Raíz",
+        info: "<b>html</b> es el contenedor principal para toda una página web.<br><br>Cada página HTML comienza y termina con: <code>&lt;html&gt;</code> ... <code>&lt;/html&gt;</code>",
+        hint: "Escribe '<', luego 'html', luego '>'.",
+        desc: "Escribe los caracteres exactos: <html>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<html>") !== -1;
+        }
+    },
+    {
+        id: "L2-CLOSE-HTML",
+        title: "Piso 2: Cerrar HTML",
+        info: "Para cerrar la etiqueta <b>html</b>, usa: <code>&lt;/html&gt;</code><br><br>El '/' (barra inclinada) indica que cierras una etiqueta.",
+        hint: "Escribe '<', luego '/', luego 'html', luego '>'.",
+        desc: "Escribe los caracteres exactos: </html>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</html>") !== -1;
+        }
+    },
+    {
+        id: "L3-HEAD",
+        title: "Piso 3: La Sección Head",
+        info: "<b>head</b> contiene metadatos sobre la página (título, estilos, etc.).<br><br>El usuario no ve el contenido de head en la página, pero es importante.",
+        hint: "Escribe '<', luego 'head', luego '>'.",
+        desc: "Escribe los caracteres exactos: <head>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<head>") !== -1;
+        }
+    },
+    {
+        id: "L4-CLOSE-HEAD",
+        title: "Piso 4: Cerrar Head",
+        info: "Cierra la sección head con: <code>&lt;/head&gt;</code>",
+        hint: "Escribe '<', luego '/', luego 'head', luego '>'.",
+        desc: "Escribe los caracteres exactos: </head>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</head>") !== -1;
+        }
+    },
+    {
+        id: "L5-TITLE",
+        title: "Piso 5: Etiqueta Title",
+        info: "<b>title</b> define el nombre de la página (mostrado en la pestaña del navegador).<br><br>Ejemplo:<br><code>&lt;title&gt;Mi Primer Sitio Web&lt;/title&gt;</code>",
+        hint: "Escribe '<', luego 'title', luego '>'.",
+        desc: "Escribe los caracteres exactos: <title>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<title>") !== -1;
+        }
+    },
+    {
+        id: "L6-CLOSE-TITLE",
+        title: "Piso 6: Cerrar Title",
+        info: "Cierra la etiqueta title con: <code>&lt;/title&gt;</code>",
+        hint: "Escribe '<', luego '/', luego 'title', luego '>'.",
+        desc: "Escribe los caracteres exactos: </title>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</title>") !== -1;
+        }
+    },
+    {
+        id: "L7-BODY",
+        title: "Piso 7: La Sección Body",
+        info: "<b>body</b> contiene todo el contenido visible de la página (texto, imágenes, etc.).<br><br>El usuario ve todo lo que está dentro de las etiquetas body.",
+        hint: "Escribe '<', luego 'body', luego '>'.",
+        desc: "Escribe los caracteres exactos: <body>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<body>") !== -1;
+        }
+    },
+    {
+        id: "L8-CLOSE-BODY",
+        title: "Piso 8: Cerrar Body",
+        info: "Cierra la sección body con: <code>&lt;/body&gt;</code>",
+        hint: "Escribe '<', luego '/', luego 'body', luego '>'.",
+        desc: "Escribe los caracteres exactos: </body>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</body>") !== -1;
+        }
+    },
+    // --- PHASE 2: TEXT ELEMENTS (Floors 9-20) ---
+    {
+        id: "L9-H1",
+        title: "Piso 9: Encabezado 1",
+        info: "<b>h1</b> crea el encabezado más grande e importante.<br><br>h1 significa 'heading 1' (encabezado 1).<br><br>Ejemplo:<br><code>&lt;h1&gt;Título Principal&lt;/h1&gt;</code>",
+        hint: "Escribe '<', luego 'h1', luego '>'.",
+        desc: "Escribe los caracteres exactos: <h1>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<h1>") !== -1;
+        }
+    },
+    {
+        id: "L10-CLOSE-H1",
+        title: "Piso 10: Cerrar H1",
+        info: "Cierra la etiqueta h1 con: <code>&lt;/h1&gt;</code>",
+        hint: "Escribe '<', luego '/', luego 'h1', luego '>'.",
+        desc: "Escribe los caracteres exactos: </h1>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</h1>") !== -1;
+        }
+    },
+    {
+        id: "L11-H2",
+        title: "Piso 11: Encabezado 2",
+        info: "<b>h2</b> es un poco más pequeño que h1.<br><br>Úsalo para subsecciones:<br><code>&lt;h2&gt;Subtítulo&lt;/h2&gt;</code>",
+        hint: "Escribe '<', luego 'h2', luego '>'.",
+        desc: "Escribe los caracteres exactos: <h2>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<h2>") !== -1;
+        }
+    },
+    {
+        id: "L12-CLOSE-H2",
+        title: "Piso 12: Cerrar H2",
+        info: "Cierra la etiqueta h2 con: <code>&lt;/h2&gt;</code>",
+        hint: "Escribe '<', luego '/', luego 'h2', luego '>'.",
+        desc: "Escribe los caracteres exactos: </h2>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</h2>") !== -1;
+        }
+    },
+    {
+        id: "L13-P",
+        title: "Piso 13: Párrafo",
+        info: "<b>p</b> crea un párrafo de texto.<br><br>p significa 'paragraph' (párrafo).<br><br>Ejemplo:<br><code>&lt;p&gt;Este es mi primer párrafo.&lt;/p&gt;</code>",
+        hint: "Escribe '<', luego 'p', luego '>'.",
+        desc: "Escribe los caracteres exactos: <p>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<p>") !== -1;
+        }
+    },
+    {
+        id: "L14-CLOSE-P",
+        title: "Piso 14: Cerrar P",
+        info: "Cierra la etiqueta p con: <code>&lt;/p&gt;</code>",
+        hint: "Escribe '<', luego '/', luego 'p', luego '>'.",
+        desc: "Escribe los caracteres exactos: </p>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</p>") !== -1;
+        }
+    },
+    {
+        id: "L15-BR",
+        title: "Piso 15: Salto de Línea",
+        info: "<b>br</b> inserta un salto de línea sin abrir un párrafo nuevo.<br><br>Nota: br es una etiqueta <b>autocierre</b> (no necesita un cierre separado).<br><br>Ejemplo:<br><code>&lt;br&gt;</code>",
+        hint: "Escribe '<', luego 'br', luego '>'.",
+        desc: "Escribe los caracteres exactos: <br>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<br>") !== -1;
+        }
+    },
+    {
+        id: "L16-STRONG",
+        title: "Piso 16: Texto Fuerte",
+        info: "<b>strong</b> hace el texto más importante (generalmente negrita).<br><br>Ejemplo:<br><code>&lt;strong&gt;¡Muy importante!&lt;/strong&gt;</code>",
+        hint: "Escribe '<', luego 'strong', luego '>'.",
+        desc: "Escribe los caracteres exactos: <strong>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<strong>") !== -1;
+        }
+    },
+    {
+        id: "L17-CLOSE-STRONG",
+        title: "Piso 17: Cerrar Strong",
+        info: "Cierra la etiqueta strong con: <code>&lt;/strong&gt;</code>",
+        hint: "Escribe '<', luego '/', luego 'strong', luego '>'.",
+        desc: "Escribe los caracteres exactos: </strong>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</strong>") !== -1;
+        }
+    },
+    {
+        id: "L18-EM",
+        title: "Piso 18: Énfasis",
+        info: "<b>em</b> enfatiza el texto (generalmente cursiva).<br><br>Ejemplo:<br><code>&lt;em&gt;Esto está enfatizado&lt;/em&gt;</code>",
+        hint: "Escribe '<', luego 'em', luego '>'.",
+        desc: "Escribe los caracteres exactos: <em>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<em>") !== -1;
+        }
+    },
+    {
+        id: "L19-CLOSE-EM",
+        title: "Piso 19: Cerrar EM",
+        info: "Cierra la etiqueta em con: <code>&lt;/em&gt;</code>",
+        hint: "Escribe '<', luego '/', luego 'em', luego '>'.",
+        desc: "Escribe los caracteres exactos: </em>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</em>") !== -1;
+        }
+    },
+    {
+        id: "L20-U",
+        title: "Piso 20: Subrayado",
+        info: "<b>u</b> subraya el texto.<br><br>Ejemplo:<br><code>&lt;u&gt;Esto está subrayado&lt;/u&gt;</code>",
+        hint: "Escribe '<', luego 'u', luego '>'.",
+        desc: "Escribe los caracteres exactos: <u>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<u>") !== -1;
+        }
+    },
+    // --- PHASE 3: LINKS & MEDIA (Floors 21-35) ---
+    {
+        id: "L21-CLOSE-U",
+        title: "Piso 21: Cerrar U",
+        info: "Cierra la etiqueta u con: <code>&lt;/u&gt;</code>",
+        hint: "Escribe '<', luego '/', luego 'u', luego '>'.",
+        desc: "Escribe los caracteres exactos: </u>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</u>") !== -1;
+        }
+    },
+    {
+        id: "L22-A",
+        title: "Piso 22: Enlace Hipertexto",
+        info: "<b>a</b> crea un enlace a otra página.<br><br>Usa el atributo <b>href</b> para la dirección:<br><code>&lt;a href=\"https://ejemplo.com\"&gt;Enlace&lt;/a&gt;</code>",
+        hint: 'Escribe: <a href="https://ejemplo.com">',
+        desc: 'Escribe: <a href="https://ejemplo.com">',
+        check: function(input) {
+            var lower = input.toLowerCase();
+            return lower.indexOf("<a") !== -1 && lower.indexOf("href") !== -1;
+        }
+    },
+    {
+        id: "L23-CLOSE-A",
+        title: "Piso 23: Cerrar A",
+        info: "Cierra la etiqueta a con: <code>&lt;/a&gt;</code>",
+        hint: "Escribe '<', luego '/', luego 'a', luego '>'.",
+        desc: "Escribe los caracteres exactos: </a>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</a>") !== -1;
+        }
+    },
+    {
+        id: "L24-IMG",
+        title: "Piso 24: Imagen",
+        info: "<b>img</b> inserta una imagen.<br><br>Usa <b>src</b> para la URL de la imagen:<br><code>&lt;img src=\"imagen.jpg\"&gt;</code><br><br>Nota: img es autocierre (sin etiqueta de cierre separada).",
+        hint: 'Escribe: <img src="imagen.jpg">',
+        desc: 'Escribe: <img src="imagen.jpg">',
+        check: function(input) {
+            var lower = input.toLowerCase();
+            return lower.indexOf("<img") !== -1 && lower.indexOf("src") !== -1;
+        }
+    },
+    {
+        id: "L25-UL",
+        title: "Piso 25: Lista Desordenada",
+        info: "<b>ul</b> crea una lista desordenada (con viñetas).<br><br>ul significa 'unordered list' (lista desordenada).<br><br>Ejemplo:<br><code>&lt;ul&gt;&lt;li&gt;Elemento&lt;/li&gt;&lt;/ul&gt;</code>",
+        hint: "Escribe '<', luego 'ul', luego '>'.",
+        desc: "Escribe los caracteres exactos: <ul>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<ul>") !== -1;
+        }
+    },
+    {
+        id: "L26-CLOSE-UL",
+        title: "Piso 26: Cerrar UL",
+        info: "Cierra la etiqueta ul con: <code>&lt;/ul&gt;</code>",
+        hint: "Escribe '<', luego '/', luego 'ul', luego '>'.",
+        desc: "Escribe los caracteres exactos: </ul>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</ul>") !== -1;
+        }
+    },
+    {
+        id: "L27-OL",
+        title: "Piso 27: Lista Ordenada",
+        info: "<b>ol</b> crea una lista ordenada (numerada).<br><br>ol significa 'ordered list' (lista ordenada).<br><br>Ejemplo:<br><code>&lt;ol&gt;&lt;li&gt;Primer elemento&lt;/li&gt;&lt;/ol&gt;</code>",
+        hint: "Escribe '<', luego 'ol', luego '>'.",
+        desc: "Escribe los caracteres exactos: <ol>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<ol>") !== -1;
+        }
+    },
+    {
+        id: "L28-CLOSE-OL",
+        title: "Piso 28: Cerrar OL",
+        info: "Cierra la etiqueta ol con: <code>&lt;/ol&gt;</code>",
+        hint: "Escribe '<', luego '/', luego 'ol', luego '>'.",
+        desc: "Escribe los caracteres exactos: </ol>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</ol>") !== -1;
+        }
+    },
+    {
+        id: "L29-LI",
+        title: "Piso 29: Elemento de Lista",
+        info: "<b>li</b> crea un elemento de lista.<br><br>li significa 'list item' (elemento de lista).<br><br>Usa dentro de ul o ol:<br><code>&lt;li&gt;Manzana&lt;/li&gt;</code>",
+        hint: "Escribe '<', luego 'li', luego '>'.",
+        desc: "Escribe los caracteres exactos: <li>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<li>") !== -1;
+        }
+    },
+    {
+        id: "L30-CLOSE-LI",
+        title: "Piso 30: Cerrar LI",
+        info: "Cierra la etiqueta li con: <code>&lt;/li&gt;</code>",
+        hint: "Escribe '<', luego '/', luego 'li', luego '>'.",
+        desc: "Escribe los caracteres exactos: </li>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</li>") !== -1;
+        }
+    },
+    {
+        id: "L31-DIV",
+        title: "Piso 31: Contenedor Div",
+        info: "<b>div</b> es un contenedor genérico para agrupar contenido.<br><br>div significa 'division' (división).<br><br>Ejemplo:<br><code>&lt;div&gt;&lt;p&gt;Contenido&lt;/p&gt;&lt;/div&gt;</code>",
+        hint: "Escribe '<', luego 'div', luego '>'.",
+        desc: "Escribe los caracteres exactos: <div>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<div>") !== -1;
+        }
+    },
+    {
+        id: "L32-CLOSE-DIV",
+        title: "Piso 32: Cerrar DIV",
+        info: "Cierra la etiqueta div con: <code>&lt;/div&gt;</code>",
+        hint: "Escribe '<', luego '/', luego 'div', luego '>'.",
+        desc: "Escribe los caracteres exactos: </div>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</div>") !== -1;
+        }
+    },
+    {
+        id: "L33-SPAN",
+        title: "Piso 33: Elemento Span",
+        info: "<b>span</b> es similar a div pero para texto inline (en línea).<br><br>Ejemplo:<br><code>&lt;p&gt;Este es &lt;span&gt;resaltado&lt;/span&gt; texto.&lt;/p&gt;</code>",
+        hint: "Escribe '<', luego 'span', luego '>'.",
+        desc: "Escribe los caracteres exactos: <span>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<span>") !== -1;
+        }
+    },
+    {
+        id: "L34-CLOSE-SPAN",
+        title: "Piso 34: Cerrar SPAN",
+        info: "Cierra la etiqueta span con: <code>&lt;/span&gt;</code>",
+        hint: "Escribe '<', luego '/', luego 'span', luego '>'.",
+        desc: "Escribe los caracteres exactos: </span>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</span>") !== -1;
+        }
+    },
+    {
+        id: "L35-VIDEO",
+        title: "Piso 35: Video",
+        info: "<b>video</b> incrustra contenido de video en tu página.<br><br>Ejemplo:<br><code>&lt;video src=\"video.mp4\"&gt;&lt;/video&gt;</code>",
+        hint: "Escribe '<', luego 'video', luego '>'.",
+        desc: "Escribe los caracteres exactos: <video>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<video>") !== -1;
+        }
+    },
+    // --- PHASE 4: FORMS (Floors 36-42) ---
+    {
+        id: "L36-CLOSE-VIDEO",
+        title: "Piso 36: Cerrar VIDEO",
+        info: "Cierra la etiqueta video con: <code>&lt;/video&gt;</code>",
+        hint: "Escribe '<', luego '/', luego 'video', luego '>'.",
+        desc: "Escribe los caracteres exactos: </video>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</video>") !== -1;
+        }
+    },
+    {
+        id: "L37-FORM",
+        title: "Piso 37: Formulario",
+        info: "<b>form</b> crea un formulario para entrada del usuario.<br><br>Ejemplo:<br><code>&lt;form&gt;&lt;input type=\"text\"&gt;&lt;/form&gt;</code>",
+        hint: "Escribe '<', luego 'form', luego '>'.",
+        desc: "Escribe los caracteres exactos: <form>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<form>") !== -1;
+        }
+    },
+    {
+        id: "L38-CLOSE-FORM",
+        title: "Piso 38: Cerrar FORM",
+        info: "Cierra la etiqueta form con: <code>&lt;/form&gt;</code>",
+        hint: "Escribe '<', luego '/', luego 'form', luego '>'.",
+        desc: "Escribe los caracteres exactos: </form>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</form>") !== -1;
+        }
+    },
+    {
+        id: "L39-INPUT",
+        title: "Piso 39: Campo de Entrada",
+        info: "<b>input</b> crea un campo donde el usuario puede escribir.<br><br>Nota: input es autocierre.<br><br>Ejemplo:<br><code>&lt;input type=\"text\"&gt;</code>",
+        hint: 'Escribe: <input type="text">',
+        desc: 'Escribe: <input type="text">',
+        check: function(input) {
+            var lower = input.toLowerCase();
+            return lower.indexOf("<input") !== -1 && lower.indexOf("type") !== -1;
+        }
+    },
+    {
+        id: "L40-LABEL",
+        title: "Piso 40: Etiqueta",
+        info: "<b>label</b> describe lo que un campo de entrada es para.<br><br>Ejemplo:<br><code>&lt;label&gt;Nombre: &lt;input type=\"text\"&gt;&lt;/label&gt;</code>",
+        hint: "Escribe '<', luego 'label', luego '>'.",
+        desc: "Escribe los caracteres exactos: <label>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<label>") !== -1;
+        }
+    },
+    {
+        id: "L41-CLOSE-LABEL",
+        title: "Piso 41: Cerrar LABEL",
+        info: "Cierra la etiqueta label con: <code>&lt;/label&gt;</code>",
+        hint: "Escribe '<', luego '/', luego 'label', luego '>'.",
+        desc: "Escribe los caracteres exactos: </label>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</label>") !== -1;
+        }
+    },
+    {
+        id: "L42-BUTTON",
+        title: "Piso 42: Botón",
+        info: "<b>button</b> crea un botón interactivo.<br><br>Ejemplo:<br><code>&lt;button&gt;Haz clic en mí&lt;/button&gt;</code>",
+        hint: "Escribe '<', luego 'button', luego '>'.",
+        desc: "Escribe los caracteres exactos: <button>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<button>") !== -1;
+        }
+    },
+    // --- PHASE 5: ADVANCED ELEMENTS (Floors 43-48) ---
+    {
+        id: "L43-TABLE",
+        title: "Piso 43: Tabla",
+        info: "<b>table</b> crea una tabla para mostrar datos en filas y columnas.<br><br>Ejemplo:<br><code>&lt;table&gt;&lt;tr&gt;&lt;td&gt;Dato&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</code>",
+        hint: "Escribe '<', luego 'table', luego '>'.",
+        desc: "Escribe los caracteres exactos: <table>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<table>") !== -1;
+        }
+    },
+    {
+        id: "L44-TR",
+        title: "Piso 44: Fila de Tabla",
+        info: "Dentro de una tabla, <b>tr</b> crea una fila.<br><br>tr significa 'table row' (fila de tabla).<br><br>Ejemplo:<br><code>&lt;tr&gt;&lt;td&gt;Nombre&lt;/td&gt;&lt;td&gt;Edad&lt;/td&gt;&lt;/tr&gt;</code>",
+        hint: "Escribe '<', luego 'tr', luego '>'.",
+        desc: "Escribe los caracteres exactos: <tr>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<tr>") !== -1;
+        }
+    },
+    {
+        id: "L45-TD",
+        title: "Piso 45: Celda de Tabla",
+        info: "Dentro de una fila, <b>td</b> crea una celda.<br><br>td significa 'table data' (datos de tabla).<br><br>Ejemplo:<br><code>&lt;td&gt;Juan&lt;/td&gt;</code>",
+        hint: "Escribe '<', luego 'td', luego '>'.",
+        desc: "Escribe los caracteres exactos: <td>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<td>") !== -1;
+        }
+    },
+    {
+        id: "L46-CLOSE-TABLE",
+        title: "Piso 46: Cerrar TABLE",
+        info: "Cierra la etiqueta table con: <code>&lt;/table&gt;</code>",
+        hint: "Escribe '<', luego '/', luego 'table', luego '>'.",
+        desc: "Escribe los caracteres exactos: </table>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("</table>") !== -1;
+        }
+    },
+    {
+        id: "L47-COMMENT",
+        title: "Piso 47: Comentarios HTML",
+        info: "Los comentarios son notas en tu código que el navegador <b>no muestra</b>.<br><br>Usa comentarios para explicar tu código:<br><code>&lt;!-- Este es un comentario --&gt;</code><br><br>Comienzan con <code>&lt;!--</code> y terminan con <code>--&gt;</code>",
+        hint: "Escribe: <!-- Este es un comentario -->",
+        desc: "Escribe: <!-- Este es un comentario -->",
+        check: function(input) {
+            return input.indexOf("<!--") !== -1 && input.indexOf("-->") !== -1;
+        }
+    },
+    {
+        id: "L48-CLASS",
+        title: "Piso 48: Atributo Class",
+        info: "El atributo <b>class</b> se usa para estilo con CSS.<br><br>Puedes dar nombres a elementos (clases) para aplicar estilos más tarde:<br><code>&lt;p class=\"destacado\"&gt;¡Importante!&lt;/p&gt;</code>",
+        hint: 'Usa: <p class="destacado">',
+        desc: 'Escribe: <p class="destacado">',
+        check: function(input) {
+            var lower = input.toLowerCase();
+            return lower.indexOf("<p") !== -1 && lower.indexOf("class") !== -1;
+        }
+    },
+    {
+        id: "L49-ID",
+        title: "Piso 49: Atributo ID",
+        info: "El atributo <b>id</b> da a un elemento un nombre único.<br><br>Los IDs deben usarse solo una vez por página:<br><code>&lt;h1 id=\"titulo-principal\"&gt;Bienvenido&lt;/h1&gt;</code>",
+        hint: 'Usa: <h1 id="titulo-principal">',
+        desc: 'Escribe: <h1 id="titulo-principal">',
+        check: function(input) {
+            var lower = input.toLowerCase();
+            return lower.indexOf("<h1") !== -1 && lower.indexOf("id") !== -1;
+        }
+    },
+    // --- PHASE 6: FINAL CHALLENGE (Floors 50-51) ---
+    {
+        id: "L50-DOCTYPE",
+        title: "Piso 50: Declaración DOCTYPE",
+        info: "<b>DOCTYPE</b> dice al navegador qué versión de HTML estás usando.<br><br>Para HTML5 moderno, siempre comienza tu archivo con:<br><code>&lt;!DOCTYPE html&gt;</code><br><br>Esto va <b>antes</b> de la etiqueta &lt;html&gt;.",
+        hint: "Escribe: <!DOCTYPE html>",
+        desc: "Escribe: <!DOCTYPE html>",
+        check: function(input) {
+            return input.indexOf("<!DOCTYPE html>") !== -1 || input.indexOf("<!DOCTYPE HTML>") !== -1;
+        }
+    },
+    {
+        id: "L51-META-CHARSET",
+        title: "Piso 51: Meta Charset",
+        info: "Dentro de head, agrega una etiqueta meta para codificación de caracteres:<br><code>&lt;meta charset=\"UTF-8\"&gt;</code><br><br>Esto asegura que los caracteres especiales se muestren correctamente.<br><br>Escribe la etiqueta meta completa de charset:",
+        hint: 'Usa: <meta charset="UTF-8">',
+        desc: 'Escribe: <meta charset="UTF-8">',
+        check: function(input) {
+            var lower = input.toLowerCase();
+            return lower.indexOf("<meta") !== -1 && lower.indexOf("charset") !== -1;
+        }
+    },
+    {
+        id: "L52-COMPLETE",
+        title: "Piso 52: JEFE FINAL - Página Web Completa",
+        info: "¡Ahora construye tu primera página web completa!<br><br>Debe tener:<br>• DOCTYPE<br>• Etiquetas &lt;html&gt;<br>• &lt;head&gt; con título y meta charset<br>• &lt;body&gt; con al menos un encabezado y un párrafo<br><br>Escribe o pega una página HTML válida completa.",
+        hint: "Comienza con: &lt;!DOCTYPE html&gt;",
+        desc: "Construye una página completa (DOCTYPE, html, head, body, title, heading, paragraph)",
+        check: function(input) {
+            var lower = input.toLowerCase();
+            return (lower.indexOf("<!doctype") !== -1 || lower.indexOf("<!DOCTYPE") !== -1) &&
+                   lower.indexOf("<html") !== -1 &&
+                   lower.indexOf("<head") !== -1 &&
+                   lower.indexOf("<body") !== -1 &&
+                   lower.indexOf("</body>") !== -1 &&
+                   lower.indexOf("</html>") !== -1;
+        }
+    }
+];
+
+var currentLevel = 0;
+
+// --- MENU TOGGLE FUNCTION ---
+function toggleThemeMenu() {
+    var menu = document.getElementById("theme-menu");
+    if (menu.style.display === "block") {
+        menu.style.display = "none";
+    } else {
+        menu.style.display = "block";
+    }
+}
+
+// --- PRESET SELECTION FUNCTION ---
+function setPreset(bgHex, textHex) {
+    document.getElementById("bg-color-in").value = bgHex;
+    document.getElementById("text-color-in").value = textHex;
+    applyColors();
+}
+
+// --- COLOR CUSTOMIZER FUNCTION ---
+function applyColors() {
+    var bgVal = document.getElementById("bg-color-in").value;
+    var textVal = document.getElementById("text-color-in").value;
+    
+    document.body.style.backgroundColor = bgVal;
+    document.body.style.color = textVal;
+    
+    var btnEls = document.getElementsByTagName("button");
+    for (var j = 0; j < btnEls.length; j++) {
+        btnEls[j].style.backgroundColor = textVal;
+        btnEls[j].style.color = bgVal;
+        btnEls[j].style.borderColor = textVal;
+    }
+
+    var ghLink = document.getElementById("gh-link");
+    if (ghLink) {
+        ghLink.style.backgroundColor = textVal;
+        ghLink.style.color = bgVal;
+    }
+
+    var playerEls = document.getElementsByClassName ? document.getElementsByClassName("player") : [];
+    for (var i = 0; i < playerEls.length; i++) {
+        playerEls[i].style.backgroundColor = textVal;
+        playerEls[i].style.color = bgVal;
+    }
+}
+
+// --- ENGINE LOGIC ---
+function renderGame() {
+    var statusDiv = document.getElementById("status");
+    statusDiv.innerHTML = levels[currentLevel].title;
+
+    var infoDiv = document.getElementById("info-text");
+    infoDiv.innerHTML = levels[currentLevel].info + 
+                        "<br><br><b>PISTA:</b> " + levels[currentLevel].hint;
+
+    var taskP = document.getElementById("task-text");
+    taskP.innerHTML = "TAREA: " + levels[currentLevel].desc;
+
+    // RENDER ONLY PREVIOUS, CURRENT, AND NEXT FLOOR
+    var towerDiv = document.getElementById("tower-view");
+    var html = "";
+    
+    var minIdx = Math.max(0, currentLevel - 1);
+    var maxIdx = Math.min(levels.length - 1, currentLevel + 1);
+
+    for (var i = maxIdx; i >= minIdx; i--) {
+        var marker = (i === currentLevel) ? " [@]" : " [ ]";
+        var activeClass = (i === currentLevel) ? " player" : "";
+        var labelText = (i === 0) ? "Piso 0 (Instrucciones)" : "Piso " + i + " (" + levels[i].id + ")";
+        html += '<div class="step' + activeClass + '">' + labelText + marker + '</div>';
+    }
+    towerDiv.innerHTML = html;
+    
+    applyColors();
+}
+
+function checkCode() {
+    var code = document.getElementById("user-code").value;
+    var msgBox = document.getElementById("msg-box");
+    
+    if (levels[currentLevel].check(code)) {
+        if (currentLevel < levels.length - 1) {
+            msgBox.style.color = document.body.style.color;
+            msgBox.innerHTML = "¡ÉXITO! Código para siguiente piso: " + levels[currentLevel+1].id;
+            currentLevel++;
+            document.getElementById("user-code").value = "";
+            renderGame();
+        } else {
+            msgBox.style.color = document.body.style.color;
+            msgBox.innerHTML = "🏆 ¡TORRE ESCALADA! ¡Has dominado HTML! 🏆";
+            renderGame();
+        }
+    } else {
+        msgBox.style.color = "#ff3333";
+        msgBox.innerHTML = "INCORRECTO. ¡Revisa tu entrada e intenta de nuevo!";
+    }
+}
+
+function jumpLevel() {
+    var pass = document.getElementById("level-pass").value.toUpperCase();
+    var found = -1;
+    for (var i = 0; i < levels.length; i++) {
+        if (levels[i].id === pass) {
+            found = i;
+            break;
+        }
+    }
+    var msgBox = document.getElementById("msg-box");
+    if (found !== -1) {
+        currentLevel = found;
+        msgBox.style.color = document.body.style.color;
+        msgBox.innerHTML = "Saltó al Piso " + currentLevel + ".";
+        document.getElementById("level-pass").value = "";
+        renderGame();
+    } else {
+        msgBox.style.color = "#ff3333";
+        msgBox.innerHTML = "¡Código de Piso Inválido!";
+    }
+}
+
+// Initial Run
+renderGame();
+</script>
+
+</body>
+</html>
