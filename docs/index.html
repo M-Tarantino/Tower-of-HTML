@@ -2,6 +2,7 @@
 <html>
 <head>
 <title>Tower of HTML</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 body {
     background-color: #000000;
@@ -12,51 +13,68 @@ body {
 }
 .container {
     width: 100%;
-    max-width: 450px;
+    max-width: 480px;
     margin: 0 auto;
 }
 h1 {
-    font-size: 18px;
+    font-size: 20px;
     text-align: center;
+    margin: 5px 0 15px 0;
+}
+.theme-panel {
+    border: 1px solid currentColor;
+    padding: 6px;
+    margin-bottom: 12px;
+    font-size: 11px;
+}
+.theme-panel label {
+    margin-right: 10px;
+}
+.theme-panel input[type="text"] {
+    width: 65px;
+    background-color: transparent;
+    color: inherit;
+    border: 1px solid currentColor;
+    font-family: monospace;
+    font-size: 11px;
+    padding: 2px 4px;
 }
 .tower {
-    border: 1px solid #00ff00;
-    padding: 10px;
+    border: 1px solid currentColor;
+    padding: 8px;
     margin-bottom: 10px;
     height: 120px;
-    position: relative;
     overflow-y: auto;
 }
 .step {
-    border-bottom: 1px dashed #005500;
-    padding: 2px;
+    border-bottom: 1px dashed currentColor;
+    padding: 3px;
     font-size: 12px;
 }
 .player {
     font-weight: bold;
-    color: #ffffff;
-    background-color: #00aa00;
+    color: #000000;
+    background-color: #00ff00;
 }
 .info-box {
-    border: 1px solid #005500;
-    background-color: #051105;
-    padding: 8px;
+    border: 1px solid currentColor;
+    padding: 10px;
     font-size: 12px;
     margin-bottom: 10px;
     line-height: 1.4;
 }
 textarea, input[type="text"] {
     width: 100%;
-    background-color: #111111;
-    color: #00ff00;
-    border: 1px solid #00ff00;
+    background-color: transparent;
+    color: inherit;
+    border: 1px solid currentColor;
     font-family: monospace;
     box-sizing: border-box;
-    padding: 5px;
-    margin-bottom: 5px;
+    padding: 6px;
+    margin-bottom: 6px;
 }
 button {
-    background-color: #00ff00;
+    background-color: currentColor;
     color: #000000;
     border: none;
     font-family: monospace;
@@ -65,9 +83,13 @@ button {
     padding: 8px;
     cursor: pointer;
 }
+.btn-text {
+    color: #000000;
+}
 .msg {
-    margin-top: 5px;
+    margin-top: 8px;
     font-size: 12px;
+    font-weight: bold;
 }
 </style>
 </head>
@@ -76,40 +98,49 @@ button {
 <div class="container">
     <h1>TOWER OF HTML</h1>
     
+    <!-- THEME / COLOR CUSTOMIZER PANEL -->
+    <div class="theme-panel">
+        <span style="font-weight:bold;">COLORS:</span>
+        <label>BG: <input type="text" id="bg-color-in" value="#000000" onchange="applyColors()"></label>
+        <label>TEXT: <input type="text" id="text-color-in" value="#00ff00" onchange="applyColors()"></label>
+        <button style="width:auto; padding:2px 6px; display:inline;" onclick="applyColors()">SET</button>
+    </div>
+
     <div id="status" style="font-size:14px; font-weight:bold; margin-bottom:5px;"></div>
     
     <div class="tower" id="tower-view">
         <!-- Rendered via JS -->
     </div>
 
-    <!-- ERKLÄRUNGSBEREICH -->
+    <!-- BEGINNER EXPLANATION BOX -->
     <div class="info-box" id="info-text">
         <!-- Text rendered via JS -->
     </div>
 
     <div id="task-box">
         <p id="task-text" style="font-size:12px; font-weight:bold; margin: 0 0 5px 0;"></p>
-        <textarea id="user-code" rows="3"></textarea>
-        <button onclick="checkCode()">CHECK CODE</button>
+        <textarea id="user-code" rows="3" placeholder="Type your HTML code here..."></textarea>
+        <button onclick="checkCode()"><span class="btn-text">CHECK CODE</span></button>
     </div>
 
-    <div style="margin-top: 15px; border-top: 1px solid #005500; padding-top: 5px;">
-        <p style="font-size:10px; margin:0 0 3px 0;">ENTER LEVEL CODE:</p>
+    <div style="margin-top: 15px; border-top: 1px solid currentColor; padding-top: 8px;">
+        <p style="font-size:10px; margin:0 0 3px 0;">ENTER LEVEL CODE TO JUMP:</p>
         <input type="text" id="level-pass" placeholder="e.g. L1-START">
-        <button onclick="jumpLevel()">JUMP TO FLOOR</button>
+        <button onclick="jumpLevel()"><span class="btn-text">JUMP TO FLOOR</span></button>
     </div>
 
     <div class="msg" id="msg-box"></div>
 </div>
 
 <script>
-// --- LOGIC ENGINE ---
+// --- LEVEL DATA (FLOORS 1 - 5) ---
 var levels = [
     {
         id: "L1-START",
-        title: "Floor 1: The Foundation",
-        info: "HTML tags structure content. The <html> tag is the root element of an HTML document. All other elements must be contained inside this tag.",
-        desc: "Type the root opening tag: <html>",
+        title: "Floor 1: The Root Element",
+        info: "Code is just written text that tells a computer what to do.<br><br>HTML builds websites using <b>Tags</b>. A tag is a word placed inside two special bracket symbols:<br>• <b>&lt;</b> (less-than symbol)<br>• <b>&gt;</b> (greater-than symbol)<br><br>The very first tag of every webpage is <b>html</b>. Combined with the brackets, it looks like <code>&lt;html&gt;</code>.",
+        hint: "Look at your keyboard near the Shift key or Spacebar for the '<' and '>' keys.",
+        desc: "Type exact characters: <html>",
         check: function(input) {
             return input.toLowerCase().indexOf("<html>") !== -1;
         }
@@ -117,22 +148,71 @@ var levels = [
     {
         id: "L2-HEAD",
         title: "Floor 2: The Head Section",
-        info: "The <head> element contains metadata about the document, such as character set definitions, document title, and external resources. It is placed between <html> and <body>.",
-        desc: "Add the opening head tag: <head>",
+        info: "Webpages have two main areas: a hidden setup area and a visible area.<br><br>The hidden setup area is called the <b>head</b>. It holds information about the webpage (like settings or search information) that visitors do not directly see on the screen.<br><br>Just like Floor 1, you write this tag by wrapping the word <b>head</b> inside brackets: <code>&lt;head&gt;</code>.",
+        hint: "Type the opening angle bracket '<', then 'head', then the closing bracket '>'.",
+        desc: "Type exact characters: <head>",
         check: function(input) {
             return input.toLowerCase().indexOf("<head>") !== -1;
+        }
+    },
+    {
+        id: "L3-TITLE",
+        title: "Floor 3: The Page Title",
+        info: "Inside the head area, you can set the name of your webpage.<br><br>This name appears on the tab at the top of your web browser. The tag for this is <b>title</b>.<br><br>To write a title tag, enclose the word <b>title</b> inside brackets: <code>&lt;title&gt;</code>.",
+        hint: "Combine '<', 'title', and '>'.",
+        desc: "Type exact characters: <title>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<title>") !== -1;
+        }
+    },
+    {
+        id: "L4-BODY",
+        title: "Floor 4: The Body Section",
+        info: "Now we move to the visible part of the website!<br><br>Everything you see on a screen—text, buttons, images, videos—must go inside the <b>body</b> area.<br><br>The tag for the visible body area is <code>&lt;body&gt;</code>.",
+        hint: "Type '<', followed by 'body', followed by '>'.",
+        desc: "Type exact characters: <body>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<body>") !== -1;
+        }
+    },
+    {
+        id: "L5-PARA",
+        title: "Floor 5: Paragraphs",
+        info: "Inside the body, you can write regular text paragraphs.<br><br>HTML uses the single letter <b>p</b> (short for 'paragraph') to group text together into sentences and blocks.<br><br>The tag for a paragraph is <code>&lt;p&gt;</code>.",
+        hint: "Type '<', then 'p', then '>'.",
+        desc: "Type exact characters: <p>",
+        check: function(input) {
+            return input.toLowerCase().indexOf("<p>") !== -1;
         }
     }
 ];
 
 var currentLevel = 0;
 
+// --- COLOR CUSTOMIZER FUNCTION ---
+function applyColors() {
+    var bgVal = document.getElementById("bg-color-in").value;
+    var textVal = document.getElementById("text-color-in").value;
+    
+    document.body.style.backgroundColor = bgVal;
+    document.body.style.color = textVal;
+    
+    // Update player tag color for visibility contrast
+    var playerEls = document.getElementsByClassName("player");
+    for (var i = 0; i < playerEls.length; i++) {
+        playerEls[i].style.backgroundColor = textVal;
+        playerEls[i].style.color = bgVal;
+    }
+}
+
+// --- ENGINE LOGIC ---
 function renderGame() {
     var statusDiv = document.getElementById("status");
     statusDiv.innerHTML = levels[currentLevel].title;
 
     var infoDiv = document.getElementById("info-text");
-    infoDiv.innerHTML = levels[currentLevel].info;
+    infoDiv.innerHTML = levels[currentLevel].info + 
+                        "<br><br><b>KEYBOARD HINT:</b> " + levels[currentLevel].hint;
 
     var taskP = document.getElementById("task-text");
     taskP.innerHTML = "TASK: " + levels[currentLevel].desc;
@@ -145,6 +225,8 @@ function renderGame() {
         html += '<div class="step' + activeClass + '">Floor ' + (i+1) + ' (' + levels[i].id + ')' + marker + '</div>';
     }
     towerDiv.innerHTML = html;
+    
+    applyColors();
 }
 
 function checkCode() {
@@ -152,19 +234,20 @@ function checkCode() {
     var msgBox = document.getElementById("msg-box");
     
     if (levels[currentLevel].check(code)) {
-        msgBox.style.color = "#00ff00";
         if (currentLevel < levels.length - 1) {
-            msgBox.innerHTML = "Correct! Code for next floor: " + levels[currentLevel+1].id;
+            msgBox.style.color = document.body.style.color;
+            msgBox.innerHTML = "SUCCESS! Code for next floor: " + levels[currentLevel+1].id;
             currentLevel++;
             document.getElementById("user-code").value = "";
             renderGame();
         } else {
-            msgBox.innerHTML = "TOWER CLIMBED! Congratulations!";
+            msgBox.style.color = document.body.style.color;
+            msgBox.innerHTML = "TOWER CLIMBED! You completed all 5 floors!";
             renderGame();
         }
     } else {
-        msgBox.style.color = "#ff0000";
-        msgBox.innerHTML = "Incorrect. Try again!";
+        msgBox.style.color = "#ff3333";
+        msgBox.innerHTML = "INCORRECT. Check brackets '<' and '>' and try again!";
     }
 }
 
@@ -180,16 +263,17 @@ function jumpLevel() {
     var msgBox = document.getElementById("msg-box");
     if (found !== -1) {
         currentLevel = found;
-        msgBox.style.color = "#00ff00";
+        msgBox.style.color = document.body.style.color;
         msgBox.innerHTML = "Jumped to Floor " + (currentLevel+1) + ".";
         document.getElementById("level-pass").value = "";
         renderGame();
     } else {
-        msgBox.style.color = "#ff0000";
+        msgBox.style.color = "#ff3333";
         msgBox.innerHTML = "Invalid Level Code!";
     }
 }
 
+// Initial Run
 renderGame();
 </script>
 
