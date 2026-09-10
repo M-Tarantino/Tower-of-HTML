@@ -12,7 +12,7 @@ body {
 }
 .container {
     width: 100%;
-    max-width: 400px;
+    max-width: 450px;
     margin: 0 auto;
 }
 h1 {
@@ -23,8 +23,9 @@ h1 {
     border: 1px solid #00ff00;
     padding: 10px;
     margin-bottom: 10px;
-    height: 150px;
+    height: 120px;
     position: relative;
+    overflow-y: auto;
 }
 .step {
     border-bottom: 1px dashed #005500;
@@ -35,6 +36,14 @@ h1 {
     font-weight: bold;
     color: #ffffff;
     background-color: #00aa00;
+}
+.info-box {
+    border: 1px solid #005500;
+    background-color: #051105;
+    padding: 8px;
+    font-size: 12px;
+    margin-bottom: 10px;
+    line-height: 1.4;
 }
 textarea, input[type="text"] {
     width: 100%;
@@ -67,14 +76,19 @@ button {
 <div class="container">
     <h1>TOWER OF HTML</h1>
     
-    <div id="status" style="font-size:12px; margin-bottom:5px;"></div>
+    <div id="status" style="font-size:14px; font-weight:bold; margin-bottom:5px;"></div>
     
     <div class="tower" id="tower-view">
         <!-- Rendered via JS -->
     </div>
 
+    <!-- ERKLÄRUNGSBEREICH -->
+    <div class="info-box" id="info-text">
+        <!-- Text rendered via JS -->
+    </div>
+
     <div id="task-box">
-        <p id="task-text" style="font-size:12px; margin: 0 0 5px 0;"></p>
+        <p id="task-text" style="font-size:12px; font-weight:bold; margin: 0 0 5px 0;"></p>
         <textarea id="user-code" rows="3"></textarea>
         <button onclick="checkCode()">CHECK CODE</button>
     </div>
@@ -94,7 +108,8 @@ var levels = [
     {
         id: "L1-START",
         title: "Floor 1: The Foundation",
-        desc: "Every HTML document requires the root tag. Type: <html>",
+        info: "HTML tags structure content. The <html> tag is the root element of an HTML document. All other elements must be contained inside this tag.",
+        desc: "Type the root opening tag: <html>",
         check: function(input) {
             return input.toLowerCase().indexOf("<html>") !== -1;
         }
@@ -102,7 +117,8 @@ var levels = [
     {
         id: "L2-HEAD",
         title: "Floor 2: The Head Section",
-        desc: "Add the head section tag: <head>",
+        info: "The <head> element contains metadata about the document, such as character set definitions, document title, and external resources. It is placed between <html> and <body>.",
+        desc: "Add the opening head tag: <head>",
         check: function(input) {
             return input.toLowerCase().indexOf("<head>") !== -1;
         }
@@ -115,8 +131,11 @@ function renderGame() {
     var statusDiv = document.getElementById("status");
     statusDiv.innerHTML = levels[currentLevel].title;
 
+    var infoDiv = document.getElementById("info-text");
+    infoDiv.innerHTML = levels[currentLevel].info;
+
     var taskP = document.getElementById("task-text");
-    taskP.innerHTML = levels[currentLevel].desc;
+    taskP.innerHTML = "TASK: " + levels[currentLevel].desc;
 
     var towerDiv = document.getElementById("tower-view");
     var html = "";
@@ -176,4 +195,3 @@ renderGame();
 
 </body>
 </html>
-
