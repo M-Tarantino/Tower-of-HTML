@@ -1,3 +1,5 @@
+> **Disclaimer:** All translations in this project are generated using Artificial Intelligence (AI). While AI models provide high-quality language processing, errors or inaccuracies cannot be fully ruled out.
+
 # Tower of HTML – Full Language Progress (1M+ Speakers)
 
 ## 🌍 Top Global Languages
@@ -48,7 +50,7 @@
 | Bhojpuri | भोजपुरी (Bhojpuri) | India (भारत), Nepal (नेपाल) | [ ] |
 | Kannada | ಕನ್ನಡ (Kannada) | India (भारत) | [ ] |
 | Malayalam | മലയാളം (Malayāḷam) | India (भारत) | [ ] |
-| Odia (Oriya) | ଓଡ଼ିଆ (Oḍiā) | India (भारत) | [ ] |
+| Odia (Oriya) | ଓଡ଼ိଆ (Oḍiā) | India (भारत) | [ ] |
 | Maithili | मैथिली (Maithili) | India (भारत), Nepal (नेपाल) | [ ] |
 | Sindhi | سنڌي / सिंधी (Sindhi) | Pakistan (پاکستان), India (भारत) | [ ] |
 | Pashto | پښتو (Pax̌tō) | Afghanistan (افغانستان), Pakistan (پاکستان) | [ ] |
