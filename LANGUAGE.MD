@@ -13,22 +13,22 @@
 | Hindi | हिन्दी (Hindī) | [x] |
 | Spanish | Español | [x] |
 | Arabic (Modern Standard) | العربية الفصحى (Al-ʿArabiyyah) | [x] |
-| French | Français | [x] |
-| Bengali | বাংলা (Bāṅlā) | [x] |
-| Portuguese | Português | [x] |
-| Russian | Русский (Russkiy) | [x] |
-| Urdu | اردو (Urdū) | [x] |
-| Indonesian | Bahasa Indonesia | [x] |
-| Swahili | Kiswahili | [x] |
-| Hausa | Harshen Hausa | [x] |
-| Yoruba | Èdè Yorùbá | [x] |
-| Zulu | isiZulu | [x] |
-| Twi | Twi (Akan) | [x] |
-| Japanese | 日本語 (Nihongo) | [x] |
-| Punjabi | ਪੰਜਾਬੀ / پنجابی (Punjabi) | [x] |
-| Vietnamese | Tiếng Việt | [x] |
-| Turkish | Türkçe | [x] |
-| Korean | 한국어 (Hangugeo) | [x] |
+| French | Français | [o] |
+| Bengali | বাংলা (Bāṅlā) | [o] |
+| Portuguese | Português | [o] |
+| Russian | Русский (Russkiy) | [o] |
+| Urdu | اردو (Urdū) | [o] |
+| Indonesian | Bahasa Indonesia | [o] |
+| Swahili | Kiswahili | [o] |
+| Hausa | Harshen Hausa | [o] |
+| Yoruba | Èdè Yorùbá | [o] |
+| Zulu | isiZulu | [o] |
+| Twi | Twi (Akan) | [o] |
+| Japanese | 日本語 (Nihongo) | [o] |
+| Punjabi | ਪੰਜਾਬੀ / پنجابی (Punjabi) | [o] |
+| Vietnamese | Tiếng Việt | [o] |
+| Turkish | Türkçe | [o] |
+| Korean | 한국어 (Hangugeo) | [o] |
 
 ---
 
