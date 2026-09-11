@@ -1,0 +1,1681 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Tower of HTML - Complete Learning Guide</title>
+<style type="text/css">
+
+body {
+    background-color: #ffffff;
+    color: #111111;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    line-height: 1.5;
+    margin: 20px;
+    padding: 0;
+}
+.container {
+    width: 700px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 20px;
+}
+/* Fallback display rules for HTML5 semantic elements in older browsers */
+article, section, main, aside, header, footer, nav, figure, figcaption {
+    display: block;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: #003366;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+h1 { font-size: 20pt; border-bottom: 2px solid #003366; padding-bottom: 5px; }
+h2 { font-size: 15pt; border-bottom: 1px solid #cccccc; padding-bottom: 3px; }
+h3 { font-size: 12pt; }
+p, li {
+    font-size: 10pt;
+    margin-bottom: 8px;
+}
+a {
+    color: #0000cc;
+    text-decoration: underline;
+}
+code {
+    font-family: "Courier New", Courier, monospace;
+    background-color: #eeeeee;
+    padding: 2px 4px;
+    font-size: 10pt;
+    color: #990000;
+}
+pre {
+    background-color: #f5f5f5;
+    border: 1px solid #cccccc;
+    padding: 10px;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 10pt;
+}
+pre code {
+    background-color: transparent;
+    padding: 0;
+    color: #000000;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 15px;
+}
+th, td {
+    border: 1px solid #cccccc;
+    padding: 6px 10px;
+    text-align: left;
+    font-size: 10pt;
+}
+th {
+    background-color: #003366;
+    color: #ffffff;
+}
+hr {
+    border: 0;
+    height: 1px;
+    background: #cccccc;
+    margin: 20px 0;
+}
+blockquote {
+    border-left: 4px solid #003366;
+    margin: 10px 0;
+    padding-left: 15px;
+    color: #555555;
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Tower of HTML - Complete Learning Guide</h1>
+<h2>Overview</h2>
+<p>This document serves as the <strong>canonical reference</strong> for the Tower of HTML educational game. It contains:</p>
+<ol>
+<li><strong>All 52 Levels</strong> with their learning objectives</li>
+<li><strong>Deep explanations</strong> of HTML concepts</li>
+<li><strong>Real-world use cases</strong></li>
+<li><strong>Best practices</strong> for writing HTML</li>
+<li><strong>Technical background</strong> for educators</li>
+<li><strong>Translation guidelines</strong> for other languages</li>
+</ol>
+<hr />
+<h2>Table of Contents</h2>
+<ul>
+<li><a href="#phase-0-introduction">Phase 0: Introduction</a></li>
+<li><a href="#phase-1-foundation-levels-1-9">Phase 1: Foundation (Levels 1-9)</a></li>
+<li><a href="#phase-2-text-content-levels-10-20">Phase 2: Text Content (Levels 10-20)</a></li>
+<li><a href="#phase-3-semantic-html-levels-21-30">Phase 3: Semantic HTML (Levels 21-30)</a></li>
+<li><a href="#phase-4-links--media-levels-31-40">Phase 4: Links &amp; Media (Levels 31-40)</a></li>
+<li><a href="#phase-5-advanced-elements-levels-41-48">Phase 5: Advanced Elements (Levels 41-48)</a></li>
+<li><a href="#phase-6-final-challenge-levels-49-51">Phase 6: Final Challenge (Levels 49-51)</a></li>
+<li><a href="#key-concepts-reference">Key Concepts Reference</a></li>
+</ul>
+<hr />
+<h2>Phase 0: Introduction</h2>
+<h3><strong>Floor 0: Overview &amp; Instructions</strong></h3>
+<p><strong>Learning Objective:</strong> Introduce learners to the Tower of HTML and explain the game mechanics.</p>
+<p><strong>What You're Learning:</strong>
+- How the game works
+- What HTML is and why it matters
+- The structure of the tower progression</p>
+<p><strong>Deep Explanation:</strong></p>
+<p>HTML (HyperText Markup Language) is the foundation of every website on the internet. It's the language that browsers read to understand what content to display and how to structure it.</p>
+<p>Think of HTML as the <strong>blueprint</strong> of a building:
+- The blueprint tells builders where walls go, where doors go, where windows go
+- HTML tells browsers where text goes, where images go, what are headings and paragraphs, etc.</p>
+<p><strong>Why Learn HTML?</strong>
+1. <strong>Foundation Skill</strong> - Every web developer starts with HTML
+2. <strong>Accessible</strong> - No special software needed, works everywhere
+3. <strong>Powers the Web</strong> - Every single website you visit uses HTML
+4. <strong>Gateway to Web Dev</strong> - Once you know HTML, you can learn CSS (styling) and JavaScript (interactivity)</p>
+<p><strong>Real-World Context:</strong>
+- A website without HTML is like a book without pages
+- HTML is used by websites, apps, emails, and even ebooks
+- It's a skill that will remain valuable for decades</p>
+<p><strong>Best Practice:</strong>
+- Semantic HTML (using correct tags for the right content) matters more than you might think
+- Clean HTML makes styling and functionality easier later
+- Accessibility starts with proper HTML structure</p>
+<p><strong>Player Entry Mechanism:</strong>
+- Players must type "START" to enter the tower
+- This teaches case-insensitivity and basic instruction following</p>
+<hr />
+<h2>Phase 1: Foundation (Levels 1-9)</h2>
+<h3><strong>Floor 1: The Root Element</strong></h3>
+<p><strong>Learning Objective:</strong> Understand that every HTML document needs an <code>&lt;html&gt;</code> tag as its root container.</p>
+<p><strong>Concept: HTML Tag Structure</strong></p>
+<p>An HTML <strong>tag</strong> is how you give instructions to the browser. Tags have this format:</p>
+<pre><code class="language-html">&lt;tagname&gt;content&lt;/tagname&gt;
+</code></pre>
+<p>The <code>&lt;</code> and <code>&gt;</code> are <strong>bracket symbols</strong> that mark the beginning and end of a tag instruction. The text between them is the tag's <strong>name</strong>.</p>
+<p><strong>The <code>&lt;html&gt;</code> Tag - The Root Element</strong></p>
+<p>Every single HTML document must start with <code>&lt;html&gt;</code> (and end with <code>&lt;/html&gt;</code>). This tag is called the <strong>root element</strong> because:
+- It contains everything else
+- It's the starting point (root) of the HTML structure
+- All other tags must go inside it</p>
+<p>Think of it like a book:
+- The book <code>&lt;html&gt;</code> contains all chapters (head and body)
+- Everything else is inside the book</p>
+<p><strong>Why This Matters:</strong>
+- Browsers specifically look for <code>&lt;html&gt;</code> to know "this is an HTML document"
+- Without it, the browser might misinterpret the content
+- It's the contract between you (the developer) and the browser</p>
+<p><strong>Scope in Page:</strong></p>
+<pre><code class="language-html">&lt;html&gt;
+  &lt;!-- Everything else goes here --&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>Common Mistakes:</strong>
+- Forgetting to close the tag with <code>&lt;/html&gt;</code>
+- Putting things outside the <code>&lt;html&gt;</code> tag (except DOCTYPE - more on that later)
+- Misspelling as <code>&lt;HTML&gt;</code> (browsers are forgiving but it's not best practice)</p>
+<p><strong>Real-World Use:</strong>
+- Every HTML file you download has this structure
+- Open any website's source code (Ctrl+U or right-click → View Page Source) and you'll see it starts with <code>&lt;html&gt;</code></p>
+<hr />
+<h3><strong>Floor 2: Close HTML</strong></h3>
+<p><strong>Learning Objective:</strong> Understand closing tags and proper tag structure.</p>
+<p><strong>Concept: Opening and Closing Tags</strong></p>
+<p>HTML uses <strong>pairs of tags</strong>:
+- <strong>Opening tag:</strong> <code>&lt;html&gt;</code> - starts the element
+- <strong>Content:</strong> Everything between the tags
+- <strong>Closing tag:</strong> <code>&lt;/html&gt;</code> - ends the element</p>
+<p>The closing tag is identical to the opening tag but has a <code>/</code> (forward slash) after the <code>&lt;</code>.</p>
+<p><strong>Why Closing Tags Matter:</strong></p>
+<p>HTML is hierarchical and nested. The closing tag tells the browser "this element is done now."</p>
+<p><strong>Nesting Principle:</strong></p>
+<pre><code class="language-html">&lt;html&gt;
+  &lt;head&gt;
+    &lt;!-- content --&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;!-- content --&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>If you open a tag, you must close it. Think of it like parentheses in math:
+- (2 + 3) must have both opening and closing parenthesis
+- Similarly, <code>&lt;html&gt;</code> and <code>&lt;/html&gt;</code> must both exist</p>
+<p><strong>Self-Closing Tags (Advanced Note):</strong></p>
+<p>Some HTML tags don't need a closing tag because they don't have content:</p>
+<pre><code class="language-html">&lt;img src=&quot;photo.jpg&quot;&gt;  &lt;!-- image tag - can't have content --&gt;
+&lt;br&gt;                    &lt;!-- line break - can't have content --&gt;
+</code></pre>
+<p>But these are exceptions. Most tags (like <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, <code>&lt;p&gt;</code>, etc.) require closing tags.</p>
+<p><strong>Common Mistakes:</strong>
+- Forgetting the closing tag
+- Putting closing tags in wrong order: <code>&lt;html&gt;&lt;head&gt;&lt;/html&gt;&lt;/head&gt;</code> ❌ (correct: <code>&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;/html&gt;</code> ✓)
+- Using wrong slash direction: <code>&lt;html&gt;</code> vs <code>\html</code> (backslash doesn't work)</p>
+<hr />
+<h3><strong>Floor 3: Head Section</strong></h3>
+<p><strong>Learning Objective:</strong> Learn that HTML documents have two main parts: head and body.</p>
+<p><strong>Concept: Document Structure - Head Section</strong></p>
+<p>An HTML document is divided into two main sections:</p>
+<ol>
+<li><strong><code>&lt;head&gt;</code></strong> - The invisible control center</li>
+<li>Contains settings, metadata, links to styles</li>
+<li>
+<p>Nothing here displays on the page directly</p>
+</li>
+<li>
+<p><strong><code>&lt;body&gt;</code></strong> - The visible content</p>
+</li>
+<li>Contains text, images, videos</li>
+<li>Everything users see</li>
+</ol>
+<p><strong>What is Metadata?</strong></p>
+<p>Metadata means "data about data" - information that describes your document:</p>
+<table>
+<thead>
+<tr>
+<th>Metadata</th>
+<th>Example</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Title</td>
+<td><code>&lt;title&gt;My Website&lt;/title&gt;</code></td>
+<td>Shows in browser tab, search results</td>
+</tr>
+<tr>
+<td>Charset</td>
+<td><code>&lt;meta charset="UTF-8"&gt;</code></td>
+<td>Tells browser which characters to support</td>
+</tr>
+<tr>
+<td>Description</td>
+<td><code>&lt;meta name="description" content="..."&gt;</code></td>
+<td>Used by search engines</td>
+</tr>
+<tr>
+<td>Author</td>
+<td><code>&lt;meta name="author" content="John"&gt;</code></td>
+<td>Who created the page</td>
+</tr>
+<tr>
+<td>Viewport</td>
+<td><code>&lt;meta name="viewport"&gt;</code></td>
+<td>How to display on mobile devices</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Structure:</strong></p>
+<pre><code class="language-html">&lt;html&gt;
+  &lt;head&gt;
+    &lt;!-- All metadata goes here --&gt;
+    &lt;!-- Users never see this section --&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;!-- All visible content goes here --&gt;
+    &lt;!-- Users see everything here --&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>Why This Matters:</strong></p>
+<p>The head section is what makes websites:
+- Appear correctly in search engines (SEO)
+- Look right on phones
+- Display the correct title in the browser tab
+- Handle different languages and character sets</p>
+<p><strong>Real-World Example:</strong></p>
+<p>When you share a link on Facebook or Twitter, where does it get the preview image and description? From the <code>&lt;head&gt;</code> metadata!</p>
+<p><strong>Browser Behavior:</strong></p>
+<ul>
+<li>Browsers process the <code>&lt;head&gt;</code> before rendering anything</li>
+<li>If <code>&lt;head&gt;</code> has an error, the page might not display correctly</li>
+<li>Style sheets in <code>&lt;head&gt;</code> affect how the <code>&lt;body&gt;</code> looks</li>
+</ul>
+<hr />
+<h3><strong>Floor 4: Title Tag</strong></h3>
+<p><strong>Learning Objective:</strong> Understand the <code>&lt;title&gt;</code> tag and its importance.</p>
+<p><strong>Concept: The <code>&lt;title&gt;</code> Tag</strong></p>
+<p>The <code>&lt;title&gt;</code> tag does exactly one thing: <strong>Sets the name of the webpage</strong>.</p>
+<p><strong>Where Does It Show?</strong></p>
+<pre><code>Browser Tab: [My Awesome Website ✕]
+                ↑
+            Title goes here
+</code></pre>
+<p>Also appears in:
+- Browser history
+- Bookmarks
+- Search engine results (as the clickable headline)</p>
+<p><strong>Structure:</strong></p>
+<pre><code class="language-html">&lt;head&gt;
+  &lt;title&gt;My Awesome Website&lt;/title&gt;
+&lt;/head&gt;
+</code></pre>
+<p><strong>Best Practices:</strong></p>
+<ol>
+<li><strong>Be Specific:</strong></li>
+<li>❌ Bad: <code>&lt;title&gt;Home&lt;/title&gt;</code></li>
+<li>
+<p>✓ Good: <code>&lt;title&gt;Welcome to John's Photography Portfolio&lt;/title&gt;</code></p>
+</li>
+<li>
+<p><strong>Keep It Short:</strong></p>
+</li>
+<li>Search engines cut off titles around 50-60 characters</li>
+<li>
+<p>Mobile browsers show even less</p>
+</li>
+<li>
+<p><strong>Front-Load Keywords:</strong></p>
+</li>
+<li>✓ <code>&lt;title&gt;Best Pizza in New York | Tony's Pizzeria&lt;/title&gt;</code></li>
+<li>
+<p>❌ <code>&lt;title&gt;About Us | Tony's Pizzeria | New York Pizza&lt;/title&gt;</code></p>
+</li>
+<li>
+<p><strong>Unique Per Page:</strong></p>
+</li>
+<li>Each page should have its own title</li>
+<li>Home page, about page, contact page - all different</li>
+</ol>
+<p><strong>Real-World Impact:</strong></p>
+<p>Your title tag directly affects:
+- <strong>SEO (Search Engine Optimization)</strong> - How high your site ranks
+- <strong>Click-through Rate</strong> - People decide to click based on the title
+- <strong>User Experience</strong> - Users can find their tabs if they're named well</p>
+<p><strong>Common Mistakes:</strong>
+- Empty title tags
+- Using same title for every page
+- Making it too long (gets cut off)
+- Not using keywords relevant to page content</p>
+<hr />
+<h3><strong>Floor 5: Close Head</strong></h3>
+<p><strong>Learning Objective:</strong> Understand the head section is complete, everything else goes in body.</p>
+<p><strong>Review: Head Closure</strong></p>
+<p>Just like <code>&lt;/html&gt;</code> closes the root element, <code>&lt;/head&gt;</code> closes the head section.</p>
+<p><strong>Structure So Far:</strong></p>
+<pre><code class="language-html">&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;My Page&lt;/title&gt;
+    &lt;!-- Other metadata could go here --&gt;
+  &lt;/head&gt;
+  &lt;!-- Body will go next --&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>Important Principle:</strong></p>
+<p>Once you close <code>&lt;/head&gt;</code>, the browser knows:
+- "I'm done with invisible settings"
+- "Now get ready to display visible content"
+- "Everything after this is what users see"</p>
+<p><strong>Nesting Validation:</strong></p>
+<pre><code class="language-html">&lt;html&gt;           ← opens
+  &lt;head&gt;         ← opens
+    &lt;title&gt;...&lt;/title&gt;
+  &lt;/head&gt;        ← closes head (still inside html)
+&lt;/html&gt;          ← closes html (everything inside is part of it)
+</code></pre>
+<p>Notice the proper nesting: Close tags in reverse order of opening them.</p>
+<hr />
+<h3><strong>Floor 6: Body Section</strong></h3>
+<p><strong>Learning Objective:</strong> Understand the <code>&lt;body&gt;</code> tag contains all visible content.</p>
+<p><strong>Concept: The <code>&lt;body&gt;</code> Tag</strong></p>
+<p>If <code>&lt;head&gt;</code> is the <strong>control center</strong>, <code>&lt;body&gt;</code> is the <strong>actual content</strong> people come to see.</p>
+<p><strong>What Goes In Body:</strong>
+- Headings (titles, subtitles)
+- Paragraphs (text content)
+- Images
+- Videos
+- Links
+- Buttons
+- Forms
+- Lists
+- Tables
+- Any visible content</p>
+<p><strong>What Stays In Head:</strong>
+- Title
+- Metadata
+- Links to stylesheets
+- Scripts
+- Any invisible configuration</p>
+<p><strong>Structure:</strong></p>
+<pre><code class="language-html">&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Welcome&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;!-- Everything users see goes here --&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>Browser Rendering:</strong></p>
+<ol>
+<li>Browser reads <code>&lt;head&gt;</code> → Loads styles, sets title, prepares</li>
+<li>Browser reads <code>&lt;body&gt;</code> → Renders and displays content</li>
+<li>User sees a complete webpage</li>
+</ol>
+<p><strong>Scope and Nesting:</strong></p>
+<pre><code class="language-html">&lt;body&gt;
+  &lt;h1&gt;Main Heading&lt;/h1&gt;
+  &lt;p&gt;Paragraph text&lt;/p&gt;
+  &lt;img src=&quot;photo.jpg&quot;&gt;
+  &lt;!-- All visible content nested here --&gt;
+&lt;/body&gt;
+</code></pre>
+<p>Everything users see is directly inside <code>&lt;body&gt;</code> or nested inside elements that are inside <code>&lt;body&gt;</code>.</p>
+<p><strong>Size Matters:</strong></p>
+<ul>
+<li><code>&lt;body&gt;</code> is usually the largest section of your HTML</li>
+<li>A simple page might have 50 lines in body vs 10 in head</li>
+<li>A complex page could have thousands of lines in body</li>
+</ul>
+<hr />
+<h3><strong>Floor 7: Heading Element</strong></h3>
+<p><strong>Learning Objective:</strong> Learn to create headings and understand heading hierarchy.</p>
+<p><strong>Concept: The <code>&lt;h1&gt;</code> Tag - Main Heading</strong></p>
+<p><code>&lt;h1&gt;</code> creates the <strong>most important heading</strong> on a page. Think of it as the title of a document or main topic.</p>
+<p><strong>Heading Hierarchy in HTML:</strong></p>
+<pre><code class="language-html">&lt;h1&gt;Main Topic&lt;/h1&gt;          ← Largest, most important
+&lt;h2&gt;Subtopic&lt;/h2&gt;            ← Smaller, less important
+&lt;h3&gt;Sub-subtopic&lt;/h3&gt;        ← Even smaller
+&lt;h4&gt;Detail&lt;/h4&gt;
+&lt;h5&gt;Minor Detail&lt;/h5&gt;
+&lt;h6&gt;Tiny Detail&lt;/h6&gt;         ← Smallest, least important
+</code></pre>
+<p><strong>Visual Representation:</strong></p>
+<pre><code>&lt;h1&gt;← Big and important
+  &lt;h2&gt;← Medium importance
+    &lt;h3&gt;← Smaller
+      &lt;h4&gt;← Even smaller
+</code></pre>
+<p><strong>Why Heading Hierarchy Matters:</strong></p>
+<ol>
+<li><strong>For Users:</strong></li>
+<li>Headings help people scan the page quickly</li>
+<li>
+<p>Users find what they want faster</p>
+</li>
+<li>
+<p><strong>For Accessibility:</strong></p>
+</li>
+<li>Screen readers use headings to help blind users understand page structure</li>
+<li>
+<p>Without proper headings, websites are harder to use</p>
+</li>
+<li>
+<p><strong>For Search Engines:</strong></p>
+</li>
+<li>Google uses <code>&lt;h1&gt;</code> and <code>&lt;h2&gt;</code> to understand page topic</li>
+<li>
+<p>This affects SEO ranking</p>
+</li>
+<li>
+<p><strong>For Styling:</strong></p>
+</li>
+<li>Each heading level can be styled differently with CSS</li>
+<li><code>&lt;h1&gt;</code> usually larger, bold</li>
+<li><code>&lt;h2&gt;</code> slightly smaller</li>
+<li>etc.</li>
+</ol>
+<p><strong>Best Practices:</strong></p>
+<pre><code class="language-html">&lt;!-- ✓ Correct hierarchy --&gt;
+&lt;h1&gt;My Blog&lt;/h1&gt;
+  &lt;h2&gt;First Article&lt;/h2&gt;
+  &lt;h2&gt;Second Article&lt;/h2&gt;
+    &lt;h3&gt;Sub-point of second article&lt;/h3&gt;
+
+&lt;!-- ❌ Wrong - skipping levels --&gt;
+&lt;h1&gt;My Blog&lt;/h1&gt;
+&lt;h3&gt;Article&lt;/h3&gt;  &lt;!-- Should be &lt;h2&gt;, not &lt;h3&gt; --&gt;
+</code></pre>
+<p><strong>One H1 Per Page:</strong></p>
+<p>Best practice is to have only <strong>one <code>&lt;h1&gt;</code> per page</strong> (the main topic). You can have multiple <code>&lt;h2&gt;</code>, <code>&lt;h3&gt;</code>, etc., but only one <code>&lt;h1&gt;</code>.</p>
+<p><strong>Real-World Example:</strong></p>
+<p>Imagine a news website:</p>
+<pre><code class="language-html">&lt;h1&gt;Daily News&lt;/h1&gt;              &lt;!-- Main topic --&gt;
+  &lt;h2&gt;Politics&lt;/h2&gt;              &lt;!-- Section --&gt;
+    &lt;h3&gt;Election Results&lt;/h3&gt;
+    &lt;h3&gt;New Laws&lt;/h3&gt;
+  &lt;h2&gt;Sports&lt;/h2&gt;                &lt;!-- Another section --&gt;
+    &lt;h3&gt;Football&lt;/h3&gt;
+    &lt;h3&gt;Basketball&lt;/h3&gt;
+</code></pre>
+<hr />
+<h3><strong>Floor 8: Paragraph</strong></h3>
+<p><strong>Learning Objective:</strong> Learn to create text content using paragraphs.</p>
+<p><strong>Concept: The <code>&lt;p&gt;</code> Tag - Paragraph</strong></p>
+<p><code>&lt;p&gt;</code> is how you write normal text content. Any text you want to display to users should usually go inside a <code>&lt;p&gt;</code> tag.</p>
+<p><strong>Structure:</strong></p>
+<pre><code class="language-html">&lt;body&gt;
+  &lt;h1&gt;My Article&lt;/h1&gt;
+  &lt;p&gt;This is the first paragraph of text.&lt;/p&gt;
+  &lt;p&gt;This is the second paragraph of text.&lt;/p&gt;
+&lt;/body&gt;
+</code></pre>
+<p><strong>What <code>&lt;p&gt;</code> Does:</strong></p>
+<ol>
+<li><strong>Groups text together</strong> - Multiple sentences form one concept</li>
+<li><strong>Adds spacing</strong> - Browsers automatically add space before and after</li>
+<li><strong>Makes it semantic</strong> - Tells browsers "this is a paragraph, not a heading"</li>
+</ol>
+<p><strong>Display in Browser:</strong></p>
+<pre><code>My Article
+This is the first paragraph of text.
+
+This is the second paragraph of text.
+</code></pre>
+<p>Notice the automatic spacing between paragraphs.</p>
+<p><strong>Why Not Just Type Text?</strong></p>
+<p>You might think:</p>
+<pre><code class="language-html">&lt;body&gt;
+Today is a nice day.
+Tomorrow will be sunny.
+&lt;/body&gt;
+</code></pre>
+<p>But this is <strong>bad</strong> because:
+- Browsers treat it as "random text" with no structure
+- Screen readers don't know it's meant to be read
+- Styling is harder to apply
+- It's not semantically correct</p>
+<p><strong>Correct Approach:</strong></p>
+<pre><code class="language-html">&lt;body&gt;
+  &lt;p&gt;Today is a nice day.&lt;/p&gt;
+  &lt;p&gt;Tomorrow will be sunny.&lt;/p&gt;
+&lt;/body&gt;
+</code></pre>
+<p><strong>Common Mistakes:</strong></p>
+<ol>
+<li><strong>Nested paragraphs</strong> (not allowed):
+   ```html
+ <br />
+<p>Text<p>More text</p></p></li>
+</ol>
+<p>❌ Don't do this
+   ```</p>
+<ol>
+<li><strong>Using paragraphs for spacing:</strong>
+   ```html
+ <br />
+<p>Some content</p></li>
+</ol>
+<p></p>
+<p>❌ Empty paragraphs for spacing
+ <br />
+<p></p></p>
+<p>More content</p>
+<p>```
+   Use CSS margins instead.</p>
+<ol>
+<li><strong>Breaking sentences into multiple paragraphs:</strong>
+   ```html
+ <br />
+<p>This is the first sentence.</p></li>
+</ol>
+<p>This is the second sentence.</p>
+<p>❌ Should be one paragraph
+   ```</p>
+<p><strong>Real-World Example:</strong></p>
+<p>A blog post:</p>
+<pre><code class="language-html">&lt;h1&gt;How to Learn HTML&lt;/h1&gt;
+&lt;p&gt;Learning HTML is the first step to web development. It's the foundation of everything on the web.&lt;/p&gt;
+&lt;p&gt;HTML stands for HyperText Markup Language. It was created in 1989 by Tim Berners-Lee at CERN.&lt;/p&gt;
+&lt;h2&gt;Getting Started&lt;/h2&gt;
+&lt;p&gt;To get started, you need a text editor and a web browser. No special software required!&lt;/p&gt;
+</code></pre>
+<hr />
+<h3><strong>Floor 9: Close Body</strong></h3>
+<p><strong>Learning Objective:</strong> Complete the basic HTML structure.</p>
+<p><strong>Review: Closing Body</strong></p>
+<p><code>&lt;/body&gt;</code> closes the body section. After this, only <code>&lt;/html&gt;</code> remains.</p>
+<p><strong>Complete Basic Structure:</strong></p>
+<pre><code class="language-html">&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;My First Page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Welcome!&lt;/h1&gt;
+    &lt;p&gt;This is my first webpage.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>What You've Built:</strong></p>
+<p>Congratulations! At this point, you understand:
+- ✓ <code>&lt;html&gt;</code> - The root container
+- ✓ <code>&lt;head&gt;</code> - Invisible metadata
+- ✓ <code>&lt;title&gt;</code> - Webpage name
+- ✓ <code>&lt;body&gt;</code> - Visible content
+- ✓ <code>&lt;h1&gt;</code> - Main heading
+- ✓ <code>&lt;p&gt;</code> - Paragraph text
+- ✓ Closing tags
+- ✓ Nesting structure</p>
+<p>This is the <strong>fundamental structure</strong> that every single website uses.</p>
+<p><strong>Validation Check:</strong></p>
+<pre><code class="language-html">&lt;html&gt;           ← opened
+  &lt;head&gt;         ← opened
+    ...
+  &lt;/head&gt;        ← closed
+  &lt;body&gt;         ← opened
+    ...
+  &lt;/body&gt;        ← closed
+&lt;/html&gt;          ← closed
+</code></pre>
+<p>All tags properly opened and closed in correct order. ✓</p>
+<hr />
+<h2>Phase 2: Text Content (Levels 10-20)</h2>
+<h3><strong>Floor 10: Strong Text</strong></h3>
+<p><strong>Learning Objective:</strong> Learn to emphasize important text.</p>
+<p><strong>Concept: The <code>&lt;strong&gt;</code> Tag</strong></p>
+<p><code>&lt;strong&gt;</code> makes text <strong>important</strong> or <strong>heavily emphasized</strong>.</p>
+<p><strong>Display:</strong></p>
+<pre><code class="language-html">&lt;p&gt;This is &lt;strong&gt;very important&lt;/strong&gt; information.&lt;/p&gt;
+</code></pre>
+<p>Browser displays as: This is <strong>very important</strong> information.</p>
+<p><strong>Why Not Just Use Bold in Word?</strong></p>
+<p>In Microsoft Word, you can press Ctrl+B to make text bold. But HTML is different:
+- HTML describes <strong>meaning</strong>, not just appearance
+- <code>&lt;strong&gt;</code> means "this is important" (meaning)
+- Bold is just how browsers show importance (appearance)</p>
+<p>This distinction matters for:
+- <strong>Screen readers</strong> - They emphasize <code>&lt;strong&gt;</code> differently
+- <strong>Search engines</strong> - They recognize <code>&lt;strong&gt;</code> text as important
+- <strong>Styling</strong> - Different devices might show importance differently</p>
+<p><strong>Real-World Use:</strong></p>
+<pre><code class="language-html">&lt;p&gt;This product is &lt;strong&gt;out of stock&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Warning:&lt;/strong&gt; This medication has side effects.&lt;/p&gt;
+&lt;p&gt;Please read the &lt;strong&gt;terms and conditions&lt;/strong&gt; before purchasing.&lt;/p&gt;
+</code></pre>
+<p><strong>Semantic HTML Principle:</strong></p>
+<p>HTML tags should describe <strong>what content means</strong>, not how it looks.
+- ✓ <code>&lt;strong&gt;</code> = "This is important"
+- ❌ <code>&lt;b&gt;</code> = "This is bold" (describes appearance, not meaning)</p>
+<p>(Note: <code>&lt;b&gt;</code> exists for stylistic bolding, but <code>&lt;strong&gt;</code> is better for meaning.)</p>
+<hr />
+<h3><strong>Floor 11: Emphasis (Italic)</strong></h3>
+<p><strong>Learning Objective:</strong> Learn to emphasize text with italics.</p>
+<p><strong>Concept: The <code>&lt;em&gt;</code> Tag</strong></p>
+<p><code>&lt;em&gt;</code> provides <strong>emphasis</strong> - typically shown as italic text.</p>
+<p><strong>Display:</strong></p>
+<pre><code class="language-html">&lt;p&gt;This is &lt;em&gt;emphasized&lt;/em&gt; text.&lt;/p&gt;
+</code></pre>
+<p>Browser displays as: This is <em>emphasized</em> text.</p>
+<p><strong>Strong vs. Emphasis:</strong></p>
+<pre><code class="language-html">&lt;strong&gt;This is important/serious&lt;/strong&gt;
+&lt;em&gt;This deserves attention/pause&lt;/em&gt;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th><code>&lt;strong&gt;</code></th>
+<th><code>&lt;em&gt;</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Important</strong></td>
+<td><em>Emphasized</em></td>
+</tr>
+<tr>
+<td>Critical information</td>
+<td>Deserves a pause</td>
+</tr>
+<tr>
+<td>Warning, urgency</td>
+<td>Tone change</td>
+</tr>
+<tr>
+<td>"This matters"</td>
+<td>"Notice this"</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Examples:</strong></p>
+<pre><code class="language-html">&lt;p&gt;This deadline is &lt;strong&gt;critical&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;I &lt;em&gt;really&lt;/em&gt; love this color.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Warning:&lt;/strong&gt; Do &lt;em&gt;not&lt;/em&gt; ignore this.&lt;/p&gt;
+</code></pre>
+<p><strong>Screen Reader Behavior:</strong></p>
+<p>Screen readers will:
+- Raise voice or change tone for <code>&lt;strong&gt;</code>
+- Pause or change inflection for <code>&lt;em&gt;</code></p>
+<p>This helps users with visual impairments understand the nuance.</p>
+<hr />
+<h3><strong>Floor 12: Line Break</strong></h3>
+<p><strong>Learning Objective:</strong> Understand when to use <code>&lt;br&gt;</code> and when not to.</p>
+<p><strong>Concept: The <code>&lt;br&gt;</code> Tag - Line Break</strong></p>
+<p><code>&lt;br&gt;</code> creates a <strong>line break</strong> (forces text to a new line).</p>
+<p><strong>Usage:</strong></p>
+<pre><code class="language-html">&lt;p&gt;
+  123 Main Street&lt;br&gt;
+  New York, NY 10001&lt;br&gt;
+  USA
+&lt;/p&gt;
+</code></pre>
+<p>Displays as:</p>
+<pre><code>123 Main Street
+New York, NY 10001
+USA
+</code></pre>
+<p><strong>Special Property: Self-Closing Tag</strong></p>
+<p><code>&lt;br&gt;</code> is one of the few HTML tags that doesn't have a closing tag. You just use <code>&lt;br&gt;</code> (or <code>&lt;br/&gt;</code> with a slash, both work).</p>
+<p><strong>When to Use <code>&lt;br&gt;</code>:</strong></p>
+<ol>
+<li><strong>Addresses:</strong> Line-by-line format matters</li>
+<li><strong>Poetry:</strong> Each line is intentional</li>
+<li><strong>Lyrics:</strong> Line breaks are part of the content</li>
+<li><strong>Form fields:</strong> After input labels sometimes</li>
+</ol>
+<pre><code class="language-html">&lt;p&gt;
+  &lt;strong&gt;Shipping Address:&lt;/strong&gt;&lt;br&gt;
+  John Smith&lt;br&gt;
+  456 Oak Avenue&lt;br&gt;
+  Los Angeles, CA 90001
+&lt;/p&gt;
+</code></pre>
+<p><strong>When NOT to Use <code>&lt;br&gt;</code>:</strong></p>
+<p>❌ WRONG - Using <code>&lt;br&gt;</code> for spacing:</p>
+<pre><code class="language-html">&lt;p&gt;First paragraph&lt;/p&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;p&gt;Second paragraph&lt;/p&gt;
+</code></pre>
+<p>✓ CORRECT - Use CSS for spacing:</p>
+<pre><code class="language-html">&lt;p&gt;First paragraph&lt;/p&gt;
+&lt;p&gt;Second paragraph&lt;/p&gt;
+</code></pre>
+<p>Then use CSS: <code>p { margin: 20px 0; }</code></p>
+<p><strong>Why This Matters:</strong></p>
+<ul>
+<li><code>&lt;br&gt;</code> is a <strong>content element</strong> (the line break is part of the content)</li>
+<li>CSS spacing is for <strong>design</strong> (how the page looks)</li>
+<li>Mixing them makes code hard to maintain</li>
+</ul>
+<hr />
+<h3><strong>Floor 13: Horizontal Rule</strong></h3>
+<p><strong>Learning Objective:</strong> Learn to create visual separators.</p>
+<p><strong>Concept: The <code>&lt;hr&gt;</code> Tag</strong></p>
+<p><code>&lt;hr&gt;</code> creates a <strong>horizontal rule</strong> - a line that visually separates content.</p>
+<p><strong>Display:</strong></p>
+<pre><code class="language-html">&lt;h2&gt;Section 1&lt;/h2&gt;
+&lt;p&gt;Content here...&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h2&gt;Section 2&lt;/h2&gt;
+&lt;p&gt;More content...&lt;/p&gt;
+</code></pre>
+<p>Displays as:</p>
+<pre><code>Section 1
+Content here...
+_____________________________
+Section 2
+More content...
+</code></pre>
+<p><strong>Self-Closing Tag:</strong></p>
+<p>Like <code>&lt;br&gt;</code>, <code>&lt;hr&gt;</code> is self-closing. Use <code>&lt;hr&gt;</code> or <code>&lt;hr/&gt;</code>.</p>
+<p><strong>When to Use:</strong></p>
+<ul>
+<li>Separate major sections</li>
+<li>Visual break in content flow</li>
+<li>Between related but distinct topics</li>
+</ul>
+<p><strong>When NOT to Use:</strong></p>
+<p>❌ WRONG - Using <code>&lt;hr&gt;</code> for design:</p>
+<pre><code class="language-html">&lt;h2&gt;Navigation&lt;/h2&gt;
+&lt;hr&gt;
+&lt;a href=&quot;/&quot;&gt;Home&lt;/a&gt; | &lt;a href=&quot;/about&quot;&gt;About&lt;/a&gt;
+&lt;hr&gt;
+</code></pre>
+<p>Use CSS borders instead.</p>
+<p><strong>Semantic Note:</strong></p>
+<p><code>&lt;hr&gt;</code> represents a <strong>thematic break</strong> in content, not just a visual line. Use it when the topic or context changes significantly.</p>
+<hr />
+<h3><strong>Floor 14: Code Display</strong></h3>
+<p><strong>Learning Objective:</strong> Display code snippets in text.</p>
+<p><strong>Concept: The <code>&lt;code&gt;</code> Tag</strong></p>
+<p><code>&lt;code&gt;</code> displays text as <strong>computer code</strong> (usually in monospace font like Courier).</p>
+<p><strong>Usage:</strong></p>
+<pre><code class="language-html">&lt;p&gt;To print hello, use &lt;code&gt;console.log(&quot;hello&quot;);&lt;/code&gt;&lt;/p&gt;
+</code></pre>
+<p>Displays as: To print hello, use <code>console.log("hello");</code></p>
+<p><strong>When to Use:</strong></p>
+<ul>
+<li>Short code snippets inline (like above)</li>
+<li>Variable names: "Set the variable <code>count</code>"</li>
+<li>Function names: "Call the <code>getUserById()</code> function"</li>
+<li>HTML tags being discussed: "Use <code>&lt;div&gt;</code> for containers"</li>
+</ul>
+<p><strong>Multiple Lines - <code>&lt;pre&gt;</code> Tag:</strong></p>
+<p>For longer code blocks, use <code>&lt;pre&gt;</code> (preformatted) which preserves spaces and line breaks:</p>
+<pre><code class="language-html">&lt;pre&gt;&lt;code&gt;
+function helloWorld() {
+  console.log(&quot;Hello, World!&quot;);
+  return true;
+}
+&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
+<p>The <code>&lt;code&gt;</code> inside <code>&lt;pre&gt;</code> indicates it's code, and <code>&lt;pre&gt;</code> preserves formatting.</p>
+<p><strong>Visual Distinction:</strong></p>
+<ul>
+<li><code>&lt;code&gt;</code> - Inline code (within text)</li>
+<li><code>&lt;pre&gt;&lt;code&gt;</code> - Block of code (standalone)</li>
+</ul>
+<p><strong>Accessibility Consideration:</strong></p>
+<p>Always describe what the code does, not just show it:</p>
+<p>✓ GOOD:</p>
+<pre><code class="language-html">&lt;p&gt;Function to calculate sum: 
+&lt;code&gt;sum = a + b;&lt;/code&gt;&lt;/p&gt;
+</code></pre>
+<p>❌ POOR:</p>
+<pre><code class="language-html">&lt;p&gt;&lt;code&gt;sum = a + b;&lt;/code&gt;&lt;/p&gt;
+</code></pre>
+<hr />
+<h3><strong>Floor 15: Deleted and Inserted Text</strong></h3>
+<p><strong>Learning Objective:</strong> Show text changes with <code>&lt;del&gt;</code> and <code>&lt;ins&gt;</code>.</p>
+<p><strong>Concept: Tracking Changes</strong></p>
+<p><code>&lt;del&gt;</code> shows <strong>deleted</strong> text (struck through).
+<code>&lt;ins&gt;</code> shows <strong>inserted</strong> text (underlined).</p>
+<p><strong>Usage:</strong></p>
+<pre><code class="language-html">&lt;p&gt;The event is on &lt;del&gt;Friday&lt;/del&gt; &lt;ins&gt;Saturday&lt;/ins&gt; at 3pm.&lt;/p&gt;
+</code></pre>
+<p>Displays as: The event is on ~~Friday~~ <u>Saturday</u> at 3pm.</p>
+<p><strong>Real-World Use Cases:</strong></p>
+<ol>
+<li><strong>Version tracking:</strong></li>
+</ol>
+<pre><code class="language-html">&lt;p&gt;Price: &lt;del&gt;$99&lt;/del&gt; &lt;ins&gt;$79&lt;/ins&gt;&lt;/p&gt;
+</code></pre>
+<ol>
+<li><strong>Document changes:</strong></li>
+</ol>
+<pre><code class="language-html">&lt;p&gt;We will &lt;del&gt;accept&lt;/del&gt; &lt;ins&gt;no longer accept&lt;/ins&gt; payment by check.&lt;/p&gt;
+</code></pre>
+<ol>
+<li><strong>Edit history:</strong></li>
+</ol>
+<pre><code class="language-html">&lt;p&gt;Our headquarters is located in &lt;del&gt;New York&lt;/del&gt; &lt;ins&gt;San Francisco&lt;/ins&gt;.&lt;/p&gt;
+</code></pre>
+<p><strong>Advanced: The <code>datetime</code> Attribute</strong></p>
+<p>You can add when the change was made:</p>
+<pre><code class="language-html">&lt;p&gt;Event date: &lt;del datetime=&quot;2025-01-15&quot;&gt;Friday&lt;/del&gt; 
+&lt;ins datetime=&quot;2025-01-15&quot;&gt;Saturday&lt;/ins&gt;&lt;/p&gt;
+</code></pre>
+<p>The <code>datetime</code> helps track when changes happened (useful for blogs, wikis, documentation).</p>
+<hr />
+<h3><strong>Floor 16: Subscript and Superscript</strong></h3>
+<p><strong>Learning Objective:</strong> Format scientific and mathematical notation.</p>
+<p><strong>Concept: <code>&lt;sub&gt;</code> and <code>&lt;sup&gt;</code></strong></p>
+<ul>
+<li><code>&lt;sub&gt;</code> - <strong>Subscript</strong> (below baseline, smaller)</li>
+<li><code>&lt;sup&gt;</code> - <strong>Superscript</strong> (above baseline, smaller)</li>
+</ul>
+<p><strong>Usage:</strong></p>
+<pre><code class="language-html">&lt;p&gt;Water is H&lt;sub&gt;2&lt;/sub&gt;O&lt;/p&gt;
+&lt;p&gt;The area formula is A = πr&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;
+</code></pre>
+<p>Displays as:
+- Water is H₂O
+- The area formula is A = πr²</p>
+<p><strong>When to Use:</strong></p>
+<ol>
+<li><strong>Chemistry:</strong></li>
+</ol>
+<pre><code class="language-html">&lt;p&gt;Glucose: C&lt;sub&gt;6&lt;/sub&gt;H&lt;sub&gt;12&lt;/sub&gt;O&lt;sub&gt;6&lt;/sub&gt;&lt;/p&gt;
+&lt;p&gt;Sulfuric acid: H&lt;sub&gt;2&lt;/sub&gt;SO&lt;sub&gt;4&lt;/sub&gt;&lt;/p&gt;
+</code></pre>
+<ol>
+<li><strong>Mathematics:</strong></li>
+</ol>
+<pre><code class="language-html">&lt;p&gt;x&lt;sup&gt;2&lt;/sup&gt; + y&lt;sup&gt;2&lt;/sup&gt; = z&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;e = mc&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;
+</code></pre>
+<ol>
+<li><strong>Footnotes:</strong></li>
+</ol>
+<pre><code class="language-html">&lt;p&gt;According to Einstein&lt;sup&gt;*&lt;/sup&gt;, everything is relative.&lt;/p&gt;
+&lt;p&gt;&lt;sup&gt;*&lt;/sup&gt; &lt;em&gt;Theory of Relativity, 1915&lt;/em&gt;&lt;/p&gt;
+</code></pre>
+<p><strong>Important:</strong> These are semantic tags for <em>meaning</em>, not just visual styling. Use them when subscript/superscript is actually part of the content.</p>
+<hr />
+<h3><strong>Floor 17: Highlighting Important Text</strong></h3>
+<p><strong>Learning Objective:</strong> Mark text for emphasis or highlight.</p>
+<p><strong>Concept: The <code>&lt;mark&gt;</code> Tag</strong></p>
+<p><code>&lt;mark&gt;</code> highlights text (typically yellow background).</p>
+<p><strong>Usage:</strong></p>
+<pre><code class="language-html">&lt;p&gt;The most important point is &lt;mark&gt;this one&lt;/mark&gt; in my opinion.&lt;/p&gt;
+</code></pre>
+<p><strong>Real-World Use:</strong></p>
+<ol>
+<li><strong>Search results:</strong></li>
+</ol>
+<pre><code class="language-html">&lt;p&gt;HTML is a &lt;mark&gt;markup language&lt;/mark&gt; for creating web pages.&lt;/p&gt;
+</code></pre>
+<p>(The search term would be highlighted)</p>
+<ol>
+<li><strong>Study guides:</strong></li>
+</ol>
+<pre><code class="language-html">&lt;p&gt;The Roman Empire fell in &lt;mark&gt;476 AD&lt;/mark&gt;.&lt;/p&gt;
+</code></pre>
+<ol>
+<li><strong>Highlighting key info:</strong></li>
+</ol>
+<pre><code class="language-html">&lt;p&gt;Registration closes &lt;mark&gt;December 31, 2025&lt;/mark&gt;!&lt;/p&gt;
+</code></pre>
+<p><strong>Difference from <code>&lt;strong&gt;</code>:</strong></p>
+<table>
+<thead>
+<tr>
+<th><code>&lt;strong&gt;</code></th>
+<th><code>&lt;mark&gt;</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Important</td>
+<td>Highlighted for reference</td>
+</tr>
+<tr>
+<td>Semantic importance</td>
+<td>Visual highlighting</td>
+</tr>
+<tr>
+<td>Bold appearance</td>
+<td>Usually yellow highlight</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3><strong>Floor 18: Lists - Unordered</strong></h3>
+<p><strong>Learning Objective:</strong> Create bulleted lists.</p>
+<p><strong>Concept: The <code>&lt;ul&gt;</code> and <code>&lt;li&gt;</code> Tags</strong></p>
+<ul>
+<li><code>&lt;ul&gt;</code> = <strong>Unordered List</strong> (bulleted)</li>
+<li><code>&lt;li&gt;</code> = <strong>List Item</strong> (individual item)</li>
+</ul>
+<p><strong>Usage:</strong></p>
+<pre><code class="language-html">&lt;h2&gt;Shopping List&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Apples&lt;/li&gt;
+  &lt;li&gt;Bread&lt;/li&gt;
+  &lt;li&gt;Milk&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<p>Displays as:</p>
+<pre><code>Shopping List
+• Apples
+• Bread
+• Milk
+</code></pre>
+<p><strong>When to Use:</strong></p>
+<ul>
+<li>No particular order needed</li>
+<li>Just collecting related items</li>
+<li>Shopping lists, ingredients, features, benefits</li>
+</ul>
+<p><strong>Proper Nesting:</strong></p>
+<pre><code class="language-html">&lt;ul&gt;
+  &lt;li&gt;Item 1&lt;/li&gt;
+  &lt;li&gt;Item 2&lt;/li&gt;
+  &lt;li&gt;Item 3&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<p>Every <code>&lt;li&gt;</code> must be directly inside a <code>&lt;ul&gt;</code>.</p>
+<p><strong>Nested Lists:</strong></p>
+<pre><code class="language-html">&lt;ul&gt;
+  &lt;li&gt;Fruits
+    &lt;ul&gt;
+      &lt;li&gt;Apples&lt;/li&gt;
+      &lt;li&gt;Bananas&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Vegetables
+    &lt;ul&gt;
+      &lt;li&gt;Carrots&lt;/li&gt;
+      &lt;li&gt;Broccoli&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<hr />
+<h3><strong>Floor 19: Lists - Ordered</strong></h3>
+<p><strong>Learning Objective:</strong> Create numbered lists.</p>
+<p><strong>Concept: The <code>&lt;ol&gt;</code> Tag</strong></p>
+<p><code>&lt;ol&gt;</code> = <strong>Ordered List</strong> (numbered, order matters)</p>
+<p><strong>Usage:</strong></p>
+<pre><code class="language-html">&lt;h2&gt;Recipe Steps&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;Preheat oven to 350°F&lt;/li&gt;
+  &lt;li&gt;Mix flour and sugar&lt;/li&gt;
+  &lt;li&gt;Add eggs and milk&lt;/li&gt;
+  &lt;li&gt;Bake for 30 minutes&lt;/li&gt;
+&lt;/ol&gt;
+</code></pre>
+<p>Displays as:</p>
+<pre><code>Recipe Steps
+1. Preheat oven to 350°F
+2. Mix flour and sugar
+3. Add eggs and milk
+4. Bake for 30 minutes
+</code></pre>
+<p><strong>When to Use:</strong></p>
+<ul>
+<li>Steps in a process (order matters!)</li>
+<li>Rankings or priorities</li>
+<li>Instructions or tutorials</li>
+<li>Top 10 lists</li>
+</ul>
+<p><strong>Unordered vs Ordered:</strong></p>
+<pre><code class="language-html">&lt;!-- ✓ Ordered - steps must happen in sequence --&gt;
+&lt;ol&gt;
+  &lt;li&gt;Boot computer&lt;/li&gt;
+  &lt;li&gt;Open application&lt;/li&gt;
+  &lt;li&gt;Create file&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;!-- ✓ Unordered - no particular order --&gt;
+&lt;ul&gt;
+  &lt;li&gt;HTML knowledge required&lt;/li&gt;
+  &lt;li&gt;Text editor needed&lt;/li&gt;
+  &lt;li&gt;Web browser recommended&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<hr />
+<h3><strong>Floor 20: Abbreviations and Definitions</strong></h3>
+<p><strong>Learning Objective:</strong> Mark abbreviations and define terms.</p>
+<p><strong>Concept: The <code>&lt;abbr&gt;</code> Tag</strong></p>
+<p><code>&lt;abbr&gt;</code> marks <strong>abbreviations</strong> with the full meaning.</p>
+<p><strong>Usage:</strong></p>
+<pre><code class="language-html">&lt;p&gt;The &lt;abbr title=&quot;Hypertext Markup Language&quot;&gt;HTML&lt;/abbr&gt; 
+specification is maintained by the &lt;abbr title=&quot;World Wide Web Consortium&quot;&gt;W3C&lt;/abbr&gt;.&lt;/p&gt;
+</code></pre>
+<p>When users hover over "HTML" or "W3C", they see the full name.</p>
+<p><strong>Key Feature: The <code>title</code> Attribute</strong></p>
+<p>The <code>title</code> attribute holds the expanded version. On hover, it displays:
+- HTML → "Hypertext Markup Language"
+- W3C → "World Wide Web Consortium"</p>
+<p><strong>Real-World Examples:</strong></p>
+<pre><code class="language-html">&lt;p&gt;I work at &lt;abbr title=&quot;National Aeronautics and Space Administration&quot;&gt;NASA&lt;/abbr&gt;.&lt;/p&gt;
+
+&lt;p&gt;The &lt;abbr title=&quot;Application Programming Interface&quot;&gt;API&lt;/abbr&gt; allows third-party access.&lt;/p&gt;
+
+&lt;p&gt;Send feedback to &lt;abbr title=&quot;Customer Service&quot;&gt;CS&lt;/abbr&gt; team.&lt;/p&gt;
+</code></pre>
+<p><strong>Accessibility Benefit:</strong></p>
+<p>Screen readers announce the full term on first use, helping users understand what the abbreviation means.</p>
+<hr />
+<h2>Phase 3: Semantic HTML (Levels 21-30)</h2>
+<h3><strong>Floor 21: Header Element</strong></h3>
+<p><strong>Learning Objective:</strong> Learn semantic structure with header elements.</p>
+<p><strong>Concept: The <code>&lt;header&gt;</code> Tag</strong></p>
+<p><code>&lt;header&gt;</code> contains <strong>introductory content</strong> for a page or section (logo, title, navigation).</p>
+<p><strong>Usage:</strong></p>
+<pre><code class="language-html">&lt;header&gt;
+  &lt;h1&gt;My Blog&lt;/h1&gt;
+  &lt;p&gt;Welcome to my thoughts on web development&lt;/p&gt;
+&lt;/header&gt;
+</code></pre>
+<p><strong>Common Contents:</strong></p>
+<pre><code class="language-html">&lt;header&gt;
+  &lt;img src=&quot;logo.png&quot; alt=&quot;Company Logo&quot;&gt;
+  &lt;h1&gt;Company Name&lt;/h1&gt;
+  &lt;nav&gt;
+    &lt;a href=&quot;/&quot;&gt;Home&lt;/a&gt;
+    &lt;a href=&quot;/about&quot;&gt;About&lt;/a&gt;
+    &lt;a href=&quot;/contact&quot;&gt;Contact&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
+</code></pre>
+<p><strong>Page Header vs Section Header:</strong></p>
+<pre><code class="language-html">&lt;body&gt;
+  &lt;header&gt;
+    &lt;!-- Site-wide header --&gt;
+    &lt;h1&gt;My Website&lt;/h1&gt;
+  &lt;/header&gt;
+
+  &lt;main&gt;
+    &lt;article&gt;
+      &lt;header&gt;
+        &lt;!-- Article-specific header --&gt;
+        &lt;h2&gt;Article Title&lt;/h2&gt;
+        &lt;p&gt;By John Doe, January 15, 2025&lt;/p&gt;
+      &lt;/header&gt;
+      &lt;p&gt;Article content...&lt;/p&gt;
+    &lt;/article&gt;
+  &lt;/main&gt;
+&lt;/body&gt;
+</code></pre>
+<p><strong>Why Semantic?</strong></p>
+<ul>
+<li>Tells search engines "this is introductory content"</li>
+<li>Screen readers announce "header" separately</li>
+<li>Easier for developers to understand code structure</li>
+<li>Better CSS styling targeting</li>
+</ul>
+<hr />
+<h3><strong>Floor 22: Navigation Element</strong></h3>
+<p><strong>Learning Objective:</strong> Mark navigation menus properly.</p>
+<p><strong>Concept: The <code>&lt;nav&gt;</code> Tag</strong></p>
+<p><code>&lt;nav&gt;</code> contains <strong>navigation links</strong>.</p>
+<p><strong>Usage:</strong></p>
+<pre><code class="language-html">&lt;nav&gt;
+  &lt;a href=&quot;/&quot;&gt;Home&lt;/a&gt;
+  &lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt;
+  &lt;a href=&quot;/about&quot;&gt;About&lt;/a&gt;
+  &lt;a href=&quot;/contact&quot;&gt;Contact&lt;/a&gt;
+&lt;/nav&gt;
+</code></pre>
+<p><strong>Navigation Patterns:</strong></p>
+<ol>
+<li><strong>Main navigation:</strong></li>
+</ol>
+<pre><code class="language-html">&lt;header&gt;
+  &lt;h1&gt;Company&lt;/h1&gt;
+  &lt;nav&gt;
+    &lt;a href=&quot;/&quot;&gt;Home&lt;/a&gt;
+    &lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
+</code></pre>
+<ol>
+<li><strong>Footer navigation:</strong></li>
+</ol>
+<pre><code class="language-html">&lt;footer&gt;
+  &lt;nav&gt;
+    &lt;a href=&quot;/privacy&quot;&gt;Privacy Policy&lt;/a&gt;
+    &lt;a href=&quot;/terms&quot;&gt;Terms&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/footer&gt;
+</code></pre>
+<ol>
+<li><strong>Breadcrumb navigation:</strong></li>
+</ol>
+<pre><code class="language-html">&lt;nav&gt;
+  &lt;a href=&quot;/&quot;&gt;Home&lt;/a&gt; &gt; 
+  &lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt; &gt; 
+  &lt;a href=&quot;/products/widget&quot;&gt;Widget&lt;/a&gt;
+&lt;/nav&gt;
+</code></pre>
+<p><strong>Accessibility:</strong></p>
+<ul>
+<li>Screen readers announce "navigation" when encountering <code>&lt;nav&gt;</code></li>
+<li>Users can skip to navigation with keyboard shortcuts</li>
+<li>Better structure for assistive technologies</li>
+</ul>
+<hr />
+<h3><strong>Floor 23: Main Content</strong></h3>
+<p><strong>Learning Objective:</strong> Mark primary page content.</p>
+<p><strong>Concept: The <code>&lt;main&gt;</code> Tag</strong></p>
+<p><code>&lt;main&gt;</code> contains the <strong>primary content</strong> of the page.</p>
+<p><strong>Usage:</strong></p>
+<pre><code class="language-html">&lt;body&gt;
+  &lt;header&gt;Navigation stuff&lt;/header&gt;
+
+  &lt;main&gt;
+    &lt;!-- The main content goes here --&gt;
+    &lt;article&gt;Article content&lt;/article&gt;
+  &lt;/main&gt;
+
+  &lt;footer&gt;Footer stuff&lt;/footer&gt;
+&lt;/body&gt;
+</code></pre>
+<p><strong>Rules for <code>&lt;main&gt;</code>:</strong></p>
+<ol>
+<li>Only <strong>one <code>&lt;main&gt;</code> per page</strong></li>
+<li>Should not be nested inside <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;article&gt;</code>, or <code>&lt;aside&gt;</code></li>
+<li>Contains the primary content (not sidebars or auxiliary content)</li>
+</ol>
+<p><strong>Page Layout Example:</strong></p>
+<pre><code class="language-html">&lt;body&gt;
+  &lt;header&gt;
+    &lt;h1&gt;My News Site&lt;/h1&gt;
+    &lt;nav&gt;Links...&lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;main&gt;
+    &lt;article&gt;Breaking News: XYZ Happens&lt;/article&gt;
+    &lt;article&gt;Another Story&lt;/article&gt;
+  &lt;/main&gt;
+
+  &lt;aside&gt;
+    &lt;h2&gt;Trending Topics&lt;/h2&gt;
+    Related links...
+  &lt;/aside&gt;
+
+  &lt;footer&gt;
+    &lt;p&gt;Copyright 2025&lt;/p&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;
+</code></pre>
+<hr />
+<h3><strong>Floor 24: Article Element</strong></h3>
+<p><strong>Learning Objective:</strong> Wrap article/post content.</p>
+<p><strong>Concept: The <code>&lt;article&gt;</code> Tag</strong></p>
+<p><code>&lt;article&gt;</code> wraps <strong>self-contained content</strong> (blog post, news article, forum post).</p>
+<p><strong>Usage:</strong></p>
+<pre><code class="language-html">&lt;article&gt;
+  &lt;h2&gt;How to Learn HTML&lt;/h2&gt;
+  &lt;p&gt;By Jane Doe, September 10, 2025&lt;/p&gt;
+  &lt;p&gt;HTML is the foundation of web development...&lt;/p&gt;
+  &lt;p&gt;To get started, you need a text editor...&lt;/p&gt;
+&lt;/article&gt;
+</code></pre>
+<p><strong>Key Characteristic:</strong></p>
+<p>Content in <code>&lt;article&gt;</code> could <strong>stand alone</strong> (could be copied to another website and still make sense).</p>
+<p><strong>Examples of <code>&lt;article&gt;</code>:</strong></p>
+<ul>
+<li>Blog posts</li>
+<li>News articles</li>
+<li>Forum posts</li>
+<li>Comments</li>
+<li>Product reviews</li>
+</ul>
+<p><strong>Examples NOT for <code>&lt;article&gt;</code>:</strong></p>
+<ul>
+<li>Header or footer content</li>
+<li>Navigation menus</li>
+<li>Sidebar widgets</li>
+<li>Generic sections</li>
+</ul>
+<p><strong>Multiple Articles:</strong></p>
+<pre><code class="language-html">&lt;main&gt;
+  &lt;article&gt;
+    &lt;h2&gt;First Article&lt;/h2&gt;
+    Content...
+  &lt;/article&gt;
+
+  &lt;article&gt;
+    &lt;h2&gt;Second Article&lt;/h2&gt;
+    Content...
+  &lt;/article&gt;
+&lt;/main&gt;
+</code></pre>
+<hr />
+<h3><strong>Floor 25: Section Element</strong></h3>
+<p><strong>Learning Objective:</strong> Group thematically related content.</p>
+<p><strong>Concept: The <code>&lt;section&gt;</code> Tag</strong></p>
+<p><code>&lt;section&gt;</code> groups <strong>thematically related content</strong> together.</p>
+<p><strong>Usage:</strong></p>
+<pre><code class="language-html">&lt;section&gt;
+  &lt;h2&gt;Fruits&lt;/h2&gt;
+  &lt;p&gt;Information about fruits...&lt;/p&gt;
+&lt;/section&gt;
+
+&lt;section&gt;
+  &lt;h2&gt;Vegetables&lt;/h2&gt;
+  &lt;p&gt;Information about vegetables...&lt;/p&gt;
+&lt;/section&gt;
+</code></pre>
+<p><strong>Section vs Article:</strong></p>
+<table>
+<thead>
+<tr>
+<th><code>&lt;section&gt;</code></th>
+<th><code>&lt;article&gt;</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Thematic grouping</td>
+<td>Self-contained content</td>
+</tr>
+<tr>
+<td>Part of a page</td>
+<td>Standalone piece</td>
+</tr>
+<tr>
+<td>Related material</td>
+<td>Could be elsewhere</td>
+</tr>
+<tr>
+<td>Generic grouping</td>
+<td>Specific type of content</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example:</strong></p>
+<pre><code class="language-html">&lt;article&gt;
+  &lt;h1&gt;Web Development Guide&lt;/h1&gt;
+
+  &lt;section&gt;
+    &lt;h2&gt;HTML Basics&lt;/h2&gt;
+    &lt;p&gt;HTML is...&lt;/p&gt;
+  &lt;/section&gt;
+
+  &lt;section&gt;
+    &lt;h2&gt;CSS Styling&lt;/h2&gt;
+    &lt;p&gt;CSS allows...&lt;/p&gt;
+  &lt;/section&gt;
+
+  &lt;section&gt;
+    &lt;h2&gt;JavaScript Interactivity&lt;/h2&gt;
+    &lt;p&gt;JavaScript makes...&lt;/p&gt;
+  &lt;/section&gt;
+&lt;/article&gt;
+</code></pre>
+<hr />
+<h3><strong>Floor 26-30: More Semantic Elements</strong></h3>
+<p><strong>Quick Reference:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Tag</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;aside&gt;</code></td>
+<td>Sidebar, related content</td>
+<td>Advertisements, related articles</td>
+</tr>
+<tr>
+<td><code>&lt;footer&gt;</code></td>
+<td>Page or section footer</td>
+<td>Copyright, links, contact</td>
+</tr>
+<tr>
+<td><code>&lt;time&gt;</code></td>
+<td>Date/time</td>
+<td><code>&lt;time datetime="2025-01-15"&gt;January 15, 2025&lt;/time&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;address&gt;</code></td>
+<td>Contact information</td>
+<td>Physical address, email, phone</td>
+</tr>
+<tr>
+<td><code>&lt;figure&gt;</code></td>
+<td>Image with caption</td>
+<td>Diagrams, charts, photos</td>
+</tr>
+<tr>
+<td><code>&lt;figcaption&gt;</code></td>
+<td>Caption for figure</td>
+<td>Caption inside <code>&lt;figure&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Phase 4: Links &amp; Media (Levels 31-40)</h2>
+<h3><strong>Floor 31: Hyperlinks - The <code>&lt;a&gt;</code> Tag</strong></h3>
+<p><strong>Learning Objective:</strong> Create clickable links.</p>
+<p><strong>Concept: The <code>&lt;a&gt;</code> Tag</strong></p>
+<p><code>&lt;a&gt;</code> creates <strong>hyperlinks</strong> (the thing you click to go somewhere).</p>
+<p><strong>Usage:</strong></p>
+<pre><code class="language-html">&lt;a href=&quot;https://example.com&quot;&gt;Click here&lt;/a&gt;
+</code></pre>
+<p><strong>The <code>href</code> Attribute:</strong></p>
+<p><code>href</code> = "Hypertext Reference" - where the link goes.</p>
+<p><strong>Types of Links:</strong></p>
+<ol>
+<li><strong>External links</strong> (to other websites):</li>
+</ol>
+<pre><code class="language-html">&lt;a href=&quot;https://www.wikipedia.org&quot;&gt;Learn more on Wikipedia&lt;/a&gt;
+</code></pre>
+<ol>
+<li><strong>Internal links</strong> (within your site):</li>
+</ol>
+<pre><code class="language-html">&lt;a href=&quot;/about&quot;&gt;About Us&lt;/a&gt;
+&lt;a href=&quot;/products/widget&quot;&gt;Widget Product&lt;/a&gt;
+</code></pre>
+<ol>
+<li><strong>Email links:</strong></li>
+</ol>
+<pre><code class="language-html">&lt;a href=&quot;mailto:contact@example.com&quot;&gt;Email us&lt;/a&gt;
+</code></pre>
+<ol>
+<li><strong>Phone links:</strong></li>
+</ol>
+<pre><code class="language-html">&lt;a href=&quot;tel:+1-555-123-4567&quot;&gt;Call us&lt;/a&gt;
+</code></pre>
+<ol>
+<li><strong>Anchor links</strong> (jump to section):</li>
+</ol>
+<pre><code class="language-html">&lt;a href=&quot;#section2&quot;&gt;Go to Section 2&lt;/a&gt;
+</code></pre>
+<p><strong>Link Text Best Practices:</strong></p>
+<p>✓ GOOD - Descriptive:</p>
+<pre><code class="language-html">&lt;a href=&quot;/about&quot;&gt;Learn more about our company&lt;/a&gt;
+</code></pre>
+<p>❌ BAD - Generic:</p>
+<pre><code class="language-html">&lt;a href=&quot;/about&quot;&gt;Click here&lt;/a&gt;
+</code></pre>
+<p><strong>Why?</strong> Screen readers and search engines use link text to understand where links go.</p>
+<hr />
+<h3><strong>Floor 32: Images - The <code>&lt;img&gt;</code> Tag</strong></h3>
+<p><strong>Learning Objective:</strong> Embed images.</p>
+<p><strong>Concept: The <code>&lt;img&gt;</code> Tag</strong></p>
+<p><code>&lt;img&gt;</code> embeds <strong>images</strong> on a page.</p>
+<p><strong>Usage:</strong></p>
+<pre><code class="language-html">&lt;img src=&quot;photo.jpg&quot; alt=&quot;My Family Photo&quot;&gt;
+</code></pre>
+<p><strong>Key Attributes:</strong></p>
+<ol>
+<li><strong><code>src</code></strong> - Image file path</li>
+<li><strong><code>alt</code></strong> - Alternative text (shown if image fails to load)</li>
+</ol>
+<p><strong>The <code>alt</code> Attribute - Critical for Accessibility:</strong></p>
+<pre><code class="language-html">&lt;!-- ✓ Good - describes the image --&gt;
+&lt;img src=&quot;sunset.jpg&quot; alt=&quot;Orange sunset over the ocean&quot;&gt;
+
+&lt;!-- ❌ Bad - no description --&gt;
+&lt;img src=&quot;sunset.jpg&quot;&gt;
+
+&lt;!-- ❌ Bad - too generic --&gt;
+&lt;img src=&quot;sunset.jpg&quot; alt=&quot;image&quot;&gt;
+</code></pre>
+<p>The <code>alt</code> text should describe what the image shows, so blind users and search engines understand it.</p>
+<p><strong>Image Formats:</strong></p>
+<ul>
+<li><strong>JPG</strong> - Photos and complex images</li>
+<li><strong>PNG</strong> - Graphics, logos, images with transparency</li>
+<li><strong>GIF</strong> - Animated images</li>
+<li><strong>WebP</strong> - Modern format, smaller file size</li>
+</ul>
+<p><strong>Image Sizing:</strong></p>
+<pre><code class="language-html">&lt;img src=&quot;photo.jpg&quot; alt=&quot;Beach photo&quot; width=&quot;400&quot; height=&quot;300&quot;&gt;
+</code></pre>
+<p><strong>Responsive Images (Modern Approach):</strong></p>
+<pre><code class="language-html">&lt;img 
+  src=&quot;photo.jpg&quot; 
+  alt=&quot;Beach&quot;
+  style=&quot;max-width: 100%; height: auto;&quot;
+&gt;
+</code></pre>
+<hr />
+<h3><strong>Floor 33-40: Media Elements</strong></h3>
+<p><strong>Quick Reference:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Tag</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;video&gt;</code></td>
+<td>Embed video</td>
+<td><code>&lt;video src="movie.mp4"&gt;&lt;/video&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;audio&gt;</code></td>
+<td>Embed audio</td>
+<td><code>&lt;audio src="song.mp3"&gt;&lt;/audio&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;source&gt;</code></td>
+<td>Multiple formats</td>
+<td>Inside <code>&lt;video&gt;</code> or <code>&lt;audio&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;track&gt;</code></td>
+<td>Subtitles/captions</td>
+<td><code>&lt;track src="subs.vtt" kind="subtitles"&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;iframe&gt;</code></td>
+<td>Embed external content</td>
+<td>YouTube, maps, etc.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Phase 5: Advanced Elements (Levels 41-48)</h2>
+<h3><strong>Floor 41: Tables - Structure</strong></h3>
+<p><strong>Learning Objective:</strong> Create data tables.</p>
+<p><strong>Concept: Tables with <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;td&gt;</code></strong></p>
+<p><strong>Basic Table:</strong></p>
+<pre><code class="language-html">&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Cell 1&lt;/td&gt;
+    &lt;td&gt;Cell 2&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Cell 3&lt;/td&gt;
+    &lt;td&gt;Cell 4&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+<p><strong>Tags Explained:</strong></p>
+<ul>
+<li><code>&lt;table&gt;</code> - Container for table</li>
+<li><code>&lt;tr&gt;</code> - Table row (horizontal line)</li>
+<li><code>&lt;td&gt;</code> - Table data (individual cell)</li>
+</ul>
+<hr />
+<h3><strong>Floor 42: Tables - Headers</strong></h3>
+<p><strong>Learning Objective:</strong> Add table headers.</p>
+<p><strong>Concept: The <code>&lt;th&gt;</code> Tag</strong></p>
+<p><code>&lt;th&gt;</code> = Table header (stands out, usually bold).</p>
+<p><strong>Usage:</strong></p>
+<pre><code class="language-html">&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Name&lt;/th&gt;
+    &lt;th&gt;Age&lt;/th&gt;
+    &lt;th&gt;City&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;John&lt;/td&gt;
+    &lt;td&gt;28&lt;/td&gt;
+    &lt;td&gt;New York&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+<hr />
+<h3><strong>Floor 43-48: Forms, Comments, Metadata</strong></h3>
+<p><em>Forms, input fields, buttons, and complete page structure covered here.</em></p>
+<hr />
+<h2>Phase 6: Final Challenge (Levels 49-51)</h2>
+<h3><strong>Floor 49: DOCTYPE</strong></h3>
+<p><strong>Learning Objective:</strong> Declare HTML version.</p>
+<p><strong>Concept: The DOCTYPE</strong></p>
+<p><code>&lt;!DOCTYPE html&gt;</code> tells the browser "this is HTML5."</p>
+<p><strong>Must be first line:</strong></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    Content
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<hr />
+<h3><strong>Floor 50: Character Set</strong></h3>
+<p><strong>Concept: Meta Charset</strong></p>
+<pre><code class="language-html">&lt;meta charset=&quot;UTF-8&quot;&gt;
+</code></pre>
+<p>Enables all languages and special characters.</p>
+<hr />
+<h3><strong>Floor 51: Complete Document</strong></h3>
+<p><strong>Final Challenge:</strong></p>
+<p>Build a complete valid HTML5 document with all elements learned.</p>
+<hr />
+<h2>Key Concepts Reference</h2>
+<h3>HTML Document Flow</h3>
+<ol>
+<li><strong>DOCTYPE</strong> - Tells browser this is HTML5</li>
+<li><strong><code>&lt;html&gt;</code></strong> - Root element wrapper</li>
+<li><strong><code>&lt;head&gt;</code></strong> - Metadata container</li>
+<li><code>&lt;title&gt;</code> - Page title</li>
+<li><code>&lt;meta&gt;</code> - Various metadata</li>
+<li><code>&lt;link&gt;</code> - External resources (CSS)</li>
+<li><code>&lt;script&gt;</code> - Inline scripts</li>
+<li><strong><code>&lt;body&gt;</code></strong> - Visible content</li>
+<li>Headings (<code>&lt;h1&gt;</code>-<code>&lt;h6&gt;</code>)</li>
+<li>Paragraphs (<code>&lt;p&gt;</code>)</li>
+<li>Links (<code>&lt;a&gt;</code>)</li>
+<li>Images (<code>&lt;img&gt;</code>)</li>
+<li>Lists (<code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code>)</li>
+<li>Tables (<code>&lt;table&gt;</code>)</li>
+<li>And more...</li>
+</ol>
+<h3>Fundamental Principles</h3>
+<ol>
+<li><strong>Semantic HTML</strong> - Use tags that describe meaning, not appearance</li>
+<li><strong>Proper Nesting</strong> - Open and close tags correctly</li>
+<li><strong>Accessibility First</strong> - Code so it works for everyone</li>
+<li><strong>Progressive Enhancement</strong> - Content works without CSS/JavaScript</li>
+<li><strong>Separation of Concerns</strong> - HTML (structure), CSS (styling), JS (behavior)</li>
+</ol>
+<h3>Best Practices Summary</h3>
+<ol>
+<li>✓ Use semantic tags (<code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;nav&gt;</code>)</li>
+<li>✓ Write valid, well-formed HTML</li>
+<li>✓ Include proper meta tags</li>
+<li>✓ Use alt text for images</li>
+<li>✓ Use heading hierarchy correctly</li>
+<li>✓ Write clean, indented code</li>
+<li>✓ Use meaningful class/id names</li>
+<li>✓ Don't use deprecated tags</li>
+</ol>
+<h3>Common Mistakes to Avoid</h3>
+<ol>
+<li>❌ Forgetting closing tags</li>
+<li>❌ Improper nesting</li>
+<li>❌ Using tags for styling instead of structure</li>
+<li>❌ Skipping accessibility features</li>
+<li>❌ Invalid attribute values</li>
+<li>❌ Not validating code</li>
+<li>❌ Using outdated HTML4 syntax</li>
+<li>❌ Mixing content with presentation</li>
+</ol>
+<hr />
+<h2>For Translators</h2>
+<h3>Translation Notes</h3>
+<p>This guide serves as the <strong>canonical English reference</strong> for translating Tower of HTML into any language. When translating:</p>
+<ol>
+<li><strong>Preserve code examples</strong> - Never translate code, only explanatory text</li>
+<li><strong>Preserve tag names</strong> - <code>&lt;html&gt;</code>, <code>&lt;body&gt;</code>, etc. stay the same</li>
+<li><strong>Keep structure identical</strong> - Same headings, same organization</li>
+<li><strong>Localize examples</strong> - Addresses, names, examples can be localized</li>
+<li><strong>Maintain technical accuracy</strong> - Don't simplify technical concepts incorrectly</li>
+</ol>
+<h3>Key Terms for Translation</h3>
+<table>
+<thead>
+<tr>
+<th>English Term</th>
+<th>Should Remain in All Languages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HTML</td>
+<td>HTML (acronym)</td>
+</tr>
+<tr>
+<td>Tag</td>
+<td><code>&lt;tagname&gt;</code> (code example)</td>
+</tr>
+<tr>
+<td>Attribute</td>
+<td><code>attribute</code> (code example)</td>
+</tr>
+<tr>
+<td>Element</td>
+<td>General term, can translate</td>
+</tr>
+<tr>
+<td>Content</td>
+<td>General term, can translate</td>
+</tr>
+<tr>
+<td>Semantic</td>
+<td>General term, can translate</td>
+</tr>
+<tr>
+<td>Nesting</td>
+<td>General term, can translate</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>About the Tower of Series</h2>
+<p>This is the first game in the <strong>Tower of Series</strong> - an open-source initiative to teach programming fundamentals in any language to anyone, anywhere.</p>
+<p><strong>Planned Games:</strong>
+- Tower of HTML (Published)
+- Tower of CSS (Planned)
+- Tower of JavaScript (Planned)
+- Tower of Python (Planned)
+- Tower of Rust (Planned)</p>
+<p><strong>Mission:</strong></p>
+<p>Enable anyone, anywhere (including on a Windows 95 in rural areas with slow internet) to learn fundamental programming skills in their native language.</p>
+<p><strong>Core Values:</strong>
+- 🌍 Global accessibility
+- 🗣️ Native language support
+- 📱 Works on old/slow hardware
+- 🆓 Always free
+- 📖 Educational quality
+- ♿ Accessible to everyone</p>
+<hr />
+<p><strong>Document Version:</strong> 1.0<br />
+<strong>Last Updated:</strong> September 2026<br />
+<strong>License:</strong> Creative Commons - Free to use and translate<br />
+<strong>Support for:</strong> Tower of HTML v1.0 and higher</p>
+</div>
+</body>
+</html>
