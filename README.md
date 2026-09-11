@@ -31,14 +31,18 @@ You can try out the project directly in your browser:
 ## 🎯 Design Philosophy & Core Mission
 
 ### The Problem We Solve
+
 Most modern web development learning platforms introduce significant barriers:
+
 1. **Dependency on Internet Connectivity**: Online IDEs and LMS platforms fail in low-bandwidth or offline environments.
 2. **Modern Hardware Requirements**: Modern tools require modern operating systems, high RAM, and heavy browser engines, locking out users on older hardware.
 3. **Complexity Overhead**: Beginners are often overwhelmed by build tools, frameworks, and package managers before writing a single line of HTML.
 4. **Vendor Lock-in**: User progress depends on third-party platform availability and mandatory account creation.
 
 ### Our Solution
+
 Tower of HTML operates on four core commitments:
+
 * **Accessibility Before Features**: Prioritizes raw compatibility and clear readability over UI frameworks.
 * **Education Over Entertainment**: Structured, floor-by-floor progression where mastery is earned through strict, fair validation.
 * **Ownership Over Platforms**: Users can own, download, modify, and run the project indefinitely without asking permission.
@@ -87,17 +91,19 @@ This design allows educators in low-resource environments to download the projec
 
 The single `index.html` file strictly separates the execution logic from instructional content while maintaining a dependency-free environment:
 
-
+```
 index.html
 ├── <head>
 │   └── <style> : Terminal styling, responsive layouts, visual themes
 └── <body>
-├── UI Container : Game screen, input terminal, output view
-└── <script>
-├── levels[] Array : Plain-text instructional data & validation rules
-└── Engine Logic   : DOM updates, level-code verification, progression state
+    ├── UI Container : Game screen, input terminal, output view
+    └── <script>
+        ├── levels[] Array : Plain-text instructional data & validation rules
+        └── Engine Logic   : DOM updates, level-code verification, progression state
+```
 
 ### Design Commitments
+
 - **Inline CSS**: Embedded within a single `<style>` block.
 - **Inline JavaScript**: Embedded within a single `<script>` block.
 - **ES3/ES5 Standard**: Uses standard loop constructs and ES3/ES5 syntax (`var`, `for` loops) instead of modern ES6+ features requiring transpilation.
@@ -108,14 +114,17 @@ index.html
 
 The curriculum consists of 51 structured floors spanning six distinct phases:
 
+### Skill Progression
 
-Skill Progression:
+```
 Beginner (Floors 0–8)    → Tags, closing tags, and page structure
 Intermediate (Floors 9–28)  → Formatting, links, buttons, and media
 Advanced (Floors 29–48)  → Divisions, lists, forms, tables, and attributes
 Expert (Floors 49–51)    → Document declarations, character sets, and final integration
+```
 
 ### Phase 1: Foundation (Floors 0–8)
+
 | Floor | Code | Title | Task / Concept |
 | :---: | :--- | :--- | :--- |
 | **0** | `START` | Overview & Instructions | Game introduction & controls |
@@ -129,6 +138,7 @@ Expert (Floors 49–51)    → Document declarations, character sets, and final 
 | **8** | `L8-CLOSE-HTML` | Closing HTML Tag | `</html>` tag closure |
 
 ### Phase 2: Content & Text (Floors 9–18)
+
 | Floor | Code | Title | Task / Concept |
 | :---: | :--- | :--- | :--- |
 | **9** | `L9-H1` | Main Heading (H1) | `<h1>` heading level 1 |
@@ -143,6 +153,7 @@ Expert (Floors 49–51)    → Document declarations, character sets, and final 
 | **18** | `L18-EM` | Emphasis | `<em>` semantic stress |
 
 ### Phase 3: Links & Media (Floors 19–28)
+
 | Floor | Code | Title | Task / Concept |
 | :---: | :--- | :--- | :--- |
 | **19** | `L19-ANCHOR` | Link Tag | `<a>` anchor element |
@@ -157,6 +168,7 @@ Expert (Floors 49–51)    → Document declarations, character sets, and final 
 | **28** | `L28-CLOSE-BUTTON` | Close Button Tag | `</button>` tag closure |
 
 ### Phase 4: Organization (Floors 29–38)
+
 | Floor | Code | Title | Task / Concept |
 | :---: | :--- | :--- | :--- |
 | **29** | `L29-DIV` | Division Container | `<div>` block container |
@@ -171,6 +183,7 @@ Expert (Floors 49–51)    → Document declarations, character sets, and final 
 | **38** | `L38-CLOSE-OL` | Close Ordered List | `</ol>` tag closure |
 
 ### Phase 5: Intermediate & Advanced (Floors 39–48)
+
 | Floor | Code | Title | Task / Concept |
 | :---: | :--- | :--- | :--- |
 | **39** | `L39-FORM` | Form Container | `<form>` input wrapper |
@@ -185,6 +198,7 @@ Expert (Floors 49–51)    → Document declarations, character sets, and final 
 | **48** | `L48-ID` | ID Attribute | `id="..."` unique target |
 
 ### Phase 6: Final Challenge (Floors 49–51)
+
 | Floor | Code | Title | Task / Concept |
 | :---: | :--- | :--- | :--- |
 | **49** | `L49-DOCTYPE` | Document Type | `<!DOCTYPE html>` declaration |
@@ -195,14 +209,16 @@ Expert (Floors 49–51)    → Document declarations, character sets, and final 
 
 ## 🔑 Level-Code Progression System
 
-Rather than relying on browser storage APIs (`localStorage`, `indexedDB`, or cookies), progress is saved via short, human-readable **Level Codes**. 
+Rather than relying on browser storage APIs (`localStorage`, `indexedDB`, or cookies), progress is saved via short, human-readable **Level Codes**.
 
 ### How It Works
+
 1. Upon completing a floor, the application displays a unique code (e.g., `L5-PARA`).
 2. Users can copy, save, or write down the code.
 3. In subsequent sessions, entering the code into the **JUMP TO FLOOR** field instantly loads that floor's state.
 
 ### Benefits
+
 - **Cross-Browser & Cross-Device**: Move seamlessly between an old mobile phone and a desktop computer.
 - **Zero Privacy Footprint**: Operates without tracking users, storing cookies, or making web requests.
 - **No API Dependencies**: Functions on browsers created before local storage specifications existed.
@@ -228,54 +244,82 @@ Because the entire application logic is stored in a clean JavaScript array, addi
     }
 }
 ```
-Validation Design Guidelines
-When adding validation rules, maintain the project's universal compatibility rules:
- * Use Standard String Operations: Rely on methods like .indexOf(), .toLowerCase(), and basic regular expressions.
- * Handle Whitespace Flexibly: Avoid strict string comparisons that fail due to extra trailing spaces or line breaks.
- * Preserve Compatibility: Do not introduce ES6 methods (such as .includes()) unless polyfilled natively within the file.
-📂 Translations
-All available language-specific subfolders can be found within the Translation directory. Each folder contains:
- * A dedicated README written entirely in the native language.
- * A complete Complete Guide written entirely in the native language.
-🌍 Language Translation Progress
-> Disclaimer: Language translations in this project are generated using Artificial Intelligence (AI). While AI models provide high-quality processing, minor contextual errors may exist.
-> 
-We aim to support major world languages spoken by over 1 million people.
-Core Languages
- * [x] English
- * [x] German (Deutsch)
- * [x] Chinese - Mandarin (普通话)
- * [x] Hindi (हिन्दी)
- * [x] Spanish (Español)
- * [x] Arabic - Modern Standard (العربية الفصحى)
- * [o] French (Français)
- * [o] Bengali (বাংলা)
- * [o] Portuguese (Português)
- * [o] Russian (Русский)
- * [o] Urdu (اردو)
- * [o] Indonesian (Bahasa Indonesia)
- * [o] Swahili (Kiswahili)
- * [o] Hausa (Harshen Hausa)
- * [o] Yoruba (Èdè Yorùbá)
- * [o] Zulu (isiZulu)
- * [o] Twi (Akan)
- * [o] Japanese (日本語)
- * [o] Punjabi (ਪੰਜਾਬੀ / پنجابی)
- * [o] Vietnamese (Tiếng Việt)
- * [o] Turkish (Türkçe)
- * [o] Korean (한국어)
-(Legend: [x] Completed | [o] In Progress | [ ] Planned)
-📐 Technical Specifications
- * File Format: Single .html file (~50KB)
- * Standards: HTML5, CSS3, ES3/ES5 JavaScript
- * Dependencies: 0 external libraries, 0 fonts, 0 frameworks
- * Network Requirement: 0 KB/s (100% offline functional)
- * Storage Requirements: None
- * Minimum Browser Requirements: Internet Explorer 6+, Firefox 1.0+, Safari 1.0+, Chrome 1.0+, or any legacy WebKit/Gecko browser.
-📄 License & Author
-Author
-M-Tarantino (@M-Tarantino)
-License
-This project is licensed under the MIT License. You are free to use, modify, distribute, host, and teach with this software for both non-commercial and commercial purposes, provided original attribution is retained.
-Tower of HTML — Accessible. Durable. Universal.
 
+### Validation Design Guidelines
+
+When adding validation rules, maintain the project's universal compatibility rules:
+
+* **Use Standard String Operations**: Rely on methods like `.indexOf()`, `.toLowerCase()`, and basic regular expressions.
+* **Handle Whitespace Flexibly**: Avoid strict string comparisons that fail due to extra trailing spaces or line breaks.
+* **Preserve Compatibility**: Do not introduce ES6 methods (such as `.includes()`) unless polyfilled natively within the file.
+
+---
+
+## 📂 Translations
+
+All available language-specific subfolders can be found within the Translation directory. Each folder contains:
+
+* A dedicated README written entirely in the native language.
+* A complete Complete Guide written entirely in the native language.
+
+---
+
+## 🌍 Language Translation Progress
+
+> Disclaimer: Language translations in this project are generated using Artificial Intelligence (AI). While AI models provide high-quality processing, minor contextual errors may exist.
+
+We aim to support major world languages spoken by over 1 million people.
+
+### Core Languages
+
+* [x] English
+* [x] German (Deutsch)
+* [x] Chinese - Mandarin (普通话)
+* [x] Hindi (हिन्दी)
+* [x] Spanish (Español)
+* [x] Arabic - Modern Standard (العربية الفصحى)
+* [o] French (Français)
+* [o] Bengali (বাংলা)
+* [o] Portuguese (Português)
+* [o] Russian (Русский)
+* [o] Urdu (اردو)
+* [o] Indonesian (Bahasa Indonesia)
+* [o] Swahili (Kiswahili)
+* [o] Hausa (Harshen Hausa)
+* [o] Yoruba (Èdè Yorùbá)
+* [o] Zulu (isiZulu)
+* [o] Twi (Akan)
+* [o] Japanese (日本語)
+* [o] Punjabi (ਪੰਜਾਬੀ / پنجابی)
+* [o] Vietnamese (Tiếng Việt)
+* [o] Turkish (Türkçe)
+* [o] Korean (한국어)
+
+(Legend: [x] Completed | [o] In Progress | [ ] Planned)
+
+---
+
+## 📐 Technical Specifications
+
+* **File Format**: Single .html file (~50KB)
+* **Standards**: HTML5, CSS3, ES3/ES5 JavaScript
+* **Dependencies**: 0 external libraries, 0 fonts, 0 frameworks
+* **Network Requirement**: 0 KB/s (100% offline functional)
+* **Storage Requirements**: None
+* **Minimum Browser Requirements**: Internet Explorer 6+, Firefox 1.0+, Safari 1.0+, Chrome 1.0+, or any legacy WebKit/Gecko browser.
+
+---
+
+## 📄 License & Author
+
+### Author
+
+M-Tarantino (@M-Tarantino)
+
+### License
+
+This project is licensed under the MIT License. You are free to use, modify, distribute, host, and teach with this software for both non-commercial and commercial purposes, provided original attribution is retained.
+
+---
+
+Tower of HTML — Accessible. Durable. Universal.
