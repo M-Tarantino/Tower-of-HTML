@@ -227,7 +227,7 @@ Because the entire application logic is stored in a clean JavaScript array, addi
         return clean.indexOf("<header>") !== -1;
     }
 }
-
+```
 Validation Design Guidelines
 When adding validation rules, maintain the project's universal compatibility rules:
  * Use Standard String Operations: Rely on methods like .indexOf(), .toLowerCase(), and basic regular expressions.
