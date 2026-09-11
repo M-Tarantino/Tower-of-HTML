@@ -4,6 +4,11 @@
 
 **Tower of HTML** is a minimalist, offline-first educational platform designed to teach HTML fundamentals from scratch. The entire application is housed within a single, self-contained `.html` file with zero external dependencies, frameworks, build steps, or server requirements.
 
+## 🌐 Live Version
+
+You can try out the project directly in your browser:
+👉 [Live Version on GitHub Pages](https://m-tarantino.github.io/Tower-of-HTML/)
+
 ---
 
 ## 📋 Table of Contents
@@ -16,6 +21,7 @@
 - [Learning Path (51 Floors)](#learning-path-51-floors)
 - [Level-Code Progression System](#level-code-progression-system)
 - [Customization & Extension Guidelines](#customization--extension-guidelines)
+- [Translations](#translations)
 - [Language Translation Progress](#language-translation-progress)
 - [Technical Specifications](#technical-specifications)
 - [License & Author](#license--author)
@@ -81,16 +87,15 @@ This design allows educators in low-resource environments to download the projec
 
 The single `index.html` file strictly separates the execution logic from instructional content while maintaining a dependency-free environment:
 
-```
+
 index.html
 ├── <head>
 │   └── <style> : Terminal styling, responsive layouts, visual themes
 └── <body>
-    ├── UI Container : Game screen, input terminal, output view
-    └── <script>
-        ├── levels[] Array : Plain-text instructional data & validation rules
-        └── Engine Logic   : DOM updates, level-code verification, progression state
-```
+├── UI Container : Game screen, input terminal, output view
+└── <script>
+├── levels[] Array : Plain-text instructional data & validation rules
+└── Engine Logic   : DOM updates, level-code verification, progression state
 
 ### Design Commitments
 - **Inline CSS**: Embedded within a single `<style>` block.
@@ -103,13 +108,12 @@ index.html
 
 The curriculum consists of 51 structured floors spanning six distinct phases:
 
-```
+
 Skill Progression:
 Beginner (Floors 0–8)    → Tags, closing tags, and page structure
 Intermediate (Floors 9–28)  → Formatting, links, buttons, and media
 Advanced (Floors 29–48)  → Divisions, lists, forms, tables, and attributes
 Expert (Floors 49–51)    → Document declarations, character sets, and final integration
-```
 
 ### Phase 1: Foundation (Floors 0–8)
 | Floor | Code | Title | Task / Concept |
@@ -199,7 +203,7 @@ Rather than relying on browser storage APIs (`localStorage`, `indexedDB`, or coo
 3. In subsequent sessions, entering the code into the **JUMP TO FLOOR** field instantly loads that floor's state.
 
 ### Benefits
-- **Cross-Browser & Cross-Device**: Move seamless between an old mobile phone and a desktop computer.
+- **Cross-Browser & Cross-Device**: Move seamlessly between an old mobile phone and a desktop computer.
 - **Zero Privacy Footprint**: Operates without tracking users, storing cookies, or making web requests.
 - **No API Dependencies**: Functions on browsers created before local storage specifications existed.
 
@@ -223,69 +227,55 @@ Because the entire application logic is stored in a clean JavaScript array, addi
         return clean.indexOf("<header>") !== -1;
     }
 }
-```
 
-### Validation Design Guidelines
+Validation Design Guidelines
 When adding validation rules, maintain the project's universal compatibility rules:
-1. **Use Standard String Operations**: Rely on methods like `.indexOf()`, `.toLowerCase()`, and basic regular expressions.
-2. **Handle Whitespace Flexibly**: Avoid strict string comparisons that fail due to extra trailing spaces or line breaks.
-3. **Preserve Compatibility**: Do not introduce ES6 methods (such as `.includes()`) unless polyfilled natively within the file.
-
----
-
-## 🌍 Language Translation Progress
-
-> **Disclaimer:** Language translations in this project are generated using Artificial Intelligence (AI). While AI models provide high-quality processing, minor contextual errors may exist.
-
+ * Use Standard String Operations: Rely on methods like .indexOf(), .toLowerCase(), and basic regular expressions.
+ * Handle Whitespace Flexibly: Avoid strict string comparisons that fail due to extra trailing spaces or line breaks.
+ * Preserve Compatibility: Do not introduce ES6 methods (such as .includes()) unless polyfilled natively within the file.
+📂 Translations
+All available language-specific subfolders can be found within the Translation directory. Each folder contains:
+ * A dedicated README written entirely in the native language.
+ * A complete Complete Guide written entirely in the native language.
+🌍 Language Translation Progress
+> Disclaimer: Language translations in this project are generated using Artificial Intelligence (AI). While AI models provide high-quality processing, minor contextual errors may exist.
+> 
 We aim to support major world languages spoken by over 1 million people.
+Core Languages
+ * [x] English
+ * [x] German (Deutsch)
+ * [x] Chinese - Mandarin (普通话)
+ * [x] Hindi (हिन्दी)
+ * [x] Spanish (Español)
+ * [x] Arabic - Modern Standard (العربية الفصحى)
+ * [o] French (Français)
+ * [o] Bengali (বাংলা)
+ * [o] Portuguese (Português)
+ * [o] Russian (Русский)
+ * [o] Urdu (اردو)
+ * [o] Indonesian (Bahasa Indonesia)
+ * [o] Swahili (Kiswahili)
+ * [o] Hausa (Harshen Hausa)
+ * [o] Yoruba (Èdè Yorùbá)
+ * [o] Zulu (isiZulu)
+ * [o] Twi (Akan)
+ * [o] Japanese (日本語)
+ * [o] Punjabi (ਪੰਜਾਬੀ / پنجابی)
+ * [o] Vietnamese (Tiếng Việt)
+ * [o] Turkish (Türkçe)
+ * [o] Korean (한국어)
+(Legend: [x] Completed | [o] In Progress | [ ] Planned)
+📐 Technical Specifications
+ * File Format: Single .html file (~50KB)
+ * Standards: HTML5, CSS3, ES3/ES5 JavaScript
+ * Dependencies: 0 external libraries, 0 fonts, 0 frameworks
+ * Network Requirement: 0 KB/s (100% offline functional)
+ * Storage Requirements: None
+ * Minimum Browser Requirements: Internet Explorer 6+, Firefox 1.0+, Safari 1.0+, Chrome 1.0+, or any legacy WebKit/Gecko browser.
+📄 License & Author
+Author
+M-Tarantino (@M-Tarantino)
+License
+This project is licensed under the MIT License. You are free to use, modify, distribute, host, and teach with this software for both non-commercial and commercial purposes, provided original attribution is retained.
+Tower of HTML — Accessible. Durable. Universal.
 
-### Core Languages
-- [x] English
-- [x] German (Deutsch)
-- [x] Chinese - Mandarin (普通话)
-- [x] Hindi (हिन्दी)
-- [x] Spanish (Español)
-- [x] Arabic - Modern Standard (العربية الفصحى)
-- [o] French (Français)
-- [o] Bengali (বাংলা)
-- [o] Portuguese (Português)
-- [o] Russian (Русский)
-- [o] Urdu (اردو)
-- [o] Indonesian (Bahasa Indonesia)
-- [o] Swahili (Kiswahili)
-- [o] Hausa (Harshen Hausa)
-- [o] Yoruba (Èdè Yorùbá)
-- [o] Zulu (isiZulu)
-- [o] Twi (Akan)
-- [o] Japanese (日本語)
-- [o] Punjabi (ਪੰਜਾਬੀ / پنجابی)
-- [o] Vietnamese (Tiếng Việt)
-- [o] Turkish (Türkçe)
-- [o] Korean (한국어)
-
-*(Legend: `[x]` Completed | `[o]` In Progress | `[ ]` Planned)*
-
----
-
-## 📐 Technical Specifications
-
-* **File Format**: Single `.html` file (~50KB)
-* **Standards**: HTML5, CSS3, ES3/ES5 JavaScript
-* **Dependencies**: 0 external libraries, 0 fonts, 0 frameworks
-* **Network Requirement**: 0 KB/s (100% offline functional)
-* **Storage Requirements**: None
-* **Minimum Browser Requirements**: Internet Explorer 6+, Firefox 1.0+, Safari 1.0+, Chrome 1.0+, or any legacy WebKit/Gecko browser.
-
----
-
-## 📄 License & Author
-
-### Author
-**M-Tarantino** ([@M-Tarantino](https://github.com/M-Tarantino))
-
-### License
-This project is licensed under the **MIT License**. You are free to use, modify, distribute, host, and teach with this software for both non-commercial and commercial purposes, provided original attribution is retained.
-
----
-
-*Tower of HTML — Accessible. Durable. Universal.*
